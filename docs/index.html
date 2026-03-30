@@ -566,6 +566,221 @@
       background: var(--gray-300);
     }
 
+    .opp-pain {
+      font-size: var(--text-sm);
+      color: var(--gray-600);
+      line-height: 1.6;
+      margin-bottom: var(--space-sm);
+      font-style: italic;
+    }
+
+    .opp-details {
+      margin-top: var(--space-sm);
+    }
+
+    .opp-details summary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--gray-400);
+      cursor: pointer;
+      user-select: none;
+      list-style: none;
+      transition: color 0.15s;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .opp-details summary::-webkit-details-marker { display: none; }
+
+    .opp-details summary:hover { color: var(--accent); }
+
+    .opp-details[open] summary { color: var(--accent); }
+
+    .opp-data-sources {
+      margin-top: var(--space-sm);
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .opp-data-sources li {
+      font-size: var(--text-xs);
+      color: var(--gray-500);
+      padding-left: 1rem;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .opp-data-sources li::before {
+      content: "↳";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* ---- PIPELINE DIAGRAMS ---- */
+    .pipeline {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      margin-top: var(--space-md);
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .pipeline-stage {
+      flex: 1;
+      min-width: 0;
+      padding: var(--space-sm);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .pipeline-stage:not(:last-child)::after {
+      content: "→";
+      position: absolute;
+      right: -0.6rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: var(--text-base);
+      font-weight: 700;
+      color: var(--accent);
+      z-index: 1;
+    }
+
+    .pipeline-stage-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .pipeline-stage-title {
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: var(--black);
+      line-height: 1.3;
+    }
+
+    .pipeline-stage-items {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .pipeline-stage-items li {
+      font-size: 0.7rem;
+      color: var(--gray-500);
+      line-height: 1.4;
+    }
+
+    @media (width < 640px) {
+      .pipeline {
+        flex-direction: column;
+        gap: var(--space-xs);
+      }
+
+      .pipeline-stage:not(:last-child)::after {
+        content: "↓";
+        position: static;
+        display: block;
+        text-align: center;
+        margin-top: 0.3rem;
+      }
+
+      .pipeline-stage {
+        border-left: 2px solid var(--gray-200);
+      }
+    }
+
+    /* ---- RHYTHM BREAKERS ---- */
+    .rhythm-break {
+      padding: var(--space-xl) 0;
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .rhythm-break-inner {
+      font-size: var(--text-xl);
+      font-weight: 700;
+      color: var(--black);
+      line-height: 1.4;
+      max-width: 38ch;
+    }
+
+    .rhythm-break-inner span {
+      color: var(--accent);
+    }
+
+    /* ---- PROCESS SECTION ---- */
+    .process-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    @media (width >= 640px) {
+      .process-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .process-step {
+      padding: var(--space-md) 0;
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    @media (width >= 640px) {
+      .process-step {
+        padding: var(--space-md);
+        border-bottom: none;
+        border-right: 1px solid var(--gray-200);
+      }
+
+      .process-step:nth-child(even) {
+        border-right: none;
+      }
+
+      .process-step:nth-last-child(-n+2) {
+        border-bottom: none;
+      }
+    }
+
+    .process-step-number {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.3rem;
+    }
+
+    .process-step h3 {
+      font-size: var(--text-base);
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    .process-step p {
+      font-size: var(--text-sm);
+      color: var(--gray-600);
+      line-height: 1.6;
+    }
+
+    .process-step .process-output {
+      font-size: var(--text-xs);
+      color: var(--gray-400);
+      margin-top: 0.4rem;
+      font-weight: 500;
+    }
+
     /* ---- FOOTER (editorial) ---- */
     .site-footer {
       border-top: 1px solid var(--gray-200);
@@ -682,6 +897,7 @@
       <a href="#topo" class="sticky-nav-brand">AI Ventures</a>
       <div class="sticky-nav-links">
         <a href="#projetos">Projetos</a>
+        <a href="#processo">Processo</a>
         <a href="#oportunidades">Oportunidades</a>
         <a href="#contato">Contato</a>
       </div>
@@ -696,6 +912,7 @@
       <p class="header-description">Construímos ferramentas que transformam dados públicos, governamentais e setoriais em inteligência de mercado, gestão operacional e geração de leads para empresas brasileiras. Do conceito ao deploy em semanas.</p>
       <nav class="header-nav" aria-label="Navegação principal">
         <a href="#projetos">Projetos</a>
+        <a href="#processo">Processo</a>
         <a href="#oportunidades">Oportunidades</a>
         <a href="#contato">Contato</a>
       </nav>
@@ -766,6 +983,37 @@
                   <strong>Problema resolvido</strong>
                   Investidores imobiliários perdem horas cruzando dados de dezenas de fontes públicas para encontrar boas oportunidades. O FloridaFlip agrega tudo — avaliações, vendas, aluguéis, risco de enchente, seguros — em um painel único com sinais automáticos de oportunidade.
                 </div>
+                <div class="pipeline" style="grid-column: 1 / -1;">
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Fontes</span>
+                    <span class="pipeline-stage-title">Dados brutos</span>
+                    <ul class="pipeline-stage-items">
+                      <li>FDOR (avaliações fiscais)</li>
+                      <li>FEMA (zonas de risco)</li>
+                      <li>Census ACS (demografia)</li>
+                      <li>Redfin (mercado)</li>
+                    </ul>
+                  </div>
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Pipeline</span>
+                    <span class="pipeline-stage-title">Enriquecimento</span>
+                    <ul class="pipeline-stage-items">
+                      <li>Python + normalização</li>
+                      <li>DuckDB / Parquet</li>
+                      <li>Scoring 9 dimensões</li>
+                    </ul>
+                  </div>
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Produto</span>
+                    <span class="pipeline-stage-title">Dashboard</span>
+                    <ul class="pipeline-stage-items">
+                      <li>Mapa choropleth</li>
+                      <li>Busca em 2.1M props</li>
+                      <li>Calculadora financeira</li>
+                      <li>Relatório PDF</li>
+                    </ul>
+                  </div>
+                </div>
                 <div class="detail-block">
                   <h4>Funcionalidades</h4>
                   <ul class="detail-list features">
@@ -777,7 +1025,7 @@
                   </ul>
                 </div>
                 <div class="detail-block">
-                  <h4>Capacidades demonstradas</h4>
+                  <h4>O que isso resolve para você</h4>
                   <ul class="detail-list capabilities">
                     <li>Ingestão e normalização de dados públicos heterogêneos (FDOR, FEMA, Census ACS, Redfin)</li>
                     <li>Consultas analíticas sobre milhões de registros no browser usando DuckDB + Parquet</li>
@@ -820,6 +1068,36 @@
                   <strong>Problema resolvido</strong>
                   Investidores em imóveis de leilão da Caixa não sabem se o desconto anunciado é real. O Leila cruza dados ITBI reais (2008-2026) com o catálogo da Caixa, revelando o desconto verdadeiro e pontuando cada imóvel com um Deal Score multidimensional.
                 </div>
+                <div class="pipeline" style="grid-column: 1 / -1;">
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Fontes</span>
+                    <span class="pipeline-stage-title">Dados brutos</span>
+                    <ul class="pipeline-stage-items">
+                      <li>Catálogo CSV Caixa</li>
+                      <li>ITBI municipal (18 anos)</li>
+                      <li>Scraping de detalhes</li>
+                    </ul>
+                  </div>
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Pipeline</span>
+                    <span class="pipeline-stage-title">Cruzamento</span>
+                    <ul class="pipeline-stage-items">
+                      <li>Geocodificação</li>
+                      <li>Desconto real vs mercado</li>
+                      <li>Deal Score 5 eixos</li>
+                    </ul>
+                  </div>
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Produto</span>
+                    <span class="pipeline-stage-title">Inteligência</span>
+                    <ul class="pipeline-stage-items">
+                      <li>Mapa com score</li>
+                      <li>Simulador financeiro</li>
+                      <li>Street View + tendência</li>
+                      <li>Flags de risco</li>
+                    </ul>
+                  </div>
+                </div>
                 <div class="detail-block">
                   <h4>Funcionalidades</h4>
                   <ul class="detail-list features">
@@ -831,7 +1109,7 @@
                   </ul>
                 </div>
                 <div class="detail-block">
-                  <h4>Capacidades demonstradas</h4>
+                  <h4>O que isso resolve para você</h4>
                   <ul class="detail-list capabilities">
                     <li>Cruzamento de datasets para insight inédito — desconto real vs mercado</li>
                     <li>Modelagem financeira brasileira (ITBI, SAC, FGTS, custos de cartório)</li>
@@ -874,6 +1152,37 @@
                   <strong>Problema resolvido</strong>
                   Consultorias ambientais e mineradoras gastam semanas pesquisando portais de IBAMA, ANM e SEMAD para avaliar viabilidade de licenciamento. O LicenciaMiner cruza 14 fontes públicas e entrega dossiês por empresa com taxa de aprovação, risco e casos similares.
                 </div>
+                <div class="pipeline" style="grid-column: 1 / -1;">
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">14 Fontes</span>
+                    <span class="pipeline-stage-title">Coleta</span>
+                    <ul class="pipeline-stage-items">
+                      <li>IBAMA SISLIC</li>
+                      <li>ANM SIGMINE/SCM/CFEM</li>
+                      <li>SEMAD-MG (scraping)</li>
+                      <li>COPAM, ANA, Receita</li>
+                    </ul>
+                  </div>
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Pipeline</span>
+                    <span class="pipeline-stage-title">Análise espacial</span>
+                    <ul class="pipeline-stage-items">
+                      <li>GeoPandas / Shapely</li>
+                      <li>Sobreposição UCs/TIs</li>
+                      <li>Risco por CNPJ</li>
+                    </ul>
+                  </div>
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Produto</span>
+                    <span class="pipeline-stage-title">Dossiê</span>
+                    <ul class="pipeline-stage-items">
+                      <li>Dashboard 7 abas</li>
+                      <li>Mapa com polígonos</li>
+                      <li>Taxa de aprovação</li>
+                      <li>Relatório PDF</li>
+                    </ul>
+                  </div>
+                </div>
                 <div class="detail-block">
                   <h4>Funcionalidades</h4>
                   <ul class="detail-list features">
@@ -885,7 +1194,7 @@
                   </ul>
                 </div>
                 <div class="detail-block">
-                  <h4>Capacidades demonstradas</h4>
+                  <h4>O que isso resolve para você</h4>
                   <ul class="detail-list capabilities">
                     <li>Ingestão de 14 fontes (APIs, ArcGIS, Excel, scraping, shapefiles, PDFs)</li>
                     <li>Análise geoespacial com spatial joins e detecção de restrições</li>
@@ -901,6 +1210,13 @@
           </div>
         </div>
       </section>
+
+      <!-- ---- RHYTHM BREAK 1 ---- -->
+      <div class="rhythm-break">
+        <div class="container">
+          <p class="rhythm-break-inner reveal">3 projetos. 14 fontes públicas. 2.1M registros. Um padrão: <span>dados dispersos viram decisão</span>.</p>
+        </div>
+      </div>
 
       <!-- ---- GROUP 2: GESTÃO E COMPLIANCE ---- -->
       <section class="section project-group" aria-labelledby="group-ops-heading">
@@ -942,6 +1258,35 @@
                   <strong>Problema resolvido</strong>
                   Donos de usinas solares distribuídas precisam prestar contas mensais a investidores sobre energia compensada, receitas e pagamentos. Hoje esse processo é manual, com planilhas cruzando dados da CEMIG e billing, sujeito a erros que afetam pagamentos reais.
                 </div>
+                <div class="pipeline" style="grid-column: 1 / -1;">
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Fontes</span>
+                    <span class="pipeline-stage-title">Dados operacionais</span>
+                    <ul class="pipeline-stage-items">
+                      <li>Excel CEMIG (multi-aba)</li>
+                      <li>Cogni Faturas/Boletos</li>
+                      <li>Cadastro de UCs</li>
+                    </ul>
+                  </div>
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Pipeline</span>
+                    <span class="pipeline-stage-title">Cálculo financeiro</span>
+                    <ul class="pipeline-stage-items">
+                      <li>Tarifa compensável GD I/II</li>
+                      <li>PIS/COFINS, ICMS</li>
+                      <li>Classificação inadimplência</li>
+                    </ul>
+                  </div>
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Produto</span>
+                    <span class="pipeline-stage-title">Relatórios</span>
+                    <ul class="pipeline-stage-items">
+                      <li>Dashboard multi-usina</li>
+                      <li>PDF por investidor</li>
+                      <li>Trilha de auditoria</li>
+                    </ul>
+                  </div>
+                </div>
                 <div class="detail-block">
                   <h4>Funcionalidades</h4>
                   <ul class="detail-list features">
@@ -953,7 +1298,7 @@
                   </ul>
                 </div>
                 <div class="detail-block">
-                  <h4>Capacidades demonstradas</h4>
+                  <h4>O que isso resolve para você</h4>
                   <ul class="detail-list capabilities">
                     <li>Modelagem financeira do setor elétrico brasileiro (CEMIG, GD I/II, PIS/COFINS)</li>
                     <li>Pipeline ETL robusto para dados heterogêneos multi-fonte</li>
@@ -996,6 +1341,36 @@
                   <strong>Problema resolvido</strong>
                   Cidadãos, jornalistas e órgãos de controle não conseguem cruzar dados de despesas parlamentares com emendas orçamentárias para identificar padrões suspeitos. O dashboard aplica métodos estatísticos sobre 660 mil+ transações e entrega sinais de risco.
                 </div>
+                <div class="pipeline" style="grid-column: 1 / -1;">
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Fontes</span>
+                    <span class="pipeline-stage-title">APIs públicas</span>
+                    <ul class="pipeline-stage-items">
+                      <li>API Dados Abertos (CEAP)</li>
+                      <li>Portal da Transparência</li>
+                      <li>OpenCNPJ / BrasilAPI</li>
+                    </ul>
+                  </div>
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Pipeline</span>
+                    <span class="pipeline-stage-title">Detecção estatística</span>
+                    <ul class="pipeline-stage-items">
+                      <li>Lei de Benford</li>
+                      <li>Índice HHI</li>
+                      <li>Mismatch CNAE</li>
+                      <li>Fuzzy matching</li>
+                    </ul>
+                  </div>
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Produto</span>
+                    <span class="pipeline-stage-title">Investigação</span>
+                    <ul class="pipeline-stage-items">
+                      <li>Perfil por deputado</li>
+                      <li>Red flags automáticos</li>
+                      <li>Cruzamento CEAP × Emendas</li>
+                    </ul>
+                  </div>
+                </div>
                 <div class="detail-block">
                   <h4>Funcionalidades</h4>
                   <ul class="detail-list features">
@@ -1007,7 +1382,7 @@
                   </ul>
                 </div>
                 <div class="detail-block">
-                  <h4>Capacidades demonstradas</h4>
+                  <h4>O que isso resolve para você</h4>
                   <ul class="detail-list capabilities">
                     <li>Detecção de fraude estatística (Benford, HHI, valores redondos)</li>
                     <li>Cruzamento de bases com schemas incompatíveis via fuzzy matching</li>
@@ -1049,6 +1424,35 @@
                   <strong>Problema resolvido</strong>
                   Investidores em incorporações por administração (Lei 4.591/64) dependem de planilhas manuais para rastrear despesas e calcular rateios. Erros de centavos geram conflitos, e a falta de transparência corrói a confiança do grupo.
                 </div>
+                <div class="pipeline" style="grid-column: 1 / -1;">
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Fontes</span>
+                    <span class="pipeline-stage-title">Dados da obra</span>
+                    <ul class="pipeline-stage-items">
+                      <li>Notas fiscais / despesas</li>
+                      <li>Frações ideais (RI)</li>
+                      <li>Arquivos DWG/DXF</li>
+                    </ul>
+                  </div>
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Pipeline</span>
+                    <span class="pipeline-stage-title">Motor de rateio</span>
+                    <ul class="pipeline-stage-items">
+                      <li>Decimal(15,2) preciso</li>
+                      <li>Normalização frações</li>
+                      <li>Multi-tenant 3 camadas</li>
+                    </ul>
+                  </div>
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Produto</span>
+                    <span class="pipeline-stage-title">Gestão + Portal</span>
+                    <ul class="pipeline-stage-items">
+                      <li>Portal read-only investidor</li>
+                      <li>Plantas baixas 3D</li>
+                      <li>PDF auditável mensal</li>
+                    </ul>
+                  </div>
+                </div>
                 <div class="detail-block">
                   <h4>Funcionalidades</h4>
                   <ul class="detail-list features">
@@ -1060,7 +1464,7 @@
                   </ul>
                 </div>
                 <div class="detail-block">
-                  <h4>Capacidades demonstradas</h4>
+                  <h4>O que isso resolve para você</h4>
                   <ul class="detail-list capabilities">
                     <li>Modelagem financeira com precisão decimal (Lei 4.591/64)</li>
                     <li>Multi-tenant com controle em 3 camadas (middleware, actions, queries)</li>
@@ -1076,6 +1480,13 @@
           </div>
         </div>
       </section>
+
+      <!-- ---- RHYTHM BREAK 2 ---- -->
+      <div class="rhythm-break">
+        <div class="container">
+          <p class="rhythm-break-inner reveal">Cálculos auditáveis. Trilha de compliance. Relatórios que <span>reguladores aceitam</span>.</p>
+        </div>
+      </div>
 
       <!-- ---- GROUP 3: CRESCIMENTO E LEADS ---- -->
       <section class="section project-group" aria-labelledby="group-growth-heading">
@@ -1118,6 +1529,35 @@
                   <strong>Problema resolvido</strong>
                   Corretores de seguro garantia perdem horas vasculhando o PNCP manualmente para encontrar contratos que precisam de garantia. O LicitaLeads ingere, enriquece e pontua automaticamente ~23K contratos públicos, entregando leads priorizados com dados de contato e estimativa de comissão.
                 </div>
+                <div class="pipeline" style="grid-column: 1 / -1;">
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Fontes</span>
+                    <span class="pipeline-stage-title">Dados gov</span>
+                    <ul class="pipeline-stage-items">
+                      <li>API PNCP (contratos)</li>
+                      <li>BrasilAPI (CNPJ)</li>
+                      <li>CEIS/CNEP (inidoneidade)</li>
+                    </ul>
+                  </div>
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Pipeline</span>
+                    <span class="pipeline-stage-title">Enriquecimento</span>
+                    <ul class="pipeline-stage-items">
+                      <li>Telefone, email, QSA</li>
+                      <li>Scoring 4 dimensões</li>
+                      <li>Tiers A/B/C</li>
+                    </ul>
+                  </div>
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Produto</span>
+                    <span class="pipeline-stage-title">Sales intelligence</span>
+                    <ul class="pipeline-stage-items">
+                      <li>Dashboard + 11 filtros</li>
+                      <li>WhatsApp / email direto</li>
+                      <li>Calculadora de comissão</li>
+                    </ul>
+                  </div>
+                </div>
                 <div class="detail-block">
                   <h4>Funcionalidades</h4>
                   <ul class="detail-list features">
@@ -1129,7 +1569,7 @@
                   </ul>
                 </div>
                 <div class="detail-block">
-                  <h4>Capacidades demonstradas</h4>
+                  <h4>O que isso resolve para você</h4>
                   <ul class="detail-list capabilities">
                     <li>Ingestão de dados governamentais com pipeline idempotente e circuit breaker</li>
                     <li>Scoring domain-specific com regras regulatórias (Lei 14.133)</li>
@@ -1172,6 +1612,35 @@
                   <strong>Problema resolvido</strong>
                   Donos de carros usados premium são lowballados por lojistas que pagam 75-85% da FIPE. O DeixaComigo mostra a diferença concreta entre vender para o lojista e consignar — e captura o lead automaticamente.
                 </div>
+                <div class="pipeline" style="grid-column: 1 / -1;">
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Fontes</span>
+                    <span class="pipeline-stage-title">Dados FIPE</span>
+                    <ul class="pipeline-stage-items">
+                      <li>API FIPE / Parallelum</li>
+                      <li>Cache Supabase</li>
+                      <li>Input do usuário</li>
+                    </ul>
+                  </div>
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Pipeline</span>
+                    <span class="pipeline-stage-title">Precificação</span>
+                    <ul class="pipeline-stage-items">
+                      <li>6 fatores calibrados</li>
+                      <li>Lojista vs consignação</li>
+                      <li>Classificação de aptidão</li>
+                    </ul>
+                  </div>
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Produto</span>
+                    <span class="pipeline-stage-title">Funil de lead</span>
+                    <ul class="pipeline-stage-items">
+                      <li>Avaliação instantânea</li>
+                      <li>Captura + email ao corretor</li>
+                      <li>SEO programático</li>
+                    </ul>
+                  </div>
+                </div>
                 <div class="detail-block">
                   <h4>Funcionalidades</h4>
                   <ul class="detail-list features">
@@ -1183,7 +1652,7 @@
                   </ul>
                 </div>
                 <div class="detail-block">
-                  <h4>Capacidades demonstradas</h4>
+                  <h4>O que isso resolve para você</h4>
                   <ul class="detail-list capabilities">
                     <li>Precificação domain-specific com fatores de mercado calibrados</li>
                     <li>APIs de dados públicos com cache inteligente e fallback</li>
@@ -1226,6 +1695,35 @@
                   <strong>Problema resolvido</strong>
                   Profissionais não sabem se o currículo está competitivo. O CV10x analisa em 5 dimensões, mostra o que melhorar, e no plano Pro reescreve cada seção com alternativas prontas.
                 </div>
+                <div class="pipeline" style="grid-column: 1 / -1;">
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Input</span>
+                    <span class="pipeline-stage-title">Currículo</span>
+                    <ul class="pipeline-stage-items">
+                      <li>Upload PDF/DOCX/TXT</li>
+                      <li>Extração de texto</li>
+                    </ul>
+                  </div>
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Pipeline</span>
+                    <span class="pipeline-stage-title">Análise IA</span>
+                    <ul class="pipeline-stage-items">
+                      <li>Claude structured output</li>
+                      <li>Score 5 dimensões</li>
+                      <li>Reescrita seção a seção</li>
+                    </ul>
+                  </div>
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Produto</span>
+                    <span class="pipeline-stage-title">Funil B2C</span>
+                    <ul class="pipeline-stage-items">
+                      <li>Quick win gratuito</li>
+                      <li>Nurture email (5 etapas)</li>
+                      <li>Pro via Hotmart</li>
+                      <li>Job matching LLM</li>
+                    </ul>
+                  </div>
+                </div>
                 <div class="detail-block">
                   <h4>Funcionalidades</h4>
                   <ul class="detail-list features">
@@ -1237,7 +1735,7 @@
                   </ul>
                 </div>
                 <div class="detail-block">
-                  <h4>Capacidades demonstradas</h4>
+                  <h4>O que isso resolve para você</h4>
                   <ul class="detail-list capabilities">
                     <li>LLM com structured output, prompt engineering e cache</li>
                     <li>Funil B2C: free → email gate → nurture → Pro → Hotmart</li>
@@ -1280,6 +1778,35 @@
                   <strong>Problema resolvido</strong>
                   Equipes de venda de energia solar gastam horas buscando leads e não conseguem priorizar. O Kiiry CRM automatiza a captação via Google Places, classifica por potencial energético e organiza o funil em Kanban.
                 </div>
+                <div class="pipeline" style="grid-column: 1 / -1;">
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Fontes</span>
+                    <span class="pipeline-stage-title">Captação</span>
+                    <ul class="pipeline-stage-items">
+                      <li>Google Places API</li>
+                      <li>Deduplicação</li>
+                      <li>Enriquecimento</li>
+                    </ul>
+                  </div>
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Pipeline</span>
+                    <span class="pipeline-stage-title">Scoring</span>
+                    <ul class="pipeline-stage-items">
+                      <li>5 eixos ponderados</li>
+                      <li>Estimativa kWh</li>
+                      <li>Grupo tarifário A vs B</li>
+                    </ul>
+                  </div>
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Produto</span>
+                    <span class="pipeline-stage-title">CRM</span>
+                    <ul class="pipeline-stage-items">
+                      <li>Kanban 8 estágios</li>
+                      <li>Territórios + leaderboard</li>
+                      <li>Detecção de redes</li>
+                    </ul>
+                  </div>
+                </div>
                 <div class="detail-block">
                   <h4>Funcionalidades</h4>
                   <ul class="detail-list features">
@@ -1291,7 +1818,7 @@
                   </ul>
                 </div>
                 <div class="detail-block">
-                  <h4>Capacidades demonstradas</h4>
+                  <h4>O que isso resolve para você</h4>
                   <ul class="detail-list capabilities">
                     <li>Scoring domain-specific com estimativas energéticas setoriais</li>
                     <li>Integração API com transformação e enriquecimento automatizado</li>
@@ -1310,6 +1837,68 @@
 
     </section>
 
+    <!-- ======== COMO TRABALHAMOS ======== -->
+    <section class="section project-group" id="processo" aria-labelledby="processo-heading">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-label">Processo</p>
+          <h2 class="section-title" id="processo-heading">Do problema ao produto em semanas</h2>
+          <p class="section-subtitle">Cada projeto segue o mesmo ciclo. Sem escopo inflado, sem meses de discovery. O produto vai pro ar cedo e melhora com dados reais.</p>
+        </div>
+
+        <div class="process-grid reveal">
+          <div class="process-step">
+            <p class="process-step-number">01</p>
+            <h3>Enquadrar</h3>
+            <p>Ideia bruta vira oportunidade clara: quem é o usuário, qual o problema, o que está fora do escopo.</p>
+            <p class="process-output">→ Brief de 1 página</p>
+          </div>
+          <div class="process-step">
+            <p class="process-step-number">02</p>
+            <h3>Pesquisar</h3>
+            <p>Mapeamento de fontes de dados, APIs, concorrentes e restrições regulatórias do domínio.</p>
+            <p class="process-output">→ Documento de pesquisa</p>
+          </div>
+          <div class="process-step">
+            <p class="process-step-number">03</p>
+            <h3>Definir</h3>
+            <p>Pesquisa vira intenção de produto: problema, caso de uso, valor central e fronteira do MVP.</p>
+            <p class="process-output">→ Product brief</p>
+          </div>
+          <div class="process-step">
+            <p class="process-step-number">04</p>
+            <h3>Planejar</h3>
+            <p>Roadmap acionável com etapas, dependências e critérios de entrega.</p>
+            <p class="process-output">→ Roadmap implementável</p>
+          </div>
+          <div class="process-step">
+            <p class="process-step-number">05</p>
+            <h3>Cortar</h3>
+            <p>Revisão de escopo contra disciplina de MVP. Tudo que não gera sinal é diferido explicitamente.</p>
+            <p class="process-output">→ Escopo enxuto + lista de diferimentos</p>
+          </div>
+          <div class="process-step">
+            <p class="process-step-number">06</p>
+            <h3>Construir</h3>
+            <p>Implementação da menor versão que produz valor real. Sem over-engineering.</p>
+            <p class="process-output">→ v1 funcional</p>
+          </div>
+          <div class="process-step">
+            <p class="process-step-number">07</p>
+            <h3>Lançar</h3>
+            <p>Deploy cedo. Produto no ar gera feedback que nenhum documento substitui.</p>
+            <p class="process-output">→ URL em produção</p>
+          </div>
+          <div class="process-step">
+            <p class="process-step-number">08</p>
+            <h3>Aprender</h3>
+            <p>Uso real revela o que importa. Iteração guiada por dados, não por suposição.</p>
+            <p class="process-output">→ Roadmap atualizado com sinal real</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ======== OPORTUNIDADES ======== -->
     <section class="section project-group" id="oportunidades" aria-labelledby="oportunidades-heading">
       <div class="container">
@@ -1323,6 +1912,7 @@
 
           <div class="opp-card reveal">
             <h3>Imobiliário <span class="opp-count">5</span></h3>
+            <p class="opp-pain">Incorporadoras gastam semanas com consultores para mapear regiões viáveis. Assessorias de leilão fazem triagem manual de catálogos sem cruzar com preço real de mercado. Quem chega primeiro na região certa leva a melhor margem.</p>
             <ul>
               <li>Painel de inteligência territorial para prospecção de terrenos e lançamentos</li>
               <li>Plataforma de inteligência para assessorias de leilão imobiliário</li>
@@ -1330,10 +1920,22 @@
               <li>CRM de prospecção de condomínios e construtoras</li>
               <li>Plataforma de gestão e prestação de contas para SPEs imobiliárias</li>
             </ul>
+            <details class="opp-details">
+              <summary>Fontes de dados que já mapeamos</summary>
+              <ul class="opp-data-sources">
+                <li>IBGE Censo 2022 e PNAD — renda domiciliar, densidade, crescimento por setor censitário</li>
+                <li>Prefeituras (GeoSampa, IPTU-SP, BHMap) — zoneamento, valor venal, uso do solo</li>
+                <li>ITBI municipal — transações reais 2008–2026 com valor, bairro e tipologia</li>
+                <li>Caixa/BB/EMGEA — catálogos de imóveis retomados</li>
+                <li>FipeZAP — índice de preços de venda e aluguel por cidade e bairro</li>
+                <li>Cartórios de RI — matrículas e frações ideais via SREI/ARISP</li>
+              </ul>
+            </details>
           </div>
 
           <div class="opp-card reveal">
             <h3>Governo e GovTech <span class="opp-count">5</span></h3>
+            <p class="opp-pain">Tribunais de Contas auditam milhares de prestações de contas por ano manualmente. Órgãos ambientais não sabem o tempo médio de análise por tipo de processo. A fraude já aconteceu quando a auditoria começa.</p>
             <ul>
               <li>Dashboard de inteligência em contratações públicas para órgãos de controle</li>
               <li>Dashboard de gestão para órgãos licenciadores ambientais</li>
@@ -1341,96 +1943,216 @@
               <li>Painel de alertas automáticos para auditoria de despesas e convênios</li>
               <li>Ferramenta de diagnóstico profissional para agências de emprego</li>
             </ul>
+            <details class="opp-details">
+              <summary>Fontes de dados que já mapeamos</summary>
+              <ul class="opp-data-sources">
+                <li>PNCP — licitações, contratos, atas de registro de preços com valores e fornecedores</li>
+                <li>Portal da Transparência / CGU — CEIS, CNEP, emendas, convênios</li>
+                <li>API Dados Abertos da Câmara — CEAP, deputados, proposições</li>
+                <li>SIAFI/SICONV — transferências voluntárias da União para municípios</li>
+                <li>TCE estaduais — dados abertos de contas municipais</li>
+                <li>SINE/MTE — base de vagas e trabalhadores (Portal Emprega Brasil)</li>
+              </ul>
+            </details>
           </div>
 
           <div class="opp-card reveal">
             <h3>Financeiro <span class="opp-count">4</span></h3>
+            <p class="opp-pain">Fintechs avaliam risco de inadimplência e valor de garantia por região com bureaus caros ou análises manuais. Bancos querem antecipar recebíveis de contratos públicos mas não sabem quais empresas acabaram de assinar contratos grandes.</p>
             <ul>
               <li>Dashboard de risco geográfico para originação de crédito imobiliário</li>
               <li>Plataforma de originação de crédito para fornecedores do governo</li>
               <li>Motor de avaliação automatizada de garantias imobiliárias</li>
               <li>Motor de avaliação de garantia veicular para plataformas de crédito</li>
             </ul>
+            <details class="opp-details">
+              <summary>Fontes de dados que já mapeamos</summary>
+              <ul class="opp-data-sources">
+                <li>BCB/SCR — indicadores de inadimplência por município</li>
+                <li>PNCP — contratos assinados com valor, vigência e fornecedor por CNPJ</li>
+                <li>ITBI municipal — preço real de transação por bairro e tipologia</li>
+                <li>FIPE — referência de preços veiculares e imobiliários</li>
+                <li>Receita Federal — capital social, porte, situação cadastral</li>
+              </ul>
+            </details>
           </div>
 
           <div class="opp-card reveal">
             <h3>Seguros <span class="opp-count">3</span></h3>
+            <p class="opp-pain">Corretoras de seguros corporativos dependem de indicação para gerar negócios. Não têm visibilidade sobre contratos públicos recém-assinados que obrigatoriamente precisam de cobertura. Seguradoras patrimoniais precificam com valor declarado genérico — gerando subseguro ou sobreprecificação.</p>
             <ul>
               <li>Plataforma de prospecção automatizada para corretoras de seguros corporativos</li>
               <li>Ferramenta de precificação de seguro residencial baseada em dados reais</li>
               <li>Calculadora de seguro auto com captura de lead e CRM integrado</li>
             </ul>
+            <details class="opp-details">
+              <summary>Fontes de dados que já mapeamos</summary>
+              <ul class="opp-data-sources">
+                <li>PNCP — contratos públicos que obrigatoriamente exigem seguro garantia</li>
+                <li>SUSEP — prêmios, sinistralidade e frequência por modelo e região</li>
+                <li>CEIS/CNEP — cadastro de empresas inidôneas e punidas</li>
+                <li>DENATRAN — índice de roubo/furto por modelo e região</li>
+                <li>Defesa Civil / CEMADEN — áreas de risco geológico e inundação</li>
+              </ul>
+            </details>
           </div>
 
           <div class="opp-card reveal">
             <h3>Energia e Infraestrutura <span class="opp-count">4</span></h3>
+            <p class="opp-pain">Gestoras de usinas GD com 5–50 plantas gerenciam billing de centenas de UCs com planilhas. Uma fatura errada gera risco jurídico. Gestoras de fundos com R$ 50–500M em usinas recebem reports mensais em PDF sem consolidação — decisão de desinvestimento é tomada com 2–3 meses de atraso.</p>
             <ul>
               <li>CRM de prospecção para distribuidoras de energia solar</li>
               <li>Plataforma de gestão e billing para usinas de geração distribuída</li>
               <li>Dashboard de inadimplência e receita para comercializadoras de energia</li>
               <li>Painel de performance operacional para portfólios de usinas solares</li>
             </ul>
+            <details class="opp-details">
+              <summary>Fontes de dados que já mapeamos</summary>
+              <ul class="opp-data-sources">
+                <li>ANEEL/SIGA — cadastro de usinas GD (potência, localização, distribuidora)</li>
+                <li>Distribuidoras (CEMIG, Enel, CPFL) — relatórios de compensação por UC</li>
+                <li>CCEE — dados de geração e liquidação do mercado de energia</li>
+                <li>ONS/INMET — irradiação solar e benchmark de geração por localidade</li>
+                <li>Google Places API — estabelecimentos comerciais para prospecção solar</li>
+              </ul>
+            </details>
           </div>
 
           <div class="opp-card reveal">
             <h3>Construção Civil <span class="opp-count">3</span></h3>
+            <p class="opp-pain">Construtoras de médio porte não monitoram editais diariamente nos 5.570 municípios — cada licitação perdida pode representar R$ 1–50M em faturamento. Controlam custos em planilhas desconectadas do cronograma e descobrem o estouro 2–3 meses depois.</p>
             <ul>
               <li>Radar de oportunidades de licitações de obras públicas</li>
               <li>Dashboard de controle de custos e avanço físico-financeiro de obras</li>
               <li>Sistema de rateio e prestação de contas para condomínios</li>
             </ul>
+            <details class="opp-details">
+              <summary>Fontes de dados que já mapeamos</summary>
+              <ul class="opp-data-sources">
+                <li>PNCP — editais de obras com valores estimados, prazos e documentos</li>
+                <li>SINAPI/Caixa — custos referenciais com composições por serviço</li>
+                <li>SICRO/DNIT — tabela de custos para obras de infraestrutura</li>
+                <li>CUB/Sinduscon — custo por m² atualizado mensalmente por estado</li>
+                <li>Diários Oficiais — publicações não integradas ao PNCP</li>
+              </ul>
+            </details>
           </div>
 
           <div class="opp-card reveal">
             <h3>Jurídico e Compliance <span class="opp-count">4</span></h3>
+            <p class="opp-pain">Escritórios de direito ambiental levantam precedentes manualmente em portais desconectados — 2–3 semanas por caso. Empresas com contratos públicos fazem due diligence manual de parceiros: consultar CNPJ, verificar inidoneidade, checar sócios. Um evento não detectado pode destruir o valor do investimento.</p>
             <ul>
               <li>Pesquisa e análise de precedentes para litígios ambientais</li>
               <li>Auditoria financeira para litígios condominiais e de incorporação</li>
               <li>Dashboard de due diligence de fornecedores e risco reputacional</li>
               <li>Monitoramento de compliance ambiental para portfólios ESG</li>
             </ul>
+            <details class="opp-details">
+              <summary>Fontes de dados que já mapeamos</summary>
+              <ul class="opp-data-sources">
+                <li>IBAMA — autos de infração, áreas embargadas, decisões de licenciamento</li>
+                <li>COPAM-MG — atas de reuniões com votos e pareceres técnicos</li>
+                <li>CEIS/CNEP/CEPIM — cadastro de empresas inidôneas e punidas</li>
+                <li>TSE — doações de campanha por CNPJ (vínculo fornecedor-político)</li>
+                <li>ReceitaWS / BrasilAPI — quadro societário e situação cadastral</li>
+              </ul>
+            </details>
           </div>
 
           <div class="opp-card reveal">
             <h3>Mineração e Meio Ambiente <span class="opp-count">3</span></h3>
+            <p class="opp-pain">Mineradoras gastam R$ 50–200k e 3–6 meses em estudos de viabilidade sem saber de antemão se o órgão licenciador tem histórico de deferir aquele tipo de atividade. Gestoras ESG dependem de self-reporting das empresas — um Mariana/Brumadinho não detectado destrói o portfólio.</p>
             <ul>
               <li>Plataforma de due diligence ambiental para projetos de mineração</li>
               <li>Automação de conciliação financeira para locadores rurais</li>
               <li>Avaliação e comparação de propriedades rurais para investimento</li>
             </ul>
+            <details class="opp-details">
+              <summary>Fontes de dados que já mapeamos</summary>
+              <ul class="opp-data-sources">
+                <li>IBAMA/SISLIC — licenças ambientais por atividade e localização</li>
+                <li>ANM/SIGMINE — processos minerários com geometria (ArcGIS)</li>
+                <li>ICMBio/FUNAI — UCs, TIs, biomas com geometria</li>
+                <li>INCRA/SNCR — cadastro de imóveis rurais</li>
+                <li>SICAR/CAR — Cadastro Ambiental Rural com geometria de propriedades</li>
+                <li>Conab / INMET / CEPEA — produtividade, clima e preços rurais</li>
+              </ul>
+            </details>
           </div>
 
           <div class="opp-card reveal">
             <h3>Educação e RH <span class="opp-count">4</span></h3>
+            <p class="opp-pain">Consultorias de outplacement revisam currículos manualmente — 2–4 horas cada, 3–5 por dia. Com demissões em massa em tech, não escala. Bootcamps prometem empregabilidade mas não medem se o aluno está pronto. Plataformas ATS usam keyword matching básico e recrutadores ainda gastam 30–60 segundos por currículo.</p>
             <ul>
               <li>Plataforma de cursos práticos de análise de dados com casos reais</li>
               <li>Módulo de empregabilidade integrado a plataformas de ensino</li>
               <li>Análise e otimização de currículos para consultorias de carreira</li>
               <li>API de scoring e triagem automatizada de currículos para ATS</li>
             </ul>
+            <details class="opp-details">
+              <summary>Fontes de dados que já mapeamos</summary>
+              <ul class="opp-data-sources">
+                <li>RAIS/CAGED — movimentação formal por CNAE, cargo e município</li>
+                <li>CBO — descrições oficiais de cargos e competências por ocupação</li>
+                <li>INEP — Censo da Educação Superior, Enem, IDEB</li>
+                <li>Gupy, Catho, InfoJobs — requisitos reais por cargo</li>
+                <li>SINE/MTE — vagas e trabalhadores cadastrados</li>
+              </ul>
+            </details>
           </div>
 
           <div class="opp-card reveal">
             <h3>Saúde, Varejo e Alimentação <span class="opp-count">3</span></h3>
+            <p class="opp-pain">Distribuidoras de insumos médicos visitam clínicas aleatoriamente sem saber quais são maiores ou têm contratos vencendo. Redes de varejo decidem onde abrir a próxima loja com intuição — uma análise errada significa R$ 200–500k jogados fora em ponto que não performa.</p>
             <ul>
               <li>CRM de prospecção para vendedores de insumos e equipamentos de saúde</li>
               <li>Ferramenta de geoexpansão para abertura de novas unidades de varejo</li>
               <li>CRM de prospecção para distribuidoras de alimentos e bebidas</li>
             </ul>
+            <details class="opp-details">
+              <summary>Fontes de dados que já mapeamos</summary>
+              <ul class="opp-data-sources">
+                <li>CNES — estabelecimentos de saúde com tipo, leitos, equipamentos, convênios</li>
+                <li>ANS — operadoras de planos e rede credenciada</li>
+                <li>Google Places API — estabelecimentos com rating e volume como proxy de movimento</li>
+                <li>Receita Federal — CNPJs abertos por CNAE e CEP (mapeamento de concorrentes)</li>
+                <li>IBGE/POF — renda, consumo e densidade por setor censitário</li>
+              </ul>
+            </details>
           </div>
 
           <div class="opp-card reveal">
             <h3>Automotivo <span class="opp-count">1</span></h3>
+            <p class="opp-pain">Concessionárias gastam R$ 3–8K/mês em classificados e dependem do vendedor de balcão para avaliar troca. Perdem estoque para revendas que fazem ofertas mais rápidas. Fintechs de crédito veicular usam FIPE pura — que não reflete condição, km, nem liquidez regional.</p>
             <ul>
               <li>Ferramenta white-label de avaliação e captação de veículos para concessionárias</li>
             </ul>
+            <details class="opp-details">
+              <summary>Fontes de dados que já mapeamos</summary>
+              <ul class="opp-data-sources">
+                <li>FIPE / Parallelum API — referência mensal por marca/modelo/ano</li>
+                <li>DENATRAN/SENATRAN — frota registrada e transferências por município</li>
+                <li>Webmotors/OLX — preços praticados por modelo e região</li>
+                <li>IBGE — frota veicular por município e perfil de consumo regional</li>
+              </ul>
+            </details>
           </div>
 
           <div class="opp-card reveal">
             <h3>Jornalismo e Transparência <span class="opp-count">1</span></h3>
+            <p class="opp-pain">Redações investigativas não têm equipe técnica para cruzar bases sistematicamente. Dependem de denúncias pontuais em vez de monitoramento contínuo. Uma ferramenta que gera alertas de anomalias automatiza a pauta investigativa.</p>
             <ul>
               <li>Ferramenta de investigação de dados com alertas e visualizações para publicação</li>
             </ul>
+            <details class="opp-details">
+              <summary>Fontes de dados que já mapeamos</summary>
+              <ul class="opp-data-sources">
+                <li>Portal da Transparência — despesas, emendas, licitações, cartões corporativos</li>
+                <li>TSE — prestação de contas de campanha, doadores, fornecedores</li>
+                <li>Querido Diário/OKBR — Diários Oficiais (licitações, nomeações, contratos)</li>
+                <li>CEIS/CNEP — empresas e pessoas inidôneas/punidas</li>
+              </ul>
+            </details>
           </div>
 
         </div>
@@ -1449,9 +2171,7 @@
         </div>
         <div>
           <div class="footer-contacts">
-            <!-- TODO: Replace with real WhatsApp number -->
-            <a href="https://wa.me/5511999999999?text=Ol%C3%A1%2C%20vi%20o%20portf%C3%B3lio%20da%20AI%20Ventures%20e%20gostaria%20de%20conversar" class="btn-whatsapp">WhatsApp</a>
-            <!-- TODO: Replace with real email -->
+            <a href="https://wa.me/14158277929?text=Ol%C3%A1%2C%20vi%20o%20portf%C3%B3lio%20da%20AI%20Ventures%20e%20gostaria%20de%20conversar" class="btn-whatsapp" target="_blank" rel="noopener noreferrer">WhatsApp</a>
             <a href="mailto:contato@aiventures.com.br" class="btn-email">Email</a>
           </div>
         </div>
@@ -1461,6 +2181,7 @@
         <nav class="footer-nav" aria-label="Links do rodapé">
           <a href="#topo">Topo</a>
           <a href="#projetos">Projetos</a>
+          <a href="#processo">Processo</a>
           <a href="#oportunidades">Oportunidades</a>
         </nav>
       </div>
