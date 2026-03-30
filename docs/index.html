@@ -709,15 +709,10 @@
     }
 
     .rhythm-break-inner {
-      font-size: var(--text-xl);
-      font-weight: 700;
-      color: var(--black);
-      line-height: 1.4;
-      max-width: 38ch;
-    }
-
-    .rhythm-break-inner span {
-      color: var(--accent);
+      font-size: var(--text-sm);
+      color: var(--gray-600);
+      line-height: 1.7;
+      max-width: 65ch;
     }
 
     /* ---- PROCESS SECTION ---- */
@@ -1214,7 +1209,7 @@
       <!-- ---- RHYTHM BREAK 1 ---- -->
       <div class="rhythm-break">
         <div class="container">
-          <p class="rhythm-break-inner reveal">3 projetos. 14 fontes públicas. 2.1M registros. Um padrão: <span>dados dispersos viram decisão</span>.</p>
+          <p class="rhythm-break-inner reveal">Os três projetos acima seguem o mesmo arco: ingestão de dados públicos heterogêneos (APIs REST, ArcGIS, Excel, scraping, shapefiles), normalização em pipelines Python reproduzíveis, armazenamento em DuckDB/Parquet, e exposição via dashboards interativos com mapas, filtros compostos e scoring multidimensional. Cada projeto cruza entre 3 e 14 fontes para gerar um insight que nenhuma fonte individual oferece.</p>
         </div>
       </div>
 
@@ -1484,7 +1479,7 @@
       <!-- ---- RHYTHM BREAK 2 ---- -->
       <div class="rhythm-break">
         <div class="container">
-          <p class="rhythm-break-inner reveal">Cálculos auditáveis. Trilha de compliance. Relatórios que <span>reguladores aceitam</span>.</p>
+          <p class="rhythm-break-inner reveal">Esses projetos lidam com cálculos financeiros que afetam pagamentos reais — rateios com precisão Decimal(15,2), tarifas regulatórias (CEMIG, ANEEL, Lei 4.591/64), e detecção estatística de anomalias (Benford, HHI). A arquitetura prioriza rastreabilidade: cada número tem trilha de auditoria, cada relatório PDF documenta a fórmula e a fonte do dado.</p>
         </div>
       </div>
 
@@ -1837,6 +1832,13 @@
 
     </section>
 
+      <!-- ---- RHYTHM BREAK 3 ---- -->
+      <div class="rhythm-break">
+        <div class="container">
+          <p class="rhythm-break-inner reveal">Esses quatro projetos compartilham a mesma estrutura de funil: uma ferramenta gratuita de valor imediato (avaliação, cálculo, busca) que captura o lead, seguida de nurture automatizado e conversão. Os stacks são enxutos — Next.js, Supabase, Vercel free tier — com zero infraestrutura pesada. O padrão técnico recorrente: integração com APIs de dados públicos (FIPE, PNCP, Google Places), scoring domain-specific e ações contextuais (WhatsApp pré-preenchido, email, CSV).</p>
+        </div>
+      </div>
+
     <!-- ======== COMO TRABALHAMOS ======== -->
     <section class="section project-group" id="processo" aria-labelledby="processo-heading">
       <div class="container">
@@ -1849,50 +1851,26 @@
         <div class="process-grid reveal">
           <div class="process-step">
             <p class="process-step-number">01</p>
-            <h3>Enquadrar</h3>
-            <p>Ideia bruta vira oportunidade clara: quem é o usuário, qual o problema, o que está fora do escopo.</p>
-            <p class="process-output">→ Brief de 1 página</p>
+            <h3>Entender</h3>
+            <p>Mapear o problema, o usuário, as fontes de dados disponíveis e as restrições do domínio.</p>
+            <p class="process-output">→ Brief + documento de pesquisa</p>
           </div>
           <div class="process-step">
             <p class="process-step-number">02</p>
-            <h3>Pesquisar</h3>
-            <p>Mapeamento de fontes de dados, APIs, concorrentes e restrições regulatórias do domínio.</p>
-            <p class="process-output">→ Documento de pesquisa</p>
+            <h3>Definir</h3>
+            <p>Transformar pesquisa em escopo de produto: o que entra no MVP, o que fica de fora, e por quê.</p>
+            <p class="process-output">→ Product brief + roadmap</p>
           </div>
           <div class="process-step">
             <p class="process-step-number">03</p>
-            <h3>Definir</h3>
-            <p>Pesquisa vira intenção de produto: problema, caso de uso, valor central e fronteira do MVP.</p>
-            <p class="process-output">→ Product brief</p>
+            <h3>Construir</h3>
+            <p>Implementar a menor versão que produz valor real e colocar no ar.</p>
+            <p class="process-output">→ v1 em produção</p>
           </div>
           <div class="process-step">
             <p class="process-step-number">04</p>
-            <h3>Planejar</h3>
-            <p>Roadmap acionável com etapas, dependências e critérios de entrega.</p>
-            <p class="process-output">→ Roadmap implementável</p>
-          </div>
-          <div class="process-step">
-            <p class="process-step-number">05</p>
-            <h3>Cortar</h3>
-            <p>Revisão de escopo contra disciplina de MVP. Tudo que não gera sinal é diferido explicitamente.</p>
-            <p class="process-output">→ Escopo enxuto + lista de diferimentos</p>
-          </div>
-          <div class="process-step">
-            <p class="process-step-number">06</p>
-            <h3>Construir</h3>
-            <p>Implementação da menor versão que produz valor real. Sem over-engineering.</p>
-            <p class="process-output">→ v1 funcional</p>
-          </div>
-          <div class="process-step">
-            <p class="process-step-number">07</p>
-            <h3>Lançar</h3>
-            <p>Deploy cedo. Produto no ar gera feedback que nenhum documento substitui.</p>
-            <p class="process-output">→ URL em produção</p>
-          </div>
-          <div class="process-step">
-            <p class="process-step-number">08</p>
-            <h3>Aprender</h3>
-            <p>Uso real revela o que importa. Iteração guiada por dados, não por suposição.</p>
+            <h3>Iterar</h3>
+            <p>Uso real revela o que importa. Melhorar com base em dados, não em suposição.</p>
             <p class="process-output">→ Roadmap atualizado com sinal real</p>
           </div>
         </div>
