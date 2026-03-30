@@ -264,14 +264,89 @@
       margin-bottom: var(--space-lg);
     }
 
-    /* ---- PROJECT METRIC ---- */
-    .project-metric {
-      display: inline-block;
-      font-size: var(--text-sm);
-      font-weight: 700;
-      color: var(--accent);
-      letter-spacing: -0.01em;
+    /* ---- PROJECT HIGHLIGHTS ---- */
+    .project-highlights {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
       margin-bottom: var(--space-sm);
+    }
+
+    .project-highlights li {
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--accent);
+      padding-left: 1rem;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .project-highlights li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    /* ---- TECH STACK (collapsible) ---- */
+    .stack-toggle {
+      margin-bottom: var(--space-sm);
+    }
+
+    .stack-toggle summary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--gray-500);
+      cursor: pointer;
+      user-select: none;
+      list-style: none;
+      transition: color 0.15s;
+    }
+
+    .stack-toggle summary::-webkit-details-marker { display: none; }
+
+    .stack-toggle summary::before {
+      content: "▸";
+      font-size: 0.7rem;
+      transition: transform 0.2s;
+    }
+
+    .stack-toggle[open] summary::before {
+      transform: rotate(90deg);
+    }
+
+    .stack-toggle summary:hover { color: var(--accent); }
+
+    .stack-content {
+      padding-top: var(--space-xs);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .stack-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .stack-group-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--gray-400);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-right: 0.2rem;
+      white-space: nowrap;
     }
 
     /* ---- PROJECT CARDS ---- */
@@ -319,21 +394,6 @@
       margin-bottom: var(--space-sm);
     }
 
-    .project-footer {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: var(--space-sm);
-      margin-bottom: var(--space-sm);
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.3rem;
-      flex: 1;
-    }
-
     .tag {
       display: inline-block;
       padding: 0.15rem 0.5rem;
@@ -346,22 +406,9 @@
       white-space: nowrap;
     }
 
-    .tag-more {
-      display: inline-block;
-      padding: 0.15rem 0.5rem;
-      font-size: 0.7rem;
-      font-weight: 500;
-      line-height: 1.5;
-      color: var(--gray-400);
-      background: var(--gray-100);
-      border-radius: 100px;
-      white-space: nowrap;
-    }
-
     .project-links {
       display: flex;
       gap: var(--space-xs);
-      flex-shrink: 0;
     }
 
     .btn {
@@ -955,22 +1002,44 @@
               <h3>FloridaFlip</h3>
             </div>
             <p class="project-short-desc">Investidores perdem horas cruzando dezenas de fontes para achar oportunidades imobiliárias na Flórida.</p>
-            <p class="project-metric">2.1M+ propriedades analisadas</p>
-            <div class="project-footer">
-              <div class="tags">
-                <span class="tag">Next.js</span>
-                <span class="tag">DuckDB</span>
-                <span class="tag">Parquet</span>
-                <span class="tag">Google Maps</span>
-                <span class="tag">Python</span>
-                <span class="tag">Recharts</span>
-                <span class="tag-more">+6</span>
-              </div>
-              <div class="project-links">
-                <a href="https://florida-flip.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver projeto</a>
-                <a href="https://github.com/jpvss/florida-flip" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Código</a>
-              </div>
+            <ul class="project-highlights">
+              <li>2.1M+ propriedades de 67 condados da Flórida</li>
+              <li>Scoring em 9 dimensões por ZIP code</li>
+              <li>Sinais automáticos de oportunidade (high yield, below assessed, regra dos 70%)</li>
+            </ul>
+            <div class="project-links" style="margin-bottom: var(--space-sm);">
+              <a href="https://florida-flip.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver projeto</a>
+              <a href="https://github.com/jpvss/florida-flip" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Código</a>
             </div>
+            <details class="stack-toggle">
+              <summary>Tech Stack</summary>
+              <div class="stack-content">
+                <div class="stack-group">
+                  <span class="stack-group-label">Frontend</span>
+                  <span class="tag">Next.js 16</span>
+                  <span class="tag">React 19</span>
+                  <span class="tag">TypeScript</span>
+                  <span class="tag">Tailwind CSS v4</span>
+                  <span class="tag">shadcn/ui</span>
+                  <span class="tag">Recharts</span>
+                  <span class="tag">jsPDF</span>
+                </div>
+                <div class="stack-group">
+                  <span class="stack-group-label">Data</span>
+                  <span class="tag">DuckDB</span>
+                  <span class="tag">Apache Parquet</span>
+                  <span class="tag">Python</span>
+                </div>
+                <div class="stack-group">
+                  <span class="stack-group-label">APIs</span>
+                  <span class="tag">Google Maps API</span>
+                </div>
+                <div class="stack-group">
+                  <span class="stack-group-label">Infra</span>
+                  <span class="tag">Vercel</span>
+                </div>
+              </div>
+            </details>
             <details class="project-details-toggle">
               <summary>Detalhes do projeto</summary>
               <div class="project-details-content">
@@ -1040,22 +1109,43 @@
               <h3>Leila do Leilão</h3>
             </div>
             <p class="project-short-desc">Investidores não sabem se o desconto de leilão da Caixa é real — a avaliação não reflete o mercado.</p>
-            <p class="project-metric">18 anos de dados ITBI (2008–2026)</p>
-            <div class="project-footer">
-              <div class="tags">
-                <span class="tag">Next.js</span>
-                <span class="tag">Leaflet</span>
-                <span class="tag">DuckDB</span>
-                <span class="tag">Python</span>
-                <span class="tag">Pandas</span>
-                <span class="tag">Google Maps</span>
-                <span class="tag-more">+8</span>
-              </div>
-              <div class="project-links">
-                <a href="https://leila-do-leilao.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver projeto</a>
-                <a href="https://github.com/jpvss/Leila-do-leilao" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Código</a>
-              </div>
+            <ul class="project-highlights">
+              <li>18 anos de transações ITBI reais (2008–2026)</li>
+              <li>Deal Score multidimensional por imóvel</li>
+              <li>Simulador financeiro com ROI, SAC e custos de cartório</li>
+            </ul>
+            <div class="project-links" style="margin-bottom: var(--space-sm);">
+              <a href="https://leila-do-leilao.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver projeto</a>
+              <a href="https://github.com/jpvss/Leila-do-leilao" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Código</a>
             </div>
+            <details class="stack-toggle">
+              <summary>Tech Stack</summary>
+              <div class="stack-content">
+                <div class="stack-group">
+                  <span class="stack-group-label">Frontend</span>
+                  <span class="tag">Next.js 15</span>
+                  <span class="tag">React 19</span>
+                  <span class="tag">TypeScript</span>
+                  <span class="tag">Tailwind CSS v4</span>
+                  <span class="tag">Leaflet</span>
+                  <span class="tag">React-Leaflet</span>
+                </div>
+                <div class="stack-group">
+                  <span class="stack-group-label">Data</span>
+                  <span class="tag">DuckDB</span>
+                  <span class="tag">Python</span>
+                  <span class="tag">Pandas</span>
+                  <span class="tag">Pydantic v2</span>
+                </div>
+                <div class="stack-group">
+                  <span class="stack-group-label">APIs</span>
+                  <span class="tag">Google Maps API</span>
+                  <span class="tag">httpx</span>
+                  <span class="tag">BeautifulSoup4</span>
+                  <span class="tag">geopy</span>
+                </div>
+              </div>
+            </details>
             <details class="project-details-toggle">
               <summary>Detalhes do projeto</summary>
               <div class="project-details-content">
@@ -1124,22 +1214,44 @@
               <h3>LicenciaMiner</h3>
             </div>
             <p class="project-short-desc">Consultorias gastam semanas pesquisando portais de IBAMA, ANM e SEMAD para avaliar viabilidade.</p>
-            <p class="project-metric">14 fontes públicas cruzadas</p>
-            <div class="project-footer">
-              <div class="tags">
-                <span class="tag">Python</span>
-                <span class="tag">Streamlit</span>
-                <span class="tag">DuckDB</span>
-                <span class="tag">GeoPandas</span>
-                <span class="tag">Folium</span>
-                <span class="tag">Claude API</span>
-                <span class="tag-more">+9</span>
-              </div>
-              <div class="project-links">
-                <a href="https://licenciaminer.streamlit.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver projeto</a>
-                <a href="https://github.com/jpvss/licenciaminer" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Código</a>
-              </div>
+            <ul class="project-highlights">
+              <li>14 fontes cruzadas (IBAMA, ANM, SEMAD, Receita Federal)</li>
+              <li>Dossiê por CNPJ com taxa de aprovação e infrações</li>
+              <li>Mapa com detecção de sobreposições em concessões</li>
+            </ul>
+            <div class="project-links" style="margin-bottom: var(--space-sm);">
+              <a href="https://licenciaminer.streamlit.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver projeto</a>
+              <a href="https://github.com/jpvss/licenciaminer" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Código</a>
             </div>
+            <details class="stack-toggle">
+              <summary>Tech Stack</summary>
+              <div class="stack-content">
+                <div class="stack-group">
+                  <span class="stack-group-label">Frontend</span>
+                  <span class="tag">Streamlit</span>
+                  <span class="tag">Plotly</span>
+                  <span class="tag">Folium</span>
+                </div>
+                <div class="stack-group">
+                  <span class="stack-group-label">Data</span>
+                  <span class="tag">Python</span>
+                  <span class="tag">DuckDB</span>
+                  <span class="tag">Apache Parquet</span>
+                  <span class="tag">Pandas</span>
+                  <span class="tag">GeoPandas</span>
+                  <span class="tag">Shapely</span>
+                </div>
+                <div class="stack-group">
+                  <span class="stack-group-label">APIs</span>
+                  <span class="tag">Anthropic SDK</span>
+                  <span class="tag">httpx</span>
+                  <span class="tag">fpdf2</span>
+                  <span class="tag">PyMuPDF</span>
+                  <span class="tag">Click</span>
+                  <span class="tag">Tenacity</span>
+                </div>
+              </div>
+            </details>
             <details class="project-details-toggle">
               <summary>Detalhes do projeto</summary>
               <div class="project-details-content">
@@ -1231,21 +1343,43 @@
               <h3>Kiiry Dashboard</h3>
             </div>
             <p class="project-short-desc">Prestação de contas manual de usinas solares a investidores — planilhas sujeitas a erros em pagamentos reais.</p>
-            <p class="project-metric">Multi-usina com trilha de auditoria</p>
-            <div class="project-footer">
-              <div class="tags">
-                <span class="tag">Python</span>
-                <span class="tag">Flask</span>
-                <span class="tag">Pandas</span>
-                <span class="tag">Pydantic</span>
-                <span class="tag">WeasyPrint</span>
-                <span class="tag">Tailwind CSS</span>
-                <span class="tag-more">+6</span>
-              </div>
-              <div class="project-links">
-                <a href="https://github.com/jpvss/kiiry-dashboard" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Código</a>
-              </div>
+            <ul class="project-highlights">
+              <li>Pipeline de cálculo automatizado por usina solar</li>
+              <li>Relatório PDF com trilha de auditoria completa</li>
+              <li>Reconciliação CEMIG com tarifa compensável dinâmica</li>
+            </ul>
+            <div class="project-links" style="margin-bottom: var(--space-sm);">
+              <a href="https://github.com/jpvss/kiiry-dashboard" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Código</a>
             </div>
+            <details class="stack-toggle">
+              <summary>Tech Stack</summary>
+              <div class="stack-content">
+                <div class="stack-group">
+                  <span class="stack-group-label">Frontend</span>
+                  <span class="tag">Jinja2</span>
+                  <span class="tag">Tailwind CSS</span>
+                  <span class="tag">Babel</span>
+                </div>
+                <div class="stack-group">
+                  <span class="stack-group-label">Backend</span>
+                  <span class="tag">Python</span>
+                  <span class="tag">Flask</span>
+                  <span class="tag">Gunicorn</span>
+                  <span class="tag">Pandas</span>
+                  <span class="tag">Pydantic v2</span>
+                  <span class="tag">structlog</span>
+                </div>
+                <div class="stack-group">
+                  <span class="stack-group-label">Docs</span>
+                  <span class="tag">WeasyPrint</span>
+                  <span class="tag">TOML</span>
+                </div>
+                <div class="stack-group">
+                  <span class="stack-group-label">Infra</span>
+                  <span class="tag">Railway</span>
+                </div>
+              </div>
+            </details>
             <details class="project-details-toggle">
               <summary>Detalhes do projeto</summary>
               <div class="project-details-content">
@@ -1313,22 +1447,46 @@
               <h3>CEAP Dashboard</h3>
             </div>
             <p class="project-short-desc">Órgãos de controle não cruzam despesas parlamentares com emendas para identificar padrões suspeitos.</p>
-            <p class="project-metric">R$ 686M em gastos · 660K+ transações</p>
-            <div class="project-footer">
-              <div class="tags">
-                <span class="tag">React</span>
-                <span class="tag">D3.js</span>
-                <span class="tag">Supabase</span>
-                <span class="tag">Python</span>
-                <span class="tag">DuckDB</span>
-                <span class="tag">Cloudflare</span>
-                <span class="tag-more">+11</span>
-              </div>
-              <div class="project-links">
-                <a href="https://ceap.escoladados.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver projeto</a>
-                <a href="https://github.com/jpvsalomao/CEAPDashboard" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Código</a>
-              </div>
+            <ul class="project-highlights">
+              <li>R$ 686M em gastos de 847 deputados</li>
+              <li>Detecção de anomalias via Benford, HHI e valores redondos</li>
+              <li>Cruzamento inédito CEAP × Emendas parlamentares</li>
+            </ul>
+            <div class="project-links" style="margin-bottom: var(--space-sm);">
+              <a href="https://ceap.escoladados.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver projeto</a>
+              <a href="https://github.com/jpvsalomao/CEAPDashboard" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Código</a>
             </div>
+            <details class="stack-toggle">
+              <summary>Tech Stack</summary>
+              <div class="stack-content">
+                <div class="stack-group">
+                  <span class="stack-group-label">Frontend</span>
+                  <span class="tag">React 19</span>
+                  <span class="tag">TypeScript</span>
+                  <span class="tag">Vite</span>
+                  <span class="tag">Tailwind CSS v4</span>
+                  <span class="tag">D3.js</span>
+                  <span class="tag">React Router v7</span>
+                  <span class="tag">TanStack Query</span>
+                  <span class="tag">Zustand</span>
+                </div>
+                <div class="stack-group">
+                  <span class="stack-group-label">Data</span>
+                  <span class="tag">Python</span>
+                  <span class="tag">Pandas</span>
+                  <span class="tag">scipy</span>
+                  <span class="tag">DuckDB</span>
+                  <span class="tag">Jupyter</span>
+                  <span class="tag">Supabase</span>
+                </div>
+                <div class="stack-group">
+                  <span class="stack-group-label">Infra</span>
+                  <span class="tag">Cloudflare Pages</span>
+                  <span class="tag">Cloudflare Workers</span>
+                  <span class="tag">Playwright E2E</span>
+                </div>
+              </div>
+            </details>
             <details class="project-details-toggle">
               <summary>Detalhes do projeto</summary>
               <div class="project-details-content">
@@ -1397,21 +1555,48 @@
               <h3>Incorporações Gestão</h3>
             </div>
             <p class="project-short-desc">Investidores de incorporação dependem de planilhas manuais para rateios — erros de centavos geram conflitos.</p>
-            <p class="project-metric">Rateio Decimal(15,2) auditável</p>
-            <div class="project-footer">
-              <div class="tags">
-                <span class="tag">Next.js</span>
-                <span class="tag">Prisma</span>
-                <span class="tag">PostgreSQL</span>
-                <span class="tag">Three.js</span>
-                <span class="tag">NextAuth</span>
-                <span class="tag">Decimal.js</span>
-                <span class="tag-more">+12</span>
-              </div>
-              <div class="project-links">
-                <a href="https://incorporacao-do-digao.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver projeto</a>
-              </div>
+            <ul class="project-highlights">
+              <li>Rateio com precisão Decimal(15,2) e distribuição de resto</li>
+              <li>Portal read-only para investidores com plantas baixas</li>
+              <li>Pipeline DWG/DXF com renderização 3D por andar</li>
+            </ul>
+            <div class="project-links" style="margin-bottom: var(--space-sm);">
+              <a href="https://incorporacao-do-digao.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver projeto</a>
             </div>
+            <details class="stack-toggle">
+              <summary>Tech Stack</summary>
+              <div class="stack-content">
+                <div class="stack-group">
+                  <span class="stack-group-label">Frontend</span>
+                  <span class="tag">Next.js 16</span>
+                  <span class="tag">React 19</span>
+                  <span class="tag">TypeScript</span>
+                  <span class="tag">Tailwind CSS v4</span>
+                  <span class="tag">shadcn/ui</span>
+                  <span class="tag">Recharts</span>
+                  <span class="tag">Three.js</span>
+                  <span class="tag">React Three Fiber</span>
+                </div>
+                <div class="stack-group">
+                  <span class="stack-group-label">Backend</span>
+                  <span class="tag">Prisma 6</span>
+                  <span class="tag">PostgreSQL</span>
+                  <span class="tag">NextAuth v5</span>
+                  <span class="tag">Zod 4</span>
+                  <span class="tag">Decimal.js</span>
+                </div>
+                <div class="stack-group">
+                  <span class="stack-group-label">Docs</span>
+                  <span class="tag">@react-pdf/renderer</span>
+                  <span class="tag">Python</span>
+                </div>
+                <div class="stack-group">
+                  <span class="stack-group-label">Infra</span>
+                  <span class="tag">Supabase Storage</span>
+                  <span class="tag">Vercel</span>
+                </div>
+              </div>
+            </details>
             <details class="project-details-toggle">
               <summary>Detalhes do projeto</summary>
               <div class="project-details-content">
@@ -1501,22 +1686,45 @@
               <h3>LicitaLeads</h3>
             </div>
             <p class="project-short-desc">Corretores de seguro garantia perdem horas vasculhando o PNCP manualmente para encontrar contratos.</p>
-            <p class="project-metric">~23K contratos enriquecidos</p>
-            <div class="project-footer">
-              <div class="tags">
-                <span class="tag">Next.js</span>
-                <span class="tag">Zod</span>
-                <span class="tag">Resend</span>
-                <span class="tag">BrasilAPI</span>
-                <span class="tag">PNCP</span>
-                <span class="tag">Vercel</span>
-                <span class="tag-more">+4</span>
-              </div>
-              <div class="project-links">
-                <a href="https://licitaleads.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver projeto</a>
-                <a href="https://github.com/jpvss/licitaleads" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Código</a>
-              </div>
+            <ul class="project-highlights">
+              <li>~23K contratos públicos do PNCP enriquecidos</li>
+              <li>Scoring 0-100 com classificação em tiers A/B/C</li>
+              <li>Estimativa de comissão e ações rápidas (WhatsApp, email, ligar)</li>
+            </ul>
+            <div class="project-links" style="margin-bottom: var(--space-sm);">
+              <a href="https://licitaleads.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver projeto</a>
+              <a href="https://github.com/jpvss/licitaleads" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Código</a>
             </div>
+            <details class="stack-toggle">
+              <summary>Tech Stack</summary>
+              <div class="stack-content">
+                <div class="stack-group">
+                  <span class="stack-group-label">Frontend</span>
+                  <span class="tag">Next.js 16</span>
+                  <span class="tag">React 19</span>
+                  <span class="tag">TypeScript</span>
+                  <span class="tag">Tailwind CSS v4</span>
+                  <span class="tag">shadcn/ui</span>
+                  <span class="tag">Lucide React</span>
+                </div>
+                <div class="stack-group">
+                  <span class="stack-group-label">Backend</span>
+                  <span class="tag">Zod 4</span>
+                  <span class="tag">tsx</span>
+                  <span class="tag">Resend</span>
+                </div>
+                <div class="stack-group">
+                  <span class="stack-group-label">APIs</span>
+                  <span class="tag">PNCP</span>
+                  <span class="tag">BrasilAPI</span>
+                  <span class="tag">CEIS/CNEP</span>
+                </div>
+                <div class="stack-group">
+                  <span class="stack-group-label">Infra</span>
+                  <span class="tag">Vercel</span>
+                </div>
+              </div>
+            </details>
             <details class="project-details-toggle">
               <summary>Detalhes do projeto</summary>
               <div class="project-details-content">
@@ -1584,22 +1792,45 @@
               <h3>DeixaComigo</h3>
             </div>
             <p class="project-short-desc">Donos de carros premium são lowballados — não sabem a diferença real entre lojista e consignação.</p>
-            <p class="project-metric">Dados FIPE em tempo real</p>
-            <div class="project-footer">
-              <div class="tags">
-                <span class="tag">Next.js</span>
-                <span class="tag">Supabase</span>
-                <span class="tag">Zod</span>
-                <span class="tag">Resend</span>
-                <span class="tag">Claude API</span>
-                <span class="tag">FIPE API</span>
-                <span class="tag-more">+6</span>
-              </div>
-              <div class="project-links">
-                <a href="https://deixacomigo.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver projeto</a>
-                <a href="https://github.com/jpvss/DeixaComigo" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Código</a>
-              </div>
+            <ul class="project-highlights">
+              <li>Avaliação em tempo real com dados FIPE</li>
+              <li>Precificação com 6 fatores e classificação de aptidão</li>
+              <li>Captura automática de lead com notificação ao corretor</li>
+            </ul>
+            <div class="project-links" style="margin-bottom: var(--space-sm);">
+              <a href="https://deixacomigo.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver projeto</a>
+              <a href="https://github.com/jpvss/DeixaComigo" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Código</a>
             </div>
+            <details class="stack-toggle">
+              <summary>Tech Stack</summary>
+              <div class="stack-content">
+                <div class="stack-group">
+                  <span class="stack-group-label">Frontend</span>
+                  <span class="tag">Next.js 16</span>
+                  <span class="tag">React 19</span>
+                  <span class="tag">TypeScript</span>
+                  <span class="tag">Tailwind CSS v4</span>
+                  <span class="tag">shadcn/ui</span>
+                  <span class="tag">Sonner</span>
+                  <span class="tag">Lucide React</span>
+                </div>
+                <div class="stack-group">
+                  <span class="stack-group-label">Backend</span>
+                  <span class="tag">Supabase</span>
+                  <span class="tag">Zod 4</span>
+                  <span class="tag">Resend</span>
+                </div>
+                <div class="stack-group">
+                  <span class="stack-group-label">APIs</span>
+                  <span class="tag">Anthropic SDK</span>
+                  <span class="tag">FIPE / Parallelum</span>
+                </div>
+                <div class="stack-group">
+                  <span class="stack-group-label">Infra</span>
+                  <span class="tag">Vercel</span>
+                </div>
+              </div>
+            </details>
             <details class="project-details-toggle">
               <summary>Detalhes do projeto</summary>
               <div class="project-details-content">
@@ -1667,22 +1898,48 @@
               <h3>CV10x</h3>
             </div>
             <p class="project-short-desc">Profissionais não sabem se o currículo está competitivo para o mercado.</p>
-            <p class="project-metric">Análise IA em 5 dimensões</p>
-            <div class="project-footer">
-              <div class="tags">
-                <span class="tag">Next.js</span>
-                <span class="tag">Claude API</span>
-                <span class="tag">Redis</span>
-                <span class="tag">Resend</span>
-                <span class="tag">Hotmart</span>
-                <span class="tag">Meta CAPI</span>
-                <span class="tag-more">+10</span>
-              </div>
-              <div class="project-links">
-                <a href="https://cv10x.escoladados.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver projeto</a>
-                <a href="https://github.com/jpvss/CV10x" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Código</a>
-              </div>
+            <ul class="project-highlights">
+              <li>Análise por IA Claude em 5 dimensões com score 0-100</li>
+              <li>Reescrita personalizada de seções no plano Pro</li>
+              <li>Funil completo: free → email gate → nurture → pagamento</li>
+            </ul>
+            <div class="project-links" style="margin-bottom: var(--space-sm);">
+              <a href="https://cv10x.escoladados.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver projeto</a>
+              <a href="https://github.com/jpvss/CV10x" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Código</a>
             </div>
+            <details class="stack-toggle">
+              <summary>Tech Stack</summary>
+              <div class="stack-content">
+                <div class="stack-group">
+                  <span class="stack-group-label">Frontend</span>
+                  <span class="tag">Next.js 15</span>
+                  <span class="tag">React 18</span>
+                  <span class="tag">TypeScript</span>
+                  <span class="tag">Tailwind CSS</span>
+                  <span class="tag">Framer Motion</span>
+                  <span class="tag">@vercel/og</span>
+                </div>
+                <div class="stack-group">
+                  <span class="stack-group-label">Backend</span>
+                  <span class="tag">Anthropic Claude API</span>
+                  <span class="tag">Zod</span>
+                  <span class="tag">Upstash Redis</span>
+                  <span class="tag">Resend</span>
+                </div>
+                <div class="stack-group">
+                  <span class="stack-group-label">Growth</span>
+                  <span class="tag">Hotmart</span>
+                  <span class="tag">Meta CAPI</span>
+                  <span class="tag">Google Ads</span>
+                  <span class="tag">@vercel/analytics</span>
+                </div>
+                <div class="stack-group">
+                  <span class="stack-group-label">Infra</span>
+                  <span class="tag">GitHub Actions</span>
+                  <span class="tag">Vercel</span>
+                </div>
+              </div>
+            </details>
             <details class="project-details-toggle">
               <summary>Detalhes do projeto</summary>
               <div class="project-details-content">
@@ -1750,22 +2007,42 @@
               <h3>Kiiry CRM</h3>
             </div>
             <p class="project-short-desc">Equipes de venda solar gastam horas buscando leads e não conseguem priorizar.</p>
-            <p class="project-metric">Scoring 0-100 em 5 eixos</p>
-            <div class="project-footer">
-              <div class="tags">
-                <span class="tag">Next.js</span>
-                <span class="tag">Supabase</span>
-                <span class="tag">Google Places</span>
-                <span class="tag">Recharts</span>
-                <span class="tag">Vercel</span>
-                <span class="tag">TypeScript</span>
-                <span class="tag-more">+4</span>
-              </div>
-              <div class="project-links">
-                <a href="https://kiiry-crm.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver projeto</a>
-                <a href="https://github.com/jpvss/kiiry-crm" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Código</a>
-              </div>
+            <ul class="project-highlights">
+              <li>Importação automática de leads via Google Places</li>
+              <li>Scoring 0-100 em 5 eixos com estimativa de consumo kWh</li>
+              <li>Pipeline Kanban de 8 estágios para equipe de vendas</li>
+            </ul>
+            <div class="project-links" style="margin-bottom: var(--space-sm);">
+              <a href="https://kiiry-crm.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver projeto</a>
+              <a href="https://github.com/jpvss/kiiry-crm" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Código</a>
             </div>
+            <details class="stack-toggle">
+              <summary>Tech Stack</summary>
+              <div class="stack-content">
+                <div class="stack-group">
+                  <span class="stack-group-label">Frontend</span>
+                  <span class="tag">Next.js 16</span>
+                  <span class="tag">React 19</span>
+                  <span class="tag">TypeScript</span>
+                  <span class="tag">Tailwind CSS v4</span>
+                  <span class="tag">shadcn/ui</span>
+                  <span class="tag">Recharts</span>
+                  <span class="tag">Lucide React</span>
+                </div>
+                <div class="stack-group">
+                  <span class="stack-group-label">Backend</span>
+                  <span class="tag">Supabase</span>
+                </div>
+                <div class="stack-group">
+                  <span class="stack-group-label">APIs</span>
+                  <span class="tag">Google Places API</span>
+                </div>
+                <div class="stack-group">
+                  <span class="stack-group-label">Infra</span>
+                  <span class="tag">Vercel</span>
+                </div>
+              </div>
+            </details>
             <details class="project-details-toggle">
               <summary>Detalhes do projeto</summary>
               <div class="project-details-content">
