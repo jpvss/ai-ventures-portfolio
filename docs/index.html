@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Ventures | Do Problema ao Produto, Acelerado por IA</title>
+  <meta name="description" content="Construímos ferramentas que transformam dados públicos, governamentais e setoriais em inteligência de mercado, gestão operacional e geração de leads para empresas brasileiras. Do conceito ao deploy em semanas.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="AI Ventures | Do Problema ao Produto, Acelerado por IA">
+  <meta property="og:description" content="Ferramentas que transformam dados públicos e setoriais em inteligência de mercado, gestão e leads para empresas brasileiras. Do conceito ao deploy em semanas.">
+  <!-- TODO: Add og:image and og:url when domain is defined -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black:    #0a0a0a;
+      --gray-900: #1a1a1a;
+      --gray-800: #2a2a2a;
+      --gray-700: #444;
+      --gray-600: #666;
+      --gray-500: #888;
+      --gray-400: #aaa;
+      --gray-300: #ccc;
+      --gray-200: #e5e5e5;
+      --gray-100: #f2f2f2;
+      --gray-50:  #fafafa;
+      --white:    #fff;
+      --accent:   #0D9488;
+      --accent-light: #14b8a6;
+      --accent-soft: color-mix(in srgb, #0D9488 7%, white);
+      --accent-hover: color-mix(in srgb, #0D9488 80%, black);
+
+      --text-xs:  0.75rem;
+      --text-sm:  0.875rem;
+      --text-base: 1rem;
+      --text-lg:  1.125rem;
+      --text-xl:  clamp(1.25rem, 1rem + 1.25vw, 1.75rem);
+      --text-2xl: clamp(1.75rem, 1.25rem + 2.5vw, 2.75rem);
+      --text-3xl: clamp(2.5rem, 1.5rem + 5vw, 5rem);
+
+      --space-xs: 0.5rem;
+      --space-sm: 1rem;
+      --space-md: 1.5rem;
+      --space-lg: 3rem;
+      --space-xl: 5rem;
+      --space-2xl: 8rem;
+
+      --radius-sm: 0.25rem;
+      --radius-md: 0.5rem;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: var(--text-base);
+      line-height: 1.6;
+      color: var(--gray-700);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 {
+      color: var(--black);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+    }
+
+    a { color: inherit; text-decoration-skip-ink: auto; }
+
+    a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+      border-radius: var(--radius-sm);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .reveal { opacity: 1 !important; transform: none !important; }
+    }
+
+    .container {
+      width: 100%;
+      max-width: 960px;
+      margin-inline: auto;
+      padding-inline: var(--space-md);
+    }
+
+    /* ---- STICKY NAV ---- */
+    .sticky-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: color-mix(in srgb, var(--white) 92%, transparent);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--gray-200);
+      transform: translateY(-100%);
+      transition: transform 0.3s ease;
+      padding: 0.75rem 0;
+    }
+
+    .sticky-nav.visible {
+      transform: translateY(0);
+    }
+
+    .sticky-nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .sticky-nav-brand {
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: var(--black);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .sticky-nav-links {
+      display: flex;
+      gap: var(--space-md);
+    }
+
+    .sticky-nav-links a {
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--gray-500);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .sticky-nav-links a:hover { color: var(--accent); }
+
+    /* ---- HEADER (editorial / ink-on-paper) ---- */
+    .site-header {
+      padding: var(--space-2xl) 0 var(--space-xl);
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .header-brand {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: var(--space-lg);
+    }
+
+    .site-header h1 {
+      font-size: var(--text-3xl);
+      font-weight: 900;
+      max-width: 22ch;
+      margin-bottom: var(--space-lg);
+    }
+
+    .header-description {
+      font-size: var(--text-lg);
+      color: var(--gray-600);
+      max-width: 50ch;
+      line-height: 1.7;
+      margin-bottom: var(--space-lg);
+    }
+
+    .header-nav {
+      display: flex;
+      gap: var(--space-md);
+    }
+
+    .header-nav a {
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--gray-500);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .header-nav a:hover { color: var(--accent); }
+
+    /* ---- CAPABILITIES BAR ---- */
+    .capabilities-bar {
+      padding: var(--space-lg) 0;
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .capabilities-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .cap-tag {
+      display: inline-block;
+      padding: 0.35rem 0.85rem;
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--gray-700);
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+
+    /* ---- SCROLL REVEAL ---- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ---- SECTIONS ---- */
+    .section {
+      padding: var(--space-xl) 0;
+    }
+
+    .section-header {
+      margin-bottom: var(--space-lg);
+    }
+
+    .section-label {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: var(--space-xs);
+    }
+
+    .section-title {
+      font-size: var(--text-2xl);
+      font-weight: 800;
+      margin-bottom: var(--space-sm);
+    }
+
+    .section-subtitle {
+      font-size: var(--text-base);
+      color: var(--gray-600);
+      max-width: 55ch;
+    }
+
+    /* ---- PROJECT GROUPS ---- */
+    .project-group {
+      border-top: 1px solid var(--gray-200);
+    }
+
+    .group-header {
+      margin-bottom: var(--space-lg);
+    }
+
+    /* ---- PROJECT METRIC ---- */
+    .project-metric {
+      display: inline-block;
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: -0.01em;
+      margin-bottom: var(--space-sm);
+    }
+
+    /* ---- PROJECT CARDS ---- */
+    .projects-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+
+    .project-card {
+      padding-bottom: var(--space-lg);
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .project-card:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .project-header {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+      margin-bottom: var(--space-sm);
+    }
+
+    .project-type-badge {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .project-card h3 {
+      font-size: var(--text-xl);
+      font-weight: 800;
+    }
+
+    .project-short-desc {
+      font-size: var(--text-base);
+      color: var(--gray-600);
+      max-width: 65ch;
+      line-height: 1.6;
+      margin-bottom: var(--space-sm);
+    }
+
+    .project-footer {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-sm);
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      flex: 1;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 0.15rem 0.5rem;
+      font-size: 0.7rem;
+      font-weight: 500;
+      line-height: 1.5;
+      color: var(--gray-600);
+      border: 1px solid var(--gray-200);
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+
+    .tag-more {
+      display: inline-block;
+      padding: 0.15rem 0.5rem;
+      font-size: 0.7rem;
+      font-weight: 500;
+      line-height: 1.5;
+      color: var(--gray-400);
+      background: var(--gray-100);
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+
+    .project-links {
+      display: flex;
+      gap: var(--space-xs);
+      flex-shrink: 0;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.4rem 0.9rem;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: var(--radius-sm);
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .btn-primary {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: var(--gray-800);
+    }
+
+    .btn-secondary {
+      background: var(--white);
+      color: var(--gray-700);
+      border: 1px solid var(--gray-200);
+    }
+
+    .btn-secondary:hover {
+      background: var(--gray-100);
+    }
+
+    /* ---- COLLAPSIBLE DETAILS ---- */
+    .project-details-toggle {
+      margin-top: 0;
+    }
+
+    .project-details-toggle summary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--gray-500);
+      cursor: pointer;
+      user-select: none;
+      list-style: none;
+      transition: color 0.15s;
+    }
+
+    .project-details-toggle summary::-webkit-details-marker { display: none; }
+
+    .project-details-toggle summary::before {
+      content: "+";
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.2rem;
+      height: 1.2rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      border: 1px solid var(--gray-300);
+      border-radius: 50%;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .project-details-toggle[open] summary::before {
+      content: "−";
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .project-details-toggle summary:hover {
+      color: var(--accent);
+    }
+
+    .project-details-content {
+      padding-top: var(--space-md);
+      display: grid;
+      gap: var(--space-md);
+    }
+
+    .detail-block h4 {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--black);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: var(--space-xs);
+    }
+
+    .detail-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .detail-list li {
+      font-size: var(--text-sm);
+      color: var(--gray-600);
+      padding-left: 1.2rem;
+      position: relative;
+      line-height: 1.6;
+    }
+
+    .detail-list.features li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.6em;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .detail-list.capabilities li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: var(--text-sm);
+    }
+
+    .problem-block {
+      background: var(--gray-50);
+      border-left: 2px solid var(--accent);
+      padding: var(--space-sm) var(--space-md);
+      font-size: var(--text-sm);
+      color: var(--gray-700);
+      line-height: 1.7;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    }
+
+    .problem-block strong {
+      display: block;
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--black);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.3rem;
+    }
+
+    /* ---- OPPORTUNITIES ---- */
+    .opp-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+      gap: var(--space-md);
+    }
+
+    .opp-card {
+      padding: var(--space-md);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-md);
+      transition: box-shadow 0.2s;
+    }
+
+    .opp-card:hover {
+      box-shadow: 0 4px 20px color-mix(in srgb, var(--black) 6%, transparent);
+    }
+
+    .opp-card h3 {
+      font-size: var(--text-lg);
+      font-weight: 700;
+      margin-bottom: var(--space-sm);
+    }
+
+    .opp-count {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--accent);
+      margin-left: 0.3rem;
+    }
+
+    .opp-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .opp-card li {
+      font-size: var(--text-sm);
+      color: var(--gray-600);
+      padding-left: 1rem;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .opp-card li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.6em;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--gray-300);
+    }
+
+    /* ---- FOOTER (editorial) ---- */
+    .site-footer {
+      border-top: 1px solid var(--gray-200);
+      padding: var(--space-xl) 0;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+
+    .footer-cta {
+      font-size: var(--text-2xl);
+      font-weight: 800;
+      color: var(--black);
+      line-height: 1.15;
+      max-width: 20ch;
+    }
+
+    .footer-text {
+      font-size: var(--text-base);
+      color: var(--gray-600);
+      max-width: 45ch;
+      line-height: 1.6;
+    }
+
+    .footer-contacts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+
+    .footer-contacts a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.6rem 1.4rem;
+      font-size: var(--text-base);
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: var(--radius-sm);
+      transition: background 0.15s;
+    }
+
+    .btn-whatsapp {
+      background: #25D366;
+      color: var(--white);
+    }
+
+    .btn-whatsapp:hover { background: #1da851; }
+
+    .btn-email {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .btn-email:hover { background: var(--gray-800); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      padding-top: var(--space-lg);
+      margin-top: var(--space-lg);
+      border-top: 1px solid var(--gray-200);
+    }
+
+    .footer-copy {
+      font-size: var(--text-sm);
+      color: var(--gray-400);
+    }
+
+    .footer-nav {
+      display: flex;
+      gap: var(--space-md);
+    }
+
+    .footer-nav a {
+      font-size: var(--text-sm);
+      color: var(--gray-400);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .footer-nav a:hover { color: var(--accent); }
+
+    /* ---- RESPONSIVE ---- */
+    @media (width >= 640px) {
+      .project-details-content {
+        grid-template-columns: 1fr 1fr;
+      }
+      .problem-block {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (width >= 768px) {
+      .footer-content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======== STICKY NAV ======== -->
+  <nav class="sticky-nav" aria-label="Navegação fixa">
+    <div class="container sticky-nav-inner">
+      <a href="#topo" class="sticky-nav-brand">AI Ventures</a>
+      <div class="sticky-nav-links">
+        <a href="#projetos">Projetos</a>
+        <a href="#oportunidades">Oportunidades</a>
+        <a href="#contato">Contato</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ======== HEADER ======== -->
+  <header class="site-header" id="topo">
+    <div class="container">
+      <p class="header-brand">AI Ventures</p>
+      <h1>Do problema ao produto, acelerado por IA</h1>
+      <p class="header-description">Construímos ferramentas que transformam dados públicos, governamentais e setoriais em inteligência de mercado, gestão operacional e geração de leads para empresas brasileiras. Do conceito ao deploy em semanas.</p>
+      <nav class="header-nav" aria-label="Navegação principal">
+        <a href="#projetos">Projetos</a>
+        <a href="#oportunidades">Oportunidades</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ======== CAPABILITIES ======== -->
+  <section class="capabilities-bar" aria-label="Capacidades técnicas">
+    <div class="container">
+      <div class="capabilities-tags reveal">
+        <span class="cap-tag">Data pipelines</span>
+        <span class="cap-tag">Geoespacial</span>
+        <span class="cap-tag">Modelos financeiros</span>
+        <span class="cap-tag">Scoring / ML</span>
+        <span class="cap-tag">LLM / Claude</span>
+        <span class="cap-tag">APIs governamentais</span>
+        <span class="cap-tag">Regulatório</span>
+        <span class="cap-tag">Geração de leads</span>
+        <span class="cap-tag">DuckDB / Parquet</span>
+        <span class="cap-tag">Relatórios PDF</span>
+      </div>
+    </div>
+  </section>
+
+  <main>
+
+    <!-- ======== PROJETOS ======== -->
+    <section id="projetos">
+
+      <!-- ---- GROUP 1: INTELIGÊNCIA DE MERCADO ---- -->
+      <section class="section project-group" aria-labelledby="group-intel-heading">
+        <div class="container">
+          <div class="group-header reveal">
+            <p class="section-label">01 — Inteligência de Mercado</p>
+            <h2 class="section-title" id="group-intel-heading">Oportunidades escondidas em dados públicos</h2>
+            <p class="section-subtitle">Ingestão de dados brutos de fontes governamentais e setoriais, scoring multidimensional e sinais automáticos de oportunidade. O arco: dados públicos dispersos → pipeline de enriquecimento → produto de inteligência.</p>
+          </div>
+
+          <div class="projects-list">
+
+          <!-- 1. FloridaFlip -->
+          <article class="project-card reveal" id="florida-flip">
+            <div class="project-header">
+              <span class="project-type-badge">Dashboard de dados</span>
+              <h3>FloridaFlip</h3>
+            </div>
+            <p class="project-short-desc">Investidores perdem horas cruzando dezenas de fontes para achar oportunidades imobiliárias na Flórida.</p>
+            <p class="project-metric">2.1M+ propriedades analisadas</p>
+            <div class="project-footer">
+              <div class="tags">
+                <span class="tag">Next.js</span>
+                <span class="tag">DuckDB</span>
+                <span class="tag">Parquet</span>
+                <span class="tag">Google Maps</span>
+                <span class="tag">Python</span>
+                <span class="tag">Recharts</span>
+                <span class="tag-more">+6</span>
+              </div>
+              <div class="project-links">
+                <a href="https://florida-flip.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver projeto</a>
+                <a href="https://github.com/jpvss/florida-flip" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Código</a>
+              </div>
+            </div>
+            <details class="project-details-toggle">
+              <summary>Detalhes do projeto</summary>
+              <div class="project-details-content">
+                <div class="problem-block">
+                  <strong>Problema resolvido</strong>
+                  Investidores imobiliários perdem horas cruzando dados de dezenas de fontes públicas para encontrar boas oportunidades. O FloridaFlip agrega tudo — avaliações, vendas, aluguéis, risco de enchente, seguros — em um painel único com sinais automáticos de oportunidade.
+                </div>
+                <div class="detail-block">
+                  <h4>Funcionalidades</h4>
+                  <ul class="detail-list features">
+                    <li>Mapa interativo dos 67 condados com choropleth por métrica (preço, estoque, dias no mercado)</li>
+                    <li>Busca em 2.1M propriedades via DuckDB/Parquet com filtros e sinais automáticos</li>
+                    <li>Calculadora de flip/hold/BRRRR com custos de fechamento e seguro da Flórida</li>
+                    <li>Scoring multidimensional de submercados por ZIP code (9 dimensões)</li>
+                    <li>Dashboard executivo com KPIs, tendências e geração de relatório PDF</li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <h4>Capacidades demonstradas</h4>
+                  <ul class="detail-list capabilities">
+                    <li>Ingestão e normalização de dados públicos heterogêneos (FDOR, FEMA, Census ACS, Redfin)</li>
+                    <li>Consultas analíticas sobre milhões de registros no browser usando DuckDB + Parquet</li>
+                    <li>Modelagem financeira domain-specific com regras regulatórias locais</li>
+                    <li>Visualização geoespacial interativa com polígonos e drill-down</li>
+                    <li>Scoring multidimensional com pesos configuráveis para ranqueamento</li>
+                  </ul>
+                </div>
+              </div>
+            </details>
+          </article>
+
+          <!-- 2. Leila do Leilão -->
+          <article class="project-card reveal" id="leila-do-leilao">
+            <div class="project-header">
+              <span class="project-type-badge">Inteligência imobiliária</span>
+              <h3>Leila do Leilão</h3>
+            </div>
+            <p class="project-short-desc">Investidores não sabem se o desconto de leilão da Caixa é real — a avaliação não reflete o mercado.</p>
+            <p class="project-metric">18 anos de dados ITBI (2008–2026)</p>
+            <div class="project-footer">
+              <div class="tags">
+                <span class="tag">Next.js</span>
+                <span class="tag">Leaflet</span>
+                <span class="tag">DuckDB</span>
+                <span class="tag">Python</span>
+                <span class="tag">Pandas</span>
+                <span class="tag">Google Maps</span>
+                <span class="tag-more">+8</span>
+              </div>
+              <div class="project-links">
+                <a href="https://leila-do-leilao.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver projeto</a>
+                <a href="https://github.com/jpvss/Leila-do-leilao" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Código</a>
+              </div>
+            </div>
+            <details class="project-details-toggle">
+              <summary>Detalhes do projeto</summary>
+              <div class="project-details-content">
+                <div class="problem-block">
+                  <strong>Problema resolvido</strong>
+                  Investidores em imóveis de leilão da Caixa não sabem se o desconto anunciado é real. O Leila cruza dados ITBI reais (2008-2026) com o catálogo da Caixa, revelando o desconto verdadeiro e pontuando cada imóvel com um Deal Score multidimensional.
+                </div>
+                <div class="detail-block">
+                  <h4>Funcionalidades</h4>
+                  <ul class="detail-list features">
+                    <li>Dashboard com KPIs e ranking dos top 50 imóveis por Deal Score</li>
+                    <li>Tabela com 14 colunas, 11 filtros e score personalizado por perfil</li>
+                    <li>Mapa Leaflet com marcadores por score e filtros geográficos</li>
+                    <li>Simulador financeiro: ROI, SAC, ITBI, custos de cartório, lance máximo</li>
+                    <li>Detalhe com Street View, tendência do bairro e flags de risco</li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <h4>Capacidades demonstradas</h4>
+                  <ul class="detail-list capabilities">
+                    <li>Cruzamento de datasets para insight inédito — desconto real vs mercado</li>
+                    <li>Modelagem financeira brasileira (ITBI, SAC, FGTS, custos de cartório)</li>
+                    <li>Pipeline modular: ingestão, enriquecimento, geocodificação, scoring</li>
+                    <li>Visualização geoespacial classificada por scoring multidimensional</li>
+                    <li>Personalização por perfil com reweighting dinâmico client-side</li>
+                  </ul>
+                </div>
+              </div>
+            </details>
+          </article>
+
+          <!-- 3. LicenciaMiner -->
+          <article class="project-card reveal" id="licenciaminer">
+            <div class="project-header">
+              <span class="project-type-badge">Inteligência regulatória</span>
+              <h3>LicenciaMiner</h3>
+            </div>
+            <p class="project-short-desc">Consultorias gastam semanas pesquisando portais de IBAMA, ANM e SEMAD para avaliar viabilidade.</p>
+            <p class="project-metric">14 fontes públicas cruzadas</p>
+            <div class="project-footer">
+              <div class="tags">
+                <span class="tag">Python</span>
+                <span class="tag">Streamlit</span>
+                <span class="tag">DuckDB</span>
+                <span class="tag">GeoPandas</span>
+                <span class="tag">Folium</span>
+                <span class="tag">Claude API</span>
+                <span class="tag-more">+9</span>
+              </div>
+              <div class="project-links">
+                <a href="https://licenciaminer.streamlit.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver projeto</a>
+                <a href="https://github.com/jpvss/licenciaminer" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Código</a>
+              </div>
+            </div>
+            <details class="project-details-toggle">
+              <summary>Detalhes do projeto</summary>
+              <div class="project-details-content">
+                <div class="problem-block">
+                  <strong>Problema resolvido</strong>
+                  Consultorias ambientais e mineradoras gastam semanas pesquisando portais de IBAMA, ANM e SEMAD para avaliar viabilidade de licenciamento. O LicenciaMiner cruza 14 fontes públicas e entrega dossiês por empresa com taxa de aprovação, risco e casos similares.
+                </div>
+                <div class="detail-block">
+                  <h4>Funcionalidades</h4>
+                  <ul class="detail-list features">
+                    <li>Pipeline de 14 fontes: IBAMA, ANM, SEMAD-MG, COPAM, ANA, Receita Federal</li>
+                    <li>Dashboard com 7 abas: visão geral, CNPJ, decisões, concessões, mapa, prospecção</li>
+                    <li>Dossiê por CNPJ: histórico, infrações, royalties CFEM, taxa de aprovação</li>
+                    <li>Mapa com polígonos de concessões ANM e detecção de sobreposições</li>
+                    <li>Relatório PDF com análise de risco e rastreabilidade total</li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <h4>Capacidades demonstradas</h4>
+                  <ul class="detail-list capabilities">
+                    <li>Ingestão de 14 fontes (APIs, ArcGIS, Excel, scraping, shapefiles, PDFs)</li>
+                    <li>Análise geoespacial com spatial joins e detecção de restrições</li>
+                    <li>Risco regulatório com cruzamento ambiental, minerário e cadastral</li>
+                    <li>Arquitetura DuckDB/Parquet com views materializadas</li>
+                    <li>Processamento de documentos regulatórios (scraping, OCR)</li>
+                  </ul>
+                </div>
+              </div>
+            </details>
+          </article>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ---- GROUP 2: GESTÃO E COMPLIANCE ---- -->
+      <section class="section project-group" aria-labelledby="group-ops-heading">
+        <div class="container">
+          <div class="group-header reveal">
+            <p class="section-label">02 — Gestão e Compliance</p>
+            <h2 class="section-title" id="group-ops-heading">Operar o negócio com precisão regulatória</h2>
+            <p class="section-subtitle">Ferramentas de gestão com cálculos auditáveis, trilha de compliance e relatórios prontos para investidores e reguladores. O arco: dados operacionais → pipeline de cálculo → documentos auditáveis.</p>
+          </div>
+
+          <div class="projects-list">
+
+          <!-- 4. Kiiry Dashboard -->
+          <article class="project-card reveal" id="kiiry-dashboard">
+            <div class="project-header">
+              <span class="project-type-badge">Ferramenta interna / Reporting</span>
+              <h3>Kiiry Dashboard</h3>
+            </div>
+            <p class="project-short-desc">Prestação de contas manual de usinas solares a investidores — planilhas sujeitas a erros em pagamentos reais.</p>
+            <p class="project-metric">Multi-usina com trilha de auditoria</p>
+            <div class="project-footer">
+              <div class="tags">
+                <span class="tag">Python</span>
+                <span class="tag">Flask</span>
+                <span class="tag">Pandas</span>
+                <span class="tag">Pydantic</span>
+                <span class="tag">WeasyPrint</span>
+                <span class="tag">Tailwind CSS</span>
+                <span class="tag-more">+6</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/jpvss/kiiry-dashboard" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Código</a>
+              </div>
+            </div>
+            <details class="project-details-toggle">
+              <summary>Detalhes do projeto</summary>
+              <div class="project-details-content">
+                <div class="problem-block">
+                  <strong>Problema resolvido</strong>
+                  Donos de usinas solares distribuídas precisam prestar contas mensais a investidores sobre energia compensada, receitas e pagamentos. Hoje esse processo é manual, com planilhas cruzando dados da CEMIG e billing, sujeito a erros que afetam pagamentos reais.
+                </div>
+                <div class="detail-block">
+                  <h4>Funcionalidades</h4>
+                  <ul class="detail-list features">
+                    <li>Relatório mensal por usina com balanço de recebimento por UC</li>
+                    <li>Pipeline de cálculo financeiro automatizado com tarifa compensável dinâmica</li>
+                    <li>Dashboard gerencial multi-usina com KPIs e matriz MBR</li>
+                    <li>Geração de PDF via WeasyPrint com auditoria embutida</li>
+                    <li>Trilha de auditoria: tooltips com fórmulas e painel de diff</li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <h4>Capacidades demonstradas</h4>
+                  <ul class="detail-list capabilities">
+                    <li>Modelagem financeira do setor elétrico brasileiro (CEMIG, GD I/II, PIS/COFINS)</li>
+                    <li>Pipeline ETL robusto para dados heterogêneos multi-fonte</li>
+                    <li>Documentos financeiros auditáveis com rastreabilidade completa</li>
+                    <li>Arquitetura serverless com cache em memória e zero banco</li>
+                    <li>Gestão de pagamento multi-estado com regras do setor solar</li>
+                  </ul>
+                </div>
+              </div>
+            </details>
+          </article>
+
+          <!-- 5. CEAP Dashboard -->
+          <article class="project-card reveal" id="ceap-deputy-expenses">
+            <div class="project-header">
+              <span class="project-type-badge">Transparência pública</span>
+              <h3>CEAP Dashboard</h3>
+            </div>
+            <p class="project-short-desc">Órgãos de controle não cruzam despesas parlamentares com emendas para identificar padrões suspeitos.</p>
+            <p class="project-metric">R$ 686M em gastos · 660K+ transações</p>
+            <div class="project-footer">
+              <div class="tags">
+                <span class="tag">React</span>
+                <span class="tag">D3.js</span>
+                <span class="tag">Supabase</span>
+                <span class="tag">Python</span>
+                <span class="tag">DuckDB</span>
+                <span class="tag">Cloudflare</span>
+                <span class="tag-more">+11</span>
+              </div>
+              <div class="project-links">
+                <a href="https://ceap.escoladados.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver projeto</a>
+                <a href="https://github.com/jpvsalomao/CEAPDashboard" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Código</a>
+              </div>
+            </div>
+            <details class="project-details-toggle">
+              <summary>Detalhes do projeto</summary>
+              <div class="project-details-content">
+                <div class="problem-block">
+                  <strong>Problema resolvido</strong>
+                  Cidadãos, jornalistas e órgãos de controle não conseguem cruzar dados de despesas parlamentares com emendas orçamentárias para identificar padrões suspeitos. O dashboard aplica métodos estatísticos sobre 660 mil+ transações e entrega sinais de risco.
+                </div>
+                <div class="detail-block">
+                  <h4>Funcionalidades</h4>
+                  <ul class="detail-list features">
+                    <li>Visão geral de R$ 686M em gastos com KPIs, filtros e ranking</li>
+                    <li>Perfil de deputado com Benford, HHI, valores redondos e red flags</li>
+                    <li>Análise de concentração de fornecedores por categoria</li>
+                    <li>Spotlight investigativo: cruzamento CEAP × Emendas</li>
+                    <li>Detecção de mismatch CNAE por atividade econômica</li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <h4>Capacidades demonstradas</h4>
+                  <ul class="detail-list capabilities">
+                    <li>Detecção de fraude estatística (Benford, HHI, valores redondos)</li>
+                    <li>Cruzamento de bases com schemas incompatíveis via fuzzy matching</li>
+                    <li>Dashboard D3.js com feature flags e lazy loading</li>
+                    <li>Ingestão massiva de dados governamentais via APIs</li>
+                    <li>Pipeline: coleta → DuckDB → Python → JSON → React</li>
+                  </ul>
+                </div>
+              </div>
+            </details>
+          </article>
+
+          <!-- 6. Incorporações Gestão -->
+          <article class="project-card reveal" id="incorporacoes-gestao">
+            <div class="project-header">
+              <span class="project-type-badge">SaaS / Gestão financeira</span>
+              <h3>Incorporações Gestão</h3>
+            </div>
+            <p class="project-short-desc">Investidores de incorporação dependem de planilhas manuais para rateios — erros de centavos geram conflitos.</p>
+            <p class="project-metric">Rateio Decimal(15,2) auditável</p>
+            <div class="project-footer">
+              <div class="tags">
+                <span class="tag">Next.js</span>
+                <span class="tag">Prisma</span>
+                <span class="tag">PostgreSQL</span>
+                <span class="tag">Three.js</span>
+                <span class="tag">NextAuth</span>
+                <span class="tag">Decimal.js</span>
+                <span class="tag-more">+12</span>
+              </div>
+              <div class="project-links">
+                <a href="https://incorporacao-do-digao.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver projeto</a>
+              </div>
+            </div>
+            <details class="project-details-toggle">
+              <summary>Detalhes do projeto</summary>
+              <div class="project-details-content">
+                <div class="problem-block">
+                  <strong>Problema resolvido</strong>
+                  Investidores em incorporações por administração (Lei 4.591/64) dependem de planilhas manuais para rastrear despesas e calcular rateios. Erros de centavos geram conflitos, e a falta de transparência corrói a confiança do grupo.
+                </div>
+                <div class="detail-block">
+                  <h4>Funcionalidades</h4>
+                  <ul class="detail-list features">
+                    <li>Motor de rateio Decimal(15,2) com normalização e distribuição de resto</li>
+                    <li>Gestão de projetos com investidores, status e permuta</li>
+                    <li>Portal read-only com isolamento total e plantas baixas</li>
+                    <li>Pipeline DWG/DXF: conversão, extração e renderização por andar</li>
+                    <li>Relatório mensal PDF com breakdown e trilha de auditoria</li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <h4>Capacidades demonstradas</h4>
+                  <ul class="detail-list capabilities">
+                    <li>Modelagem financeira com precisão decimal (Lei 4.591/64)</li>
+                    <li>Multi-tenant com controle em 3 camadas (middleware, actions, queries)</li>
+                    <li>Pipeline de engenharia: DWG→DXF, metadados, renderização</li>
+                    <li>Visualização 3D com Three.js/React Three Fiber</li>
+                    <li>Documentos financeiros auditáveis com compliance</li>
+                  </ul>
+                </div>
+              </div>
+            </details>
+          </article>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ---- GROUP 3: CRESCIMENTO E LEADS ---- -->
+      <section class="section project-group" aria-labelledby="group-growth-heading">
+        <div class="container">
+          <div class="group-header reveal">
+            <p class="section-label">03 — Crescimento e Leads</p>
+            <h2 class="section-title" id="group-growth-heading">Adquirir clientes com funis inteligentes</h2>
+            <p class="section-subtitle">Ferramentas de valor imediato que capturam leads qualificados e convertem em receita. O arco: ferramenta gratuita → scoring + nurture → conversão e pagamento.</p>
+          </div>
+
+          <div class="projects-list">
+
+          <!-- 7. LicitaLeads -->
+          <article class="project-card reveal" id="licitaleads">
+            <div class="project-header">
+              <span class="project-type-badge">SaaS / Sales Intelligence</span>
+              <h3>LicitaLeads</h3>
+            </div>
+            <p class="project-short-desc">Corretores de seguro garantia perdem horas vasculhando o PNCP manualmente para encontrar contratos.</p>
+            <p class="project-metric">~23K contratos enriquecidos</p>
+            <div class="project-footer">
+              <div class="tags">
+                <span class="tag">Next.js</span>
+                <span class="tag">Zod</span>
+                <span class="tag">Resend</span>
+                <span class="tag">BrasilAPI</span>
+                <span class="tag">PNCP</span>
+                <span class="tag">Vercel</span>
+                <span class="tag-more">+4</span>
+              </div>
+              <div class="project-links">
+                <a href="https://licitaleads.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver projeto</a>
+                <a href="https://github.com/jpvss/licitaleads" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Código</a>
+              </div>
+            </div>
+            <details class="project-details-toggle">
+              <summary>Detalhes do projeto</summary>
+              <div class="project-details-content">
+                <div class="problem-block">
+                  <strong>Problema resolvido</strong>
+                  Corretores de seguro garantia perdem horas vasculhando o PNCP manualmente para encontrar contratos que precisam de garantia. O LicitaLeads ingere, enriquece e pontua automaticamente ~23K contratos públicos, entregando leads priorizados com dados de contato e estimativa de comissão.
+                </div>
+                <div class="detail-block">
+                  <h4>Funcionalidades</h4>
+                  <ul class="detail-list features">
+                    <li>Pipeline de ingestão PNCP com enriquecimento via BrasilAPI e checagem CEIS/CNEP</li>
+                    <li>Scoring composto 0-100 com 4 dimensões e classificação em tiers A/B/C</li>
+                    <li>Dashboard com 11 filtros combinados e KPIs em tempo real</li>
+                    <li>Ações rápidas: WhatsApp pré-preenchido, ligar, email, copiar resumo</li>
+                    <li>Calculadora interativa de comissão com exportação CSV</li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <h4>Capacidades demonstradas</h4>
+                  <ul class="detail-list capabilities">
+                    <li>Ingestão de dados governamentais com pipeline idempotente e circuit breaker</li>
+                    <li>Scoring domain-specific com regras regulatórias (Lei 14.133)</li>
+                    <li>Enriquecimento automatizado com rate limiting e resume-safety</li>
+                    <li>Produto B2B data-driven com zero infraestrutura (Vercel free tier)</li>
+                    <li>UI de alta densidade informacional com filtros compostos</li>
+                  </ul>
+                </div>
+              </div>
+            </details>
+          </article>
+
+          <!-- 8. DeixaComigo -->
+          <article class="project-card reveal" id="deixacomigo">
+            <div class="project-header">
+              <span class="project-type-badge">Geração de leads / Automotivo</span>
+              <h3>DeixaComigo</h3>
+            </div>
+            <p class="project-short-desc">Donos de carros premium são lowballados — não sabem a diferença real entre lojista e consignação.</p>
+            <p class="project-metric">Dados FIPE em tempo real</p>
+            <div class="project-footer">
+              <div class="tags">
+                <span class="tag">Next.js</span>
+                <span class="tag">Supabase</span>
+                <span class="tag">Zod</span>
+                <span class="tag">Resend</span>
+                <span class="tag">Claude API</span>
+                <span class="tag">FIPE API</span>
+                <span class="tag-more">+6</span>
+              </div>
+              <div class="project-links">
+                <a href="https://deixacomigo.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver projeto</a>
+                <a href="https://github.com/jpvss/DeixaComigo" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Código</a>
+              </div>
+            </div>
+            <details class="project-details-toggle">
+              <summary>Detalhes do projeto</summary>
+              <div class="project-details-content">
+                <div class="problem-block">
+                  <strong>Problema resolvido</strong>
+                  Donos de carros usados premium são lowballados por lojistas que pagam 75-85% da FIPE. O DeixaComigo mostra a diferença concreta entre vender para o lojista e consignar — e captura o lead automaticamente.
+                </div>
+                <div class="detail-block">
+                  <h4>Funcionalidades</h4>
+                  <ul class="detail-list features">
+                    <li>Motor de avaliação com integração FIPE e cache Supabase</li>
+                    <li>Precificação com 6 fatores e classificação de aptidão</li>
+                    <li>Formulário cascata marca → modelo → ano via API FIPE</li>
+                    <li>Captura de lead com notificação email ao corretor</li>
+                    <li>SEO completo: sitemap, OG dinâmico, Schema.org</li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <h4>Capacidades demonstradas</h4>
+                  <ul class="detail-list capabilities">
+                    <li>Precificação domain-specific com fatores de mercado calibrados</li>
+                    <li>APIs de dados públicos com cache inteligente e fallback</li>
+                    <li>Funil completo: ferramenta gratuita → lead → notificação</li>
+                    <li>Infraestrutura de produto com Supabase e email transacional</li>
+                    <li>SEO programático para tráfego orgânico em escala</li>
+                  </ul>
+                </div>
+              </div>
+            </details>
+          </article>
+
+          <!-- 9. CV10x -->
+          <article class="project-card reveal" id="cv10x">
+            <div class="project-header">
+              <span class="project-type-badge">SaaS / Produto B2C</span>
+              <h3>CV10x</h3>
+            </div>
+            <p class="project-short-desc">Profissionais não sabem se o currículo está competitivo para o mercado.</p>
+            <p class="project-metric">Análise IA em 5 dimensões</p>
+            <div class="project-footer">
+              <div class="tags">
+                <span class="tag">Next.js</span>
+                <span class="tag">Claude API</span>
+                <span class="tag">Redis</span>
+                <span class="tag">Resend</span>
+                <span class="tag">Hotmart</span>
+                <span class="tag">Meta CAPI</span>
+                <span class="tag-more">+10</span>
+              </div>
+              <div class="project-links">
+                <a href="https://cv10x.escoladados.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver projeto</a>
+                <a href="https://github.com/jpvss/CV10x" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Código</a>
+              </div>
+            </div>
+            <details class="project-details-toggle">
+              <summary>Detalhes do projeto</summary>
+              <div class="project-details-content">
+                <div class="problem-block">
+                  <strong>Problema resolvido</strong>
+                  Profissionais não sabem se o currículo está competitivo. O CV10x analisa em 5 dimensões, mostra o que melhorar, e no plano Pro reescreve cada seção com alternativas prontas.
+                </div>
+                <div class="detail-block">
+                  <h4>Funcionalidades</h4>
+                  <ul class="detail-list features">
+                    <li>Upload e análise por IA Claude em 5 dimensões com score 0-100</li>
+                    <li>Quick win gratuito + email gate para relatório completo</li>
+                    <li>Relatório Pro com reescrita personalizada e análise ATS</li>
+                    <li>Nurture emails automatizados com cron, Redis e tracking</li>
+                    <li>Job matching: busca de vagas, pré-filtro e ranking por LLM</li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <h4>Capacidades demonstradas</h4>
+                  <ul class="detail-list capabilities">
+                    <li>LLM com structured output, prompt engineering e cache</li>
+                    <li>Funil B2C: free → email gate → nurture → Pro → Hotmart</li>
+                    <li>Marketing automation end-to-end com Meta CAPI</li>
+                    <li>Imagens OG dinâmicas para redes sociais</li>
+                    <li>Produto em produção com rate limiting e observabilidade</li>
+                  </ul>
+                </div>
+              </div>
+            </details>
+          </article>
+
+          <!-- 10. Kiiry CRM -->
+          <article class="project-card reveal" id="kiiry-crm">
+            <div class="project-header">
+              <span class="project-type-badge">SaaS / CRM B2B</span>
+              <h3>Kiiry CRM</h3>
+            </div>
+            <p class="project-short-desc">Equipes de venda solar gastam horas buscando leads e não conseguem priorizar.</p>
+            <p class="project-metric">Scoring 0-100 em 5 eixos</p>
+            <div class="project-footer">
+              <div class="tags">
+                <span class="tag">Next.js</span>
+                <span class="tag">Supabase</span>
+                <span class="tag">Google Places</span>
+                <span class="tag">Recharts</span>
+                <span class="tag">Vercel</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag-more">+4</span>
+              </div>
+              <div class="project-links">
+                <a href="https://kiiry-crm.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver projeto</a>
+                <a href="https://github.com/jpvss/kiiry-crm" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Código</a>
+              </div>
+            </div>
+            <details class="project-details-toggle">
+              <summary>Detalhes do projeto</summary>
+              <div class="project-details-content">
+                <div class="problem-block">
+                  <strong>Problema resolvido</strong>
+                  Equipes de venda de energia solar gastam horas buscando leads e não conseguem priorizar. O Kiiry CRM automatiza a captação via Google Places, classifica por potencial energético e organiza o funil em Kanban.
+                </div>
+                <div class="detail-block">
+                  <h4>Funcionalidades</h4>
+                  <ul class="detail-list features">
+                    <li>Importação de leads via Google Places com deduplicação</li>
+                    <li>Scoring 0-100 em 5 eixos com estimativa de consumo kWh</li>
+                    <li>Pipeline Kanban de 8 estágios com drag-and-drop</li>
+                    <li>Classificação automática de grupo tarifário (A vs B)</li>
+                    <li>Gestão de equipe com territórios e leaderboard</li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <h4>Capacidades demonstradas</h4>
+                  <ul class="detail-list capabilities">
+                    <li>Scoring domain-specific com estimativas energéticas setoriais</li>
+                    <li>Integração API com transformação e enriquecimento automatizado</li>
+                    <li>CRM completo com pipeline visual multi-território</li>
+                    <li>Análise financeira regulatória brasileira (tarifas, grupos)</li>
+                    <li>Detecção de padrões (redes/franquias, viabilidade mínima)</li>
+                  </ul>
+                </div>
+              </div>
+            </details>
+          </article>
+
+          </div>
+        </div>
+      </section>
+
+    </section>
+
+    <!-- ======== OPORTUNIDADES ======== -->
+    <section class="section project-group" id="oportunidades" aria-labelledby="oportunidades-heading">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-label">Oportunidades</p>
+          <h2 class="section-title" id="oportunidades-heading">O que podemos construir para você</h2>
+          <p class="section-subtitle">Oportunidades mapeadas a partir dos nossos projetos, organizadas por segmento.</p>
+        </div>
+
+        <div class="opp-grid">
+
+          <div class="opp-card reveal">
+            <h3>Imobiliário <span class="opp-count">5</span></h3>
+            <ul>
+              <li>Painel de inteligência territorial para prospecção de terrenos e lançamentos</li>
+              <li>Plataforma de inteligência para assessorias de leilão imobiliário</li>
+              <li>Ferramenta de avaliação de imóvel com captura de lead para imobiliárias</li>
+              <li>CRM de prospecção de condomínios e construtoras</li>
+              <li>Plataforma de gestão e prestação de contas para SPEs imobiliárias</li>
+            </ul>
+          </div>
+
+          <div class="opp-card reveal">
+            <h3>Governo e GovTech <span class="opp-count">5</span></h3>
+            <ul>
+              <li>Dashboard de inteligência em contratações públicas para órgãos de controle</li>
+              <li>Dashboard de gestão para órgãos licenciadores ambientais</li>
+              <li>Dashboard de inteligência tributária baseado em transações ITBI</li>
+              <li>Painel de alertas automáticos para auditoria de despesas e convênios</li>
+              <li>Ferramenta de diagnóstico profissional para agências de emprego</li>
+            </ul>
+          </div>
+
+          <div class="opp-card reveal">
+            <h3>Financeiro <span class="opp-count">4</span></h3>
+            <ul>
+              <li>Dashboard de risco geográfico para originação de crédito imobiliário</li>
+              <li>Plataforma de originação de crédito para fornecedores do governo</li>
+              <li>Motor de avaliação automatizada de garantias imobiliárias</li>
+              <li>Motor de avaliação de garantia veicular para plataformas de crédito</li>
+            </ul>
+          </div>
+
+          <div class="opp-card reveal">
+            <h3>Seguros <span class="opp-count">3</span></h3>
+            <ul>
+              <li>Plataforma de prospecção automatizada para corretoras de seguros corporativos</li>
+              <li>Ferramenta de precificação de seguro residencial baseada em dados reais</li>
+              <li>Calculadora de seguro auto com captura de lead e CRM integrado</li>
+            </ul>
+          </div>
+
+          <div class="opp-card reveal">
+            <h3>Energia e Infraestrutura <span class="opp-count">4</span></h3>
+            <ul>
+              <li>CRM de prospecção para distribuidoras de energia solar</li>
+              <li>Plataforma de gestão e billing para usinas de geração distribuída</li>
+              <li>Dashboard de inadimplência e receita para comercializadoras de energia</li>
+              <li>Painel de performance operacional para portfólios de usinas solares</li>
+            </ul>
+          </div>
+
+          <div class="opp-card reveal">
+            <h3>Construção Civil <span class="opp-count">3</span></h3>
+            <ul>
+              <li>Radar de oportunidades de licitações de obras públicas</li>
+              <li>Dashboard de controle de custos e avanço físico-financeiro de obras</li>
+              <li>Sistema de rateio e prestação de contas para condomínios</li>
+            </ul>
+          </div>
+
+          <div class="opp-card reveal">
+            <h3>Jurídico e Compliance <span class="opp-count">4</span></h3>
+            <ul>
+              <li>Pesquisa e análise de precedentes para litígios ambientais</li>
+              <li>Auditoria financeira para litígios condominiais e de incorporação</li>
+              <li>Dashboard de due diligence de fornecedores e risco reputacional</li>
+              <li>Monitoramento de compliance ambiental para portfólios ESG</li>
+            </ul>
+          </div>
+
+          <div class="opp-card reveal">
+            <h3>Mineração e Meio Ambiente <span class="opp-count">3</span></h3>
+            <ul>
+              <li>Plataforma de due diligence ambiental para projetos de mineração</li>
+              <li>Automação de conciliação financeira para locadores rurais</li>
+              <li>Avaliação e comparação de propriedades rurais para investimento</li>
+            </ul>
+          </div>
+
+          <div class="opp-card reveal">
+            <h3>Educação e RH <span class="opp-count">4</span></h3>
+            <ul>
+              <li>Plataforma de cursos práticos de análise de dados com casos reais</li>
+              <li>Módulo de empregabilidade integrado a plataformas de ensino</li>
+              <li>Análise e otimização de currículos para consultorias de carreira</li>
+              <li>API de scoring e triagem automatizada de currículos para ATS</li>
+            </ul>
+          </div>
+
+          <div class="opp-card reveal">
+            <h3>Saúde, Varejo e Alimentação <span class="opp-count">3</span></h3>
+            <ul>
+              <li>CRM de prospecção para vendedores de insumos e equipamentos de saúde</li>
+              <li>Ferramenta de geoexpansão para abertura de novas unidades de varejo</li>
+              <li>CRM de prospecção para distribuidoras de alimentos e bebidas</li>
+            </ul>
+          </div>
+
+          <div class="opp-card reveal">
+            <h3>Automotivo <span class="opp-count">1</span></h3>
+            <ul>
+              <li>Ferramenta white-label de avaliação e captação de veículos para concessionárias</li>
+            </ul>
+          </div>
+
+          <div class="opp-card reveal">
+            <h3>Jornalismo e Transparência <span class="opp-count">1</span></h3>
+            <ul>
+              <li>Ferramenta de investigação de dados com alertas e visualizações para publicação</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======== FOOTER ======== -->
+  <footer class="site-footer" id="contato">
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <p class="footer-cta">Tem um desafio parecido?</p>
+          <p class="footer-text">Conte o problema, os dados disponíveis e o prazo. Respondemos em 24h com uma proposta objetiva.</p>
+        </div>
+        <div>
+          <div class="footer-contacts">
+            <!-- TODO: Replace with real WhatsApp number -->
+            <a href="https://wa.me/5511999999999?text=Ol%C3%A1%2C%20vi%20o%20portf%C3%B3lio%20da%20AI%20Ventures%20e%20gostaria%20de%20conversar" class="btn-whatsapp">WhatsApp</a>
+            <!-- TODO: Replace with real email -->
+            <a href="mailto:contato@aiventures.com.br" class="btn-email">Email</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2026 AI Ventures</p>
+        <nav class="footer-nav" aria-label="Links do rodapé">
+          <a href="#topo">Topo</a>
+          <a href="#projetos">Projetos</a>
+          <a href="#oportunidades">Oportunidades</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======== MINIMAL JS: scroll reveal + sticky nav ======== -->
+  <script>
+    // Scroll-triggered reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => revealObserver.observe(el));
+
+    // Sticky nav
+    const stickyNav = document.querySelector('.sticky-nav');
+    const header = document.querySelector('.site-header');
+    const navObserver = new IntersectionObserver(([entry]) => {
+      stickyNav.classList.toggle('visible', !entry.isIntersecting);
+    }, { threshold: 0 });
+    navObserver.observe(header);
+  </script>
+
+</body>
+</html>

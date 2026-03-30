@@ -1,0 +1,961 @@
+[
+  {
+    "projeto": {
+      "nome": "FloridaFlip",
+      "slug": "florida-flip",
+      "descricao_curta": "Inteligência imobiliária para investidores no mercado da Flórida com 2.1M+ propriedades",
+      "problema_que_resolve": "Investidores imobiliários perdem horas cruzando dados de dezenas de fontes públicas para encontrar boas oportunidades. O FloridaFlip agrega tudo — avaliações, vendas, aluguéis, risco de enchente, seguros — em um painel único com sinais automáticos de oportunidade.",
+      "funcionalidades_principais": [
+        "Mapa interativo dos 67 condados com choropleth por métrica (preço, estoque, dias no mercado)",
+        "Busca em 2.1M propriedades via DuckDB/Parquet com filtros e sinais automáticos (high yield, below assessed, regra dos 70%)",
+        "Calculadora de flip/hold/BRRRR com custos de fechamento e seguro específicos da legislação da Flórida",
+        "Scoring multidimensional de submercados por ZIP code (9 dimensões: vacância, qualidade do inquilino, yield, risco)",
+        "Dashboard executivo com KPIs, tendências, comparação entre condados e geração de relatório PDF"
+      ],
+      "stack": [
+        "Next.js 16",
+        "React 19",
+        "TypeScript",
+        "DuckDB",
+        "Apache Parquet",
+        "Google Maps API",
+        "Tailwind CSS v4",
+        "shadcn/ui",
+        "Recharts",
+        "jsPDF",
+        "Python",
+        "Vercel"
+      ],
+      "tipo": "Dashboard de dados / Ferramenta de inteligência de mercado",
+      "url_deploy": "https://florida-flip.vercel.app",
+      "url_repo": "https://github.com/jpvss/florida-flip"
+    },
+    "capacidades_demonstradas": [
+      "Ingestão e normalização de dados públicos heterogêneos (FDOR, FEMA, Census ACS, Redfin) em pipeline Python reproduzível",
+      "Consultas analíticas sobre milhões de registros no browser e servidor usando DuckDB + Parquet sem banco de dados externo",
+      "Modelagem financeira domain-specific com regras regulatórias locais (seguro FL, custos de fechamento OIR, NFIP)",
+      "Visualização geoespacial interativa com polígonos, choropleth e drill-down por região",
+      "Scoring multidimensional com pesos configuráveis para ranqueamento e tomada de decisão"
+    ],
+    "oportunidades": [
+      {
+        "segmento": "Imobiliário / Incorporadoras",
+        "projeto_tipo": "Painel de inteligência territorial para prospecção de terrenos e lançamentos",
+        "dor_do_cliente": "Incorporadoras de médio porte gastam semanas com consultores para mapear regiões viáveis para novos empreendimentos, cruzando manualmente dados de zoneamento, renda, concorrência e infraestrutura. Quem chega primeiro na região certa leva a melhor margem.",
+        "dados_disponiveis_br": [
+          "IBGE Censo 2022 e PNAD — renda domiciliar, densidade, crescimento populacional por setor censitário",
+          "Prefeituras via GeoSampa, IPTU-SP, etc. — zoneamento, valor venal, uso do solo",
+          "INCC/FGV e CUB/Sinduscon — custos de construção regionalizados",
+          "Registros de incorporação no RI (Registro de Imóveis) — lançamentos recentes por região",
+          "CAGED/MTE — geração de emprego formal por município (proxy de demanda)"
+        ],
+        "tempo_estimado_mvp": "3-4 semanas",
+        "faixa_de_preco": "R$ 40k-80k"
+      },
+      {
+        "segmento": "Financeiro / Fintechs de crédito",
+        "projeto_tipo": "Dashboard de risco geográfico para originação de crédito imobiliário e consignado",
+        "dor_do_cliente": "Fintechs de crédito precisam avaliar risco de inadimplência e valor de garantia por região antes de aprovar operações. Hoje dependem de bureaus caros ou análises manuais. Um painel visual com scoring por município reduz tempo de aprovação e inadimplência.",
+        "dados_disponiveis_br": [
+          "BCB/SCR — indicadores de inadimplência por município (dados agregados públicos)",
+          "IBGE — renda, escolaridade, desemprego por microrregião",
+          "FIPE/ZAP — índice de preços de imóveis por cidade e bairro",
+          "DataSUS/CNES — proxy de infraestrutura local (presença de serviços)",
+          "Portal da Transparência / SICONFI — saúde fiscal dos municípios"
+        ],
+        "tempo_estimado_mvp": "3-4 semanas",
+        "faixa_de_preco": "R$ 35k-60k"
+      },
+      {
+        "segmento": "Agronegócio / Fundos de terras",
+        "projeto_tipo": "Plataforma de avaliação e comparação de propriedades rurais para investimento",
+        "dor_do_cliente": "Fundos de investimento em terras e produtores em expansão avaliam propriedades com planilhas e visitas presenciais. Não têm visão consolidada de produtividade histórica, risco climático e preço por hectare da região. Decisão de compra de R$ 5-50M é tomada com dados fragmentados.",
+        "dados_disponiveis_br": [
+          "INCRA/SNCR — cadastro de imóveis rurais, área, classificação",
+          "SICAR/CAR — Cadastro Ambiental Rural com geometria de propriedades",
+          "Conab — produtividade agrícola por município e cultura",
+          "INMET/ANA — dados climáticos e pluviométricos históricos por estação",
+          "IEA-SP, CEPEA/Esalq — preços de terras por região e tipo de uso"
+        ],
+        "tempo_estimado_mvp": "4-5 semanas",
+        "faixa_de_preco": "R$ 50k-90k"
+      },
+      {
+        "segmento": "Varejo / Redes em expansão",
+        "projeto_tipo": "Ferramenta de geoexpansão para abertura de novas unidades",
+        "dor_do_cliente": "Redes de varejo, franquias e farmácias decidem onde abrir a próxima loja com base em intuição do diretor comercial e dados genéricos do IBGE. Uma análise errada significa R$ 200-500k jogados fora em ponto comercial que não performa. Precisam cruzar fluxo, renda, concorrência e saturação por CEP.",
+        "dados_disponiveis_br": [
+          "IBGE/POF e Censo — renda, consumo, densidade por setor censitário",
+          "RAIS/CAGED — concentração de empresas por CNAE e município",
+          "CNPJ abertos na Receita Federal — mapeamento de concorrentes ativos por CEP",
+          "Google Places API — presença e avaliação de concorrentes por categoria",
+          "Dados de mobilidade (Waze/Google) — fluxo de tráfego em vias comerciais"
+        ],
+        "tempo_estimado_mvp": "3-4 semanas",
+        "faixa_de_preco": "R$ 30k-60k"
+      }
+    ]
+  },
+  {
+    "projeto": {
+      "nome": "LicitaLeads",
+      "slug": "licitaleads",
+      "descricao_curta": "Inteligência comercial para corretores de seguro garantia a partir de licitações públicas",
+      "problema_que_resolve": "Corretores de seguro garantia perdem horas vasculhando o PNCP manualmente para encontrar contratos que precisam de garantia. O LicitaLeads ingere, enriquece e pontua automaticamente ~23K contratos públicos, entregando leads priorizados com dados de contato e estimativa de comissão.",
+      "funcionalidades_principais": [
+        "Pipeline de ingestão de contratos da API PNCP com enriquecimento via BrasilAPI (CNPJ, telefone, email, QSA) e checagem de inidoneidade via CEIS/CNEP",
+        "Scoring composto 0-100 com 4 dimensões (valor, recência, contato, categoria) e classificação em tiers A/B/C com estimativa de garantia",
+        "Dashboard com 11 filtros combinados (UF, tier, valor, período, CNAE, porte, fase, tipo contrato, categoria, contato, busca textual) e KPIs em tempo real",
+        "Ações rápidas por lead: WhatsApp pré-preenchido, ligar, email, copiar resumo, links diretos ao PNCP e sistema de origem",
+        "Calculadora interativa de comissão com sliders de taxa de seguro e percentual do corretor, exportação CSV com 31 colunas"
+      ],
+      "stack": [
+        "Next.js 16",
+        "React 19",
+        "TypeScript",
+        "Tailwind CSS v4",
+        "shadcn/ui",
+        "Zod 4",
+        "Lucide React",
+        "Resend",
+        "tsx",
+        "Vercel"
+      ],
+      "tipo": "SaaS / Ferramenta de sales intelligence",
+      "url_deploy": "https://licitaleads.vercel.app",
+      "url_repo": "https://github.com/jpvss/licitaleads"
+    },
+    "capacidades_demonstradas": [
+      "Ingestão e normalização de dados governamentais heterogêneos (PNCP, BrasilAPI, Portal da Transparência) com pipeline idempotente e circuit breaker",
+      "Scoring domain-specific com modelagem de regras regulatórias do mercado de seguro garantia brasileiro (Lei 14.133, percentuais de garantia por categoria)",
+      "Enriquecimento automatizado de dados empresariais (CNPJ → razão social, telefone, email, QSA, CNAE, porte, capital social) com rate limiting e resume-safety",
+      "Construção de produto B2B data-driven com zero infraestrutura (static JSON, sem banco de dados, Vercel free tier) para validação rápida de mercado",
+      "UI de alta densidade informacional com filtros compostos, ações contextuais e exportação estruturada para workflow de vendas"
+    ],
+    "oportunidades": [
+      {
+        "segmento": "Seguros / Corretoras e seguradoras",
+        "projeto_tipo": "Plataforma de prospecção automatizada para corretoras de seguros corporativos",
+        "dor_do_cliente": "Corretoras de seguros corporativos (não só garantia — também RC, engenharia, transporte) dependem de relacionamento e indicação para gerar novos negócios. Não têm visibilidade sobre contratos públicos recém-assinados que obrigatoriamente precisam de cobertura. Perdem oportunidades todo dia para concorrentes mais rápidos.",
+        "dados_disponiveis_br": [
+          "PNCP (Portal Nacional de Contratações Públicas) — todos os contratos públicos federais, estaduais e municipais aderentes",
+          "BrasilAPI / Receita Federal — dados cadastrais de CNPJ (contato, porte, CNAE, QSA)",
+          "Portal da Transparência / CGU — CEIS e CNEP (cadastro de empresas inidôneas e punidas)",
+          "SUSEP — dados de prêmios e sinistros por seguradora e ramo (séries históricas)"
+        ],
+        "tempo_estimado_mvp": "2-3 semanas",
+        "faixa_de_preco": "R$ 25k-45k"
+      },
+      {
+        "segmento": "Governo / GovTech",
+        "projeto_tipo": "Dashboard de inteligência em contratações públicas para órgãos de controle",
+        "dor_do_cliente": "Tribunais de Contas e controladorias internas não conseguem monitorar em tempo real o volume de contratações. Precisam cruzar dados de licitações com cadastros de inidoneidade, verificar superfaturamento e mapear fornecedores recorrentes. Hoje fazem isso manualmente em auditorias pontuais — a fraude já aconteceu.",
+        "dados_disponiveis_br": [
+          "PNCP — licitações, contratos, atas de registro de preços com valores e fornecedores",
+          "Portal da Transparência / CGU — CEIS, CNEP, acordos de leniência",
+          "Receita Federal — vínculos societários (QSA) para detectar empresas do mesmo grupo",
+          "TCU / e-Contas — dados de prestação de contas e julgamentos"
+        ],
+        "tempo_estimado_mvp": "3-4 semanas",
+        "faixa_de_preco": "R$ 40k-70k"
+      },
+      {
+        "segmento": "Construção Civil / Construtoras de médio porte",
+        "projeto_tipo": "Radar de oportunidades de licitações de obras públicas",
+        "dor_do_cliente": "Construtoras de médio porte participam de licitações mas não têm equipe dedicada para monitorar editais diariamente nos 5.570 municípios. Perdem prazos de propostas e deixam de participar de obras que caberiam no seu perfil técnico. Cada licitação perdida pode representar R$ 1-50M em faturamento.",
+        "dados_disponiveis_br": [
+          "PNCP — editais de obras e serviços de engenharia com valores estimados, prazos e documentos",
+          "ComprasNet / Compras.gov.br — pregões e concorrências do governo federal",
+          "Diários Oficiais (DOU, DOE, DOM) — publicações de editais não integrados ao PNCP",
+          "SICRO/SINAPI (DNIT/Caixa) — tabelas de custos referenciais de obras públicas"
+        ],
+        "tempo_estimado_mvp": "2-3 semanas",
+        "faixa_de_preco": "R$ 20k-40k"
+      },
+      {
+        "segmento": "Financeiro / Bancos e factorings",
+        "projeto_tipo": "Plataforma de originação de crédito para fornecedores do governo",
+        "dor_do_cliente": "Bancos e factorings querem antecipar recebíveis de contratos públicos mas não sabem quais empresas acabaram de assinar contratos grandes. Hoje dependem de indicação. Um feed de contratos recém-assinados com scoring de crédito do fornecedor (porte, capital social, inidoneidade) reduz custo de originação e acelera pipeline.",
+        "dados_disponiveis_br": [
+          "PNCP — contratos assinados com valor, vigência, parcelas e fornecedor identificado por CNPJ",
+          "BrasilAPI / Receita Federal — capital social, porte, situação cadastral, tempo de abertura",
+          "Portal da Transparência — CEIS/CNEP para risco de compliance",
+          "BCB — dados agregados de crédito por segmento (SCR público)",
+          "SIAFI / Tesouro Gerencial — cronograma de pagamentos do governo federal"
+        ],
+        "tempo_estimado_mvp": "3-4 semanas",
+        "faixa_de_preco": "R$ 35k-60k"
+      }
+    ]
+  },
+  {
+    "projeto": {
+      "nome": "Kiiry Dashboard",
+      "slug": "kiiry-dashboard",
+      "descricao_curta": "Plataforma de gestão financeira e relatórios para investidores de usinas solares",
+      "problema_que_resolve": "Donos de usinas solares distribuídas no Brasil precisam prestar contas mensais a investidores sobre energia compensada, receitas e pagamentos. Hoje esse processo é manual, com planilhas cruzando dados da CEMIG e da plataforma de billing (Cogni), sujeito a erros que afetam pagamentos reais a locadores e investidores.",
+      "funcionalidades_principais": [
+        "Relatório mensal por usina com balanço de recebimento por UC (unidade consumidora), incluindo energia compensada, tarifas, receita locador e status de pagamento",
+        "Pipeline de cálculo financeiro automatizado: ingestão de Excel (CEMIG + Cogni), cálculo de tarifa compensável dinâmica (GD I/II), classificação de inadimplência e geração de totais",
+        "Dashboard gerencial multi-usina com KPIs (receita total, inadimplência %, energia injetada) e matriz MBR de todas as plantas × períodos",
+        "Geração de PDF via WeasyPrint para relatórios de investidores e comissões de vendedores com auditoria embutida",
+        "Trilha de auditoria completa: tooltips com fórmulas, JSON de auditoria por usina/mês, e painel de auditoria com diff entre valores Cogni e calculados"
+      ],
+      "stack": [
+        "Python 3.13",
+        "Flask",
+        "Gunicorn",
+        "Pandas",
+        "Pydantic v2",
+        "Jinja2",
+        "WeasyPrint",
+        "Tailwind CSS",
+        "Babel",
+        "structlog",
+        "TOML",
+        "Railway"
+      ],
+      "tipo": "Ferramenta interna / Plataforma de reporting financeiro",
+      "url_deploy": "https://web-production-175e67.up.railway.app",
+      "url_repo": "https://github.com/jpvss/kiiry-dashboard"
+    },
+    "capacidades_demonstradas": [
+      "Modelagem financeira domain-specific com regras regulatórias do setor elétrico brasileiro (tarifas CEMIG, compensação GD I/II, PIS/COFINS, ICMS, Fio B)",
+      "Pipeline de ETL robusto para dados heterogêneos de múltiplas fontes (Excel CEMIG multi-aba, Cogni Faturas/Boletos/UCs) com normalização, aliasing e validação cruzada",
+      "Geração de documentos financeiros auditáveis com rastreabilidade completa de cada cálculo (fórmulas, fontes, arredondamento) — compliance-ready",
+      "Arquitetura serverless-friendly com cache em memória, zero banco de dados e deploy contínuo via git push (Railway)",
+      "Gestão de status de pagamento multi-estado (PAGO, Inadimplente, Em Aberto, Não Emitido, Inadimplente Anterior) com regras de negócio específicas do setor de energia solar"
+    ],
+    "oportunidades": [
+      {
+        "segmento": "Energia Solar / Integradores e gestoras de usinas GD",
+        "projeto_tipo": "Plataforma white-label de gestão e billing para usinas de geração distribuída",
+        "dor_do_cliente": "Gestoras de usinas solares GD com 5-50 plantas gerenciam billing de centenas de UCs com planilhas manuais, correndo risco de erro em pagamentos a locadores e investidores. Uma fatura errada gera risco jurídico e perda de confiança do investidor. Precisam de automação que entenda as regras regulatórias da ANEEL e da distribuidora local.",
+        "dados_disponiveis_br": [
+          "ANEEL/SIGA — cadastro de usinas de geração distribuída (potência, localização, distribuidora)",
+          "Distribuidoras (CEMIG, Enel, CPFL, etc.) — relatórios de compensação de energia por UC (via portal do cliente ou API quando disponível)",
+          "Cogni, SolarZ, SunHub — plataformas de billing solar com exportação de dados em Excel/CSV",
+          "CCEE — dados de geração e compensação para empreendimentos registrados"
+        ],
+        "tempo_estimado_mvp": "4-5 semanas",
+        "faixa_de_preco": "R$ 50k-90k"
+      },
+      {
+        "segmento": "Contabilidade / Escritórios que atendem agro e energia",
+        "projeto_tipo": "Automação de conciliação financeira e geração de notas de débito para locadores rurais",
+        "dor_do_cliente": "Escritórios de contabilidade que atendem fazendas com usinas solares fazem conciliação manual entre o que a distribuidora compensou, o que o billing cobrou e o que o locador deve receber. Um erro de R$ 200 no aluguel vira problema tributário. Precisam de reconciliação automática com trilha de auditoria para o contador assinar.",
+        "dados_disponiveis_br": [
+          "NFe/NFSe via API da prefeitura ou SEFAZ — notas emitidas contra a usina",
+          "Distribuidoras — relatórios de compensação mensal por UC",
+          "Plataformas de billing solar — faturas emitidas e status de pagamento",
+          "Receita Federal — situação cadastral e regime tributário do locador"
+        ],
+        "tempo_estimado_mvp": "3-4 semanas",
+        "faixa_de_preco": "R$ 30k-50k"
+      },
+      {
+        "segmento": "Utilities / Concessionárias e cooperativas de energia",
+        "projeto_tipo": "Dashboard de monitoramento de inadimplência e receita para comercializadoras de energia",
+        "dor_do_cliente": "Comercializadoras de energia no mercado livre e cooperativas de eletrificação rural não têm visibilidade consolidada de inadimplência por cliente, região e safra. O ciclo de billing é mensal e complexo (múltiplas tarifas, bandeiras, compensações). Cobranças atrasadas viram perda de caixa que compromete a operação inteira.",
+        "dados_disponiveis_br": [
+          "CCEE — dados de liquidação e contabilização do mercado de energia",
+          "ANEEL/SAMP — tarifas vigentes por distribuidora, classe e subgrupo",
+          "ONS — dados de geração, carga e intercâmbio do SIN (Sistema Interligado Nacional)",
+          "EPE — projeções de demanda e estudos de planejamento energético"
+        ],
+        "tempo_estimado_mvp": "3-4 semanas",
+        "faixa_de_preco": "R$ 40k-70k"
+      },
+      {
+        "segmento": "Fundos de Investimento / FIPs e gestoras de ativos de infraestrutura",
+        "projeto_tipo": "Painel de performance operacional e financeira para portfólios de usinas solares",
+        "dor_do_cliente": "Gestoras de fundos com R$ 50-500M alocados em usinas solares recebem reports mensais em PDF de cada SPE, sem consolidação nem padronização. Não sabem em tempo real qual usina está subperformando, qual tem inadimplência crescente ou qual locador está com pagamento atrasado. Decisão de desinvestimento é tomada com 2-3 meses de atraso informacional.",
+        "dados_disponiveis_br": [
+          "ANEEL/SIGA — potência instalada, data de operação, localização de cada usina",
+          "ONS/INMET — irradiação solar histórica e projeção por localidade para benchmark de geração",
+          "CVM — demonstrações financeiras de FIPs e FI-Infra com exposição a energia",
+          "CCEE — dados de geração real vs estimada para usinas registradas"
+        ],
+        "tempo_estimado_mvp": "4-6 semanas",
+        "faixa_de_preco": "R$ 60k-120k"
+      }
+    ]
+  },
+  {
+    "projeto": {
+      "nome": "LicenciaMiner",
+      "slug": "licenciaminer",
+      "descricao_curta": "Inteligência de licenciamento ambiental minerário com dados de 14 fontes oficiais",
+      "problema_que_resolve": "Consultorias ambientais e mineradoras gastam semanas pesquisando manualmente portais de IBAMA, ANM e SEMAD para avaliar viabilidade de licenciamento. O LicenciaMiner cruza automaticamente 14 fontes públicas — licenças, infrações, royalties, concessões, restrições espaciais — e entrega dossiês por empresa com taxa de aprovação, risco e casos similares.",
+      "funcionalidades_principais": [
+        "Pipeline de coleta automatizada de 14 fontes: IBAMA SISLIC, ANM SIGMINE/SCM/CFEM/RAL, SEMAD-MG (scraping), COPAM, ANA Outorgas, Receita Federal (CNPJ), dados geoespaciais (UCs, TIs, biomas, cavernas)",
+        "Dashboard analítico com 7 abas: visão geral, exploração de dados, consulta por CNPJ, análise de decisões, concessões, mapa geoespacial e prospecção de oportunidades",
+        "Dossiê de inteligência por CNPJ: perfil da empresa, histórico de decisões, infrações IBAMA, royalties CFEM, taxa de aprovação comparada e casos similares",
+        "Mapa interativo com polígonos de concessões ANM, camadas de UCs/TIs e detecção de sobreposições espaciais",
+        "Geração de relatório PDF profissional com análise de risco, 8 seções e rastreabilidade total à fonte original"
+      ],
+      "stack": [
+        "Python 3.11",
+        "Streamlit",
+        "DuckDB",
+        "Apache Parquet",
+        "Pandas",
+        "Plotly",
+        "Folium",
+        "GeoPandas",
+        "Shapely",
+        "httpx",
+        "Click",
+        "fpdf2",
+        "PyMuPDF",
+        "Anthropic SDK",
+        "Tenacity"
+      ],
+      "tipo": "Dashboard de dados / Ferramenta de inteligência regulatória",
+      "url_deploy": null,
+      "url_repo": "https://github.com/jpvss/licenciaminer"
+    },
+    "capacidades_demonstradas": [
+      "Ingestão e normalização de dados públicos heterogêneos de 14 fontes simultâneas (APIs REST, ArcGIS, Excel, scraping HTML, shapefiles, PDFs) com retry, rate limiting e coleta incremental",
+      "Análise geoespacial com spatial joins entre polígonos de concessões minerárias e áreas de restrição ambiental (UCs, TIs, biomas, cavernas) usando GeoPandas/Shapely",
+      "Modelagem de risco regulatório domain-specific com cruzamento de dados ambientais, minerários e cadastrais por CNPJ — incluindo taxa de aprovação, reincidência de infrações e padrões de decisão por regional/atividade",
+      "Arquitetura analítica DuckDB/Parquet com views materializadas sobre 12 datasets, queries cross-source por CNPJ e caching Streamlit para performance em container de 1GB",
+      "Extração e processamento de documentos regulatórios: scraping de pareceres COPAM, download e OCR de PDFs de decisões SEMAD, enriquecimento cadastral via Receita Federal"
+    ],
+    "oportunidades": [
+      {
+        "segmento": "Mineração / Consultorias ambientais e mineradoras de médio porte",
+        "projeto_tipo": "Plataforma de due diligence ambiental para projetos de mineração",
+        "dor_do_cliente": "Mineradoras de médio porte gastam R$ 50-200k e 3-6 meses em estudos de viabilidade ambiental antes de investir em novos projetos. Não sabem de antemão se o órgão licenciador da região tem histórico de deferir aquele tipo de atividade, se há sobreposição com UCs/TIs, ou se empresas similares tiveram problemas. Decisão de investimento de R$ 5-50M é tomada sem dados comparativos.",
+        "dados_disponiveis_br": [
+          "IBAMA/SISLIC — licenças ambientais emitidas por atividade, empreendedor e localização",
+          "ANM/SIGMINE — processos minerários ativos com geometria e fase (ArcGIS FeatureServer)",
+          "ANM/SCM — concessões de lavra, licenciamento, PLG com titular e substância",
+          "SEMAD-MG e órgãos estaduais — decisões de licenciamento com resultado (deferido/indeferido)",
+          "ICMBio/FUNAI/IBGE — unidades de conservação, terras indígenas e biomas com geometria"
+        ],
+        "tempo_estimado_mvp": "3-4 semanas",
+        "faixa_de_preco": "R$ 40k-70k"
+      },
+      {
+        "segmento": "ESG / Consultorias e gestoras de ativos com mandato ESG",
+        "projeto_tipo": "Plataforma de monitoramento de compliance ambiental para portfólios de investimento",
+        "dor_do_cliente": "Gestoras de fundos e bancos com políticas ESG precisam monitorar se empresas do portfólio têm passivos ambientais (infrações IBAMA, licenças vencidas, áreas embargadas). Hoje dependem de self-reporting das empresas ou auditorias anuais caras. Um evento ambiental não detectado (como Mariana/Brumadinho) pode destruir o valor do investimento.",
+        "dados_disponiveis_br": [
+          "IBAMA — autos de infração ambientais com valor, tipificação e empresa (dados abertos)",
+          "IBAMA — áreas embargadas por desmatamento ilegal com geolocalização",
+          "ICMBio — cadastro de unidades de conservação e zonas de amortecimento",
+          "SEMAD-MG e órgãos estaduais — decisões de licenciamento por CNPJ",
+          "CVM — demonstrações financeiras e relatórios de sustentabilidade de companhias abertas"
+        ],
+        "tempo_estimado_mvp": "3-4 semanas",
+        "faixa_de_preco": "R$ 45k-80k"
+      },
+      {
+        "segmento": "Governo / Órgãos ambientais estaduais e municipais",
+        "projeto_tipo": "Dashboard de gestão e analytics para órgãos licenciadores ambientais",
+        "dor_do_cliente": "Órgãos ambientais estaduais processam milhares de pedidos de licenciamento por ano sem visibilidade analítica: não sabem o tempo médio de análise por tipo, qual regional tem mais backlog, ou se estão deferindo proporcionalmente mais que outros estados. Pressão política e do Ministério Público por transparência e agilidade é crescente.",
+        "dados_disponiveis_br": [
+          "Dados internos do órgão — sistema de tramitação de processos (SIAM, SINAFLOR, etc.)",
+          "IBAMA/SISLIC — benchmark de licenciamento federal para comparação",
+          "ANM — processos minerários que geram demanda de licenciamento ambiental",
+          "IBGE — dados socioeconômicos dos municípios (proxy de pressão sobre meio ambiente)",
+          "MapBiomas — uso e cobertura do solo com séries históricas de desmatamento"
+        ],
+        "tempo_estimado_mvp": "4-5 semanas",
+        "faixa_de_preco": "R$ 50k-90k"
+      },
+      {
+        "segmento": "Jurídico / Escritórios de direito ambiental e minerário",
+        "projeto_tipo": "Ferramenta de pesquisa e análise de precedentes para litígios ambientais",
+        "dor_do_cliente": "Escritórios de direito ambiental precisam levantar histórico de decisões de licenciamento, infrações e condicionantes para defender ou processar empresas. Hoje fazem isso manualmente em portais desconectados (IBAMA, ANM, SEMAD, COPAM). Um levantamento completo para um caso pode levar 2-3 semanas de trabalho de estagiário. O cliente paga R$ 500-1500/hora e quer respostas rápidas.",
+        "dados_disponiveis_br": [
+          "IBAMA — autos de infração com tipificação, valor e status do processo administrativo",
+          "COPAM-MG — atas de reuniões com votos e pareceres técnicos sobre licenciamento",
+          "SEMAD-MG — decisões por número de processo, empreendedor, atividade e resultado",
+          "ANM — processos minerários com histórico de eventos e titular",
+          "JusBrasil / TJMG / TRFs — jurisprudência ambiental (via scraping ou API)"
+        ],
+        "tempo_estimado_mvp": "3-4 semanas",
+        "faixa_de_preco": "R$ 35k-60k"
+      }
+    ]
+  },
+  {
+    "projeto": {
+      "nome": "Leila do Leilão",
+      "slug": "leila-do-leilao",
+      "descricao_curta": "Inteligência em leilões de imóveis Caixa com desconto real calculado via dados ITBI de BH",
+      "problema_que_resolve": "Investidores em imóveis de leilão da Caixa Econômica não sabem se o desconto anunciado é real, porque a avaliação da Caixa não reflete o preço de mercado. O Leila cruza dados de transações ITBI reais (2008-2026) com o catálogo da Caixa, revelando o desconto verdadeiro e pontuando cada imóvel com um Deal Score multidimensional.",
+      "funcionalidades_principais": [
+        "Dashboard com KPIs, filtros interativos por modalidade/cidade/preço e ranking dos top 50 imóveis por Deal Score ou desconto",
+        "Tabela completa de imóveis MG com 14 colunas, 11 filtros combinados, score personalizado por perfil de investidor e exportação CSV",
+        "Mapa interativo Leaflet com marcadores por Deal Score, painel de detalhes flutuante, sidebar listável e filtros geográficos por região/cidade",
+        "Simulador financeiro completo: ROI, financiamento SAC, ITBI por município, custos de cartório, fluxo de caixa e calculadora de lance máximo via busca binária",
+        "Página de detalhe por imóvel com Street View, lugares próximos (Google Places), tempos de deslocamento, tendência do bairro (ITBI histórico) e flags de risco (gravame, vilas/favelas URBEL)"
+      ],
+      "stack": [
+        "Next.js 15",
+        "React 19",
+        "TypeScript",
+        "Tailwind CSS v4",
+        "Leaflet",
+        "React-Leaflet",
+        "DuckDB",
+        "Python 3.10+",
+        "Pandas",
+        "httpx",
+        "BeautifulSoup4",
+        "Pydantic v2",
+        "geopy",
+        "Google Maps API"
+      ],
+      "tipo": "Dashboard de dados / Ferramenta de inteligência imobiliária",
+      "url_deploy": null,
+      "url_repo": "https://github.com/jpvss/Leila-do-leilao"
+    },
+    "capacidades_demonstradas": [
+      "Cruzamento de datasets públicos heterogêneos (CSV Caixa, ITBI municipal, scraping de páginas de detalhe) para gerar insight que nenhuma fonte individual oferece — o desconto real vs mercado",
+      "Modelagem financeira domain-specific com regras do mercado imobiliário brasileiro (ITBI por município, financiamento SAC, FGTS, custos de cartório, comissão de leiloeiro)",
+      "Pipeline de dados Python modular com ingestão, enriquecimento, geocodificação e scoring — cada módulo roda standalone, exporta JSON estático para o frontend consumir",
+      "Visualização geoespacial interativa com dados classificados por scoring multidimensional (desconto, ocupação, modalidade, financiamento, confiança dos dados)",
+      "Personalização por perfil de usuário (orçamento, objetivo, tolerância a risco) com reweighting dinâmico de scores — sem backend, tudo client-side via localStorage"
+    ],
+    "oportunidades": [
+      {
+        "segmento": "Imobiliário / Assessorias de leilão e investidores",
+        "projeto_tipo": "Plataforma SaaS de inteligência para assessorias de leilão imobiliário",
+        "dor_do_cliente": "Assessorias de leilão que atendem 50-200 clientes investidores fazem triagem manual dos catálogos da Caixa, Banco do Brasil e leiloeiros privados. Não conseguem cruzar com preço real de mercado, perdem oportunidades diariamente e entregam análise superficial ao cliente. Quem oferece análise rápida e fundamentada fecha mais mandatos.",
+        "dados_disponiveis_br": [
+          "Caixa Econômica Federal — catálogos CSV diários de imóveis à venda por estado",
+          "Prefeitura de BH / ITBI — transações imobiliárias declaradas 2008-2026 com valor, bairro e tipologia",
+          "FipeZAP — índice de preços de venda e aluguel por cidade e bairro (cobertura nacional)",
+          "Cartórios de Registro de Imóveis — matrículas digitalizadas via SREI/ARISP (acesso variável por estado)",
+          "Banco do Brasil, EMGEA — catálogos de imóveis retomados (CSV/scraping)"
+        ],
+        "tempo_estimado_mvp": "2-3 semanas",
+        "faixa_de_preco": "R$ 25k-50k"
+      },
+      {
+        "segmento": "Financeiro / Fintechs de crédito imobiliário",
+        "projeto_tipo": "Motor de avaliação automatizada de garantias imobiliárias para originação de crédito",
+        "dor_do_cliente": "Fintechs que financiam compra de imóveis em leilão precisam avaliar o valor real da garantia antes de liberar crédito. Hoje dependem de laudos presenciais que custam R$ 800-2.000 e demoram 5-10 dias. Uma pré-avaliação automática baseada em ITBI real + comparáveis reduz custo de originação e acelera a decisão de crédito de 10 dias para horas.",
+        "dados_disponiveis_br": [
+          "ITBI municipal — transações reais declaradas por bairro, tipo e área (BH, SP, Curitiba, Recife têm dados abertos)",
+          "FipeZAP / DataZAP — preços de oferta e transação por bairro",
+          "IBGE Censo 2022 — renda domiciliar e infraestrutura por setor censitário",
+          "BCB/SCR — indicadores de inadimplência por município (dados agregados)"
+        ],
+        "tempo_estimado_mvp": "3-4 semanas",
+        "faixa_de_preco": "R$ 40k-70k"
+      },
+      {
+        "segmento": "Governo / Prefeituras e Secretarias de Fazenda",
+        "projeto_tipo": "Dashboard de inteligência tributária baseado em transações ITBI",
+        "dor_do_cliente": "Prefeituras arrecadam ITBI mas não exploram os dados para inteligência fiscal. Não sabem quais bairros estão com valorização atípica, não detectam subdeclaração de valor (evasão de ITBI) e não atualizam a planta genérica de valores com dados reais. Uma prefeitura de 500K+ habitantes pode recuperar R$ 5-20M/ano em ITBI subdeclarado.",
+        "dados_disponiveis_br": [
+          "Bases próprias de ITBI da prefeitura — todas as transações declaradas com valor, endereço e tipologia",
+          "Planta Genérica de Valores (PGV) — valor venal de referência por face de quadra",
+          "IPTU municipal — cadastro imobiliário com área, uso, padrão construtivo",
+          "Cartórios de RI — escrituras lavradas (via convênio SREI ou e-Protocolo)"
+        ],
+        "tempo_estimado_mvp": "3-4 semanas",
+        "faixa_de_preco": "R$ 50k-90k"
+      },
+      {
+        "segmento": "Seguros / Seguradoras patrimoniais",
+        "projeto_tipo": "Ferramenta de precificação de seguro residencial baseada em dados transacionais reais",
+        "dor_do_cliente": "Seguradoras patrimoniais precificam seguro residencial usando valor declarado pelo segurado ou tabela genérica (CUB + idade do imóvel). Isso gera subseguro ou sobreprecificação. Dados de transações ITBI reais por bairro permitem calibrar o valor de reconstrução/mercado com muito mais precisão, reduzindo sinistro e melhorando competitividade.",
+        "dados_disponiveis_br": [
+          "ITBI municipal — preço real de transação por tipologia e localização",
+          "CUB/Sinduscon — custo unitário básico de construção por estado e padrão",
+          "IBGE — características dos domicílios por setor censitário (material, cômodos, infraestrutura)",
+          "SUSEP — sinistralidade por ramo e região (dados agregados públicos)",
+          "Defesa Civil / CEMADEN — áreas de risco geológico e inundação por município"
+        ],
+        "tempo_estimado_mvp": "3-4 semanas",
+        "faixa_de_preco": "R$ 35k-60k"
+      }
+    ]
+  },
+  {
+    "projeto": {
+      "nome": "CEAP Dashboard — Transparência Parlamentar",
+      "slug": "ceap-deputy-expenses",
+      "descricao_curta": "Dashboard interativo que analisa R$ 686M em gastos parlamentares com detecção estatística de anomalias",
+      "problema_que_resolve": "Cidadãos, jornalistas e órgãos de controle não conseguem cruzar dados de despesas parlamentares (CEAP) com emendas orçamentárias para identificar padrões suspeitos. O dashboard aplica métodos estatísticos (Benford, HHI, mismatch de CNAE) sobre 660 mil+ transações e entrega sinais de risco prontos para investigação.",
+      "funcionalidades_principais": [
+        "Dashboard com visão geral de R$ 686M em gastos de 847 deputados com KPIs, filtros e ranking",
+        "Perfil individual de deputado com métricas de Benford, HHI, valores redondos e red flags automáticos",
+        "Análise de concentração de fornecedores (HHI) por categoria de despesa com drill-down",
+        "Spotlight investigativo com cruzamento CEAP × Emendas (caso Operação Overclean com pivot table interativa)",
+        "Detecção de mismatch CNAE: empresas recebendo por serviços fora da sua atividade econômica registrada",
+        "Pipeline de dados com coleta via API Dados Abertos, enriquecimento de CNPJ via OpenCNPJ/BrasilAPI, e armazenamento DuckDB",
+        "Análise por categoria de despesa (veículos, divulgação, combustível) com benchmarks estatísticos"
+      ],
+      "stack": [
+        "React 19",
+        "TypeScript",
+        "Vite",
+        "Tailwind CSS v4",
+        "D3.js",
+        "React Router v7",
+        "TanStack React Query",
+        "Zustand",
+        "Supabase",
+        "Cloudflare Pages",
+        "Cloudflare Workers (Functions)",
+        "Python",
+        "pandas",
+        "scipy",
+        "DuckDB",
+        "Jupyter Notebooks",
+        "Playwright (E2E)"
+      ],
+      "tipo": "Dashboard de dados / Ferramenta de transparência pública",
+      "url_deploy": "https://ceap.escoladados.com",
+      "url_repo": "https://github.com/jpvsalomao/CEAPDashboard"
+    },
+    "capacidades_demonstradas": [
+      "Ingestão massiva de dados governamentais heterogêneos via APIs públicas com normalização, deduplicação e enriquecimento (CNPJ, CNAE, nomes parlamentares)",
+      "Aplicação de métodos estatísticos de detecção de fraude em dados reais (Lei de Benford, Índice HHI, análise de valores redondos, mismatch de atividade econômica)",
+      "Cruzamento de bases de dados com schemas incompatíveis usando fuzzy matching de nomes e normalização de identificadores",
+      "Dashboard analítico com visualizações D3.js, feature flags para launch faseado, lazy loading e deploy em CDN global",
+      "Pipeline de dados reproduzível: coleta API → DuckDB → análise Python → JSON estático → frontend React — sem servidor backend"
+    ],
+    "oportunidades": [
+      {
+        "segmento": "Governo / Tribunais de Contas",
+        "projeto_tipo": "Painel de alertas automáticos para auditoria de despesas e convênios",
+        "dor_do_cliente": "Tribunais de Contas estaduais e municipais auditam manualmente milhares de prestações de contas por ano. Auditores gastam semanas cruzando planilhas para encontrar os mesmos padrões que métodos estatísticos detectam em segundos. Falta priorização: sem scoring de risco, o auditor trata todos os processos igualmente.",
+        "dados_disponiveis_br": [
+          "Portal da Transparência — emendas parlamentares, transferências, convênios (CSV, API)",
+          "API Dados Abertos da Câmara — CEAP, deputados, proposições, votações",
+          "ReceitaWS / BrasilAPI / OpenCNPJ — dados cadastrais de CNPJ e CNAE gratuitamente",
+          "SIAFI/SICONV (Portal de Convênios) — transferências voluntárias da União para municípios",
+          "TCE-SP/TCE-RJ/TCE-MG — dados abertos de contas municipais (formatos variam por estado)"
+        ],
+        "tempo_estimado_mvp": "4-6 semanas",
+        "faixa_de_preco": "R$ 50k-100k"
+      },
+      {
+        "segmento": "Jornalismo / Veículos de mídia investigativa",
+        "projeto_tipo": "Ferramenta de investigação de dados com alertas e visualizações prontas para publicação",
+        "dor_do_cliente": "Redações investigativas como Agência Pública, Metrópoles e veículos regionais não têm equipe técnica para cruzar bases de dados públicas sistematicamente. Dependem de denúncias pontuais em vez de monitoramento contínuo. Uma ferramenta que gera alertas de anomalias em gastos públicos automatiza a pauta investigativa.",
+        "dados_disponiveis_br": [
+          "Portal da Transparência — despesas, emendas, licitações, cartões corporativos",
+          "TSE — prestação de contas de campanha, doadores, fornecedores de campanha",
+          "Diários Oficiais (Querido Diário/OKBR) — publicações de licitações, nomeações, contratos",
+          "CEIS/CNEP (Portal da Transparência) — empresas e pessoas inidôneas/punidas"
+        ],
+        "tempo_estimado_mvp": "3-4 semanas",
+        "faixa_de_preco": "R$ 30k-60k"
+      },
+      {
+        "segmento": "Compliance / Empresas com contratos públicos",
+        "projeto_tipo": "Dashboard de due diligence de fornecedores e monitoramento de risco reputacional",
+        "dor_do_cliente": "Empresas que fornecem para o governo ou participam de licitações precisam fazer due diligence de parceiros e concorrentes, mas o processo é manual: consultar CNPJ, verificar se está em lista de inidôneos, checar sócios. Um dashboard que monitora automaticamente e alerta sobre vínculos suspeitos entre fornecedores e agentes públicos reduz risco de compliance.",
+        "dados_disponiveis_br": [
+          "ReceitaWS / BrasilAPI — quadro societário, CNAE, situação cadastral de CNPJs",
+          "CEIS/CNEP/CEPIM (CGU) — cadastro de empresas inidôneas e punidas",
+          "Portal de Compras (ComprasGov) — licitações, contratos, atas de registro de preço",
+          "TSE — doações de campanha por CNPJ (vínculo fornecedor-político)"
+        ],
+        "tempo_estimado_mvp": "3-5 semanas",
+        "faixa_de_preco": "R$ 35k-70k"
+      },
+      {
+        "segmento": "Educação / Plataformas de ensino de dados",
+        "projeto_tipo": "Plataforma de cursos práticos de análise de dados com casos reais de transparência pública",
+        "dor_do_cliente": "Cursos de análise de dados usam datasets genéricos (Iris, Titanic) que não preparam o aluno para a realidade do mercado. Profissionais de dados brasileiros precisam de casos com dados públicos reais, sujos e complexos — exatamente o que esse projeto oferece como material didático já estruturado (notebooks, métricas, pipeline).",
+        "dados_disponiveis_br": [
+          "Todos os datasets públicos já utilizados neste projeto (CEAP, Emendas, CNPJ) — prontos como material de aula",
+          "IBGE (Censo, PNAD, PIB municipal) — para exercícios complementares",
+          "INEP (Enem, Censo Escolar, IDEB) — datasets educacionais com alta demanda de análise"
+        ],
+        "tempo_estimado_mvp": "2-3 semanas",
+        "faixa_de_preco": "R$ 20k-40k"
+      }
+    ]
+  },
+  {
+    "projeto": {
+      "nome": "DeixaComigo",
+      "slug": "deixacomigo",
+      "descricao_curta": "Ferramenta de avaliação veicular que converte donos de carros em clientes de consignação",
+      "problema_que_resolve": "Donos de carros usados premium (R$ 60-120K+) são lowballados por lojistas que pagam 75-85% da FIPE. O DeixaComigo mostra a diferença concreta entre vender para o lojista e consignar — com dados da FIPE em tempo real — e captura o lead do vendedor automaticamente para o corretor de consignação.",
+      "funcionalidades_principais": [
+        "Motor de avaliação veicular com integração FIPE (Parallelum v2) e cache em Supabase, comparando estimativa de lojista vs. valor de mercado vs. líquido de consignação com faixas de preço",
+        "Algoritmo de precificação com 6 fatores calibrados (marca, idade, km, condição, demanda regional, comissão) e classificação de aptidão para consignação (ideal/viável/marginal)",
+        "Formulário mobile-first com seleção cascata marca → modelo → ano via API FIPE, input de km formatado e seleção de condição com micro-copy explicativo",
+        "Captura de lead integrada ao resultado da avaliação com persistência em Supabase e notificação por email (Resend) ao corretor contendo dados do veículo e avaliação completa",
+        "SEO técnico completo: sitemap.xml dinâmico, robots.txt, OpenGraph image gerado via JSX, Schema.org WebApplication, meta tags e canonical URLs"
+      ],
+      "stack": [
+        "Next.js 16",
+        "React 19",
+        "TypeScript",
+        "Supabase",
+        "Tailwind CSS v4",
+        "shadcn/ui",
+        "Zod 4",
+        "Resend",
+        "Anthropic SDK",
+        "Lucide React",
+        "Sonner",
+        "Vercel"
+      ],
+      "tipo": "Ferramenta de geração de leads / SaaS vertical automotivo",
+      "url_deploy": "https://deixacomigo.app",
+      "url_repo": "https://github.com/jpvss/DeixaComigo"
+    },
+    "capacidades_demonstradas": [
+      "Modelagem de precificação domain-specific com múltiplos fatores calibrados por pesquisa de mercado (tabela FIPE, spreads de lojista, depreciação por marca/idade/km) e guard rails contra overpromising",
+      "Integração com APIs externas de dados públicos (FIPE/Parallelum) com camada de cache inteligente em banco de dados, fallback gracioso e validação de dados",
+      "Funil de conversão completo — de ferramenta gratuita de valor a captura de lead qualificado com notificação automática — implementado como Server Actions com validação Zod",
+      "Infraestrutura de produto real com Supabase (PostgreSQL + RLS policies + migrations), autenticação, email transacional (Resend), e deploy em região GRU1 (São Paulo)",
+      "SEO técnico programático para geração de tráfego orgânico em escala: sitemap, robots, structured data, OpenGraph dinâmico, e arquitetura preparada para centenas de páginas de modelo/ano"
+    ],
+    "oportunidades": [
+      {
+        "segmento": "Automotivo / Concessionárias e revendas multimarca",
+        "projeto_tipo": "Ferramenta white-label de avaliação e captação de veículos para concessionárias",
+        "dor_do_cliente": "Concessionárias de médio porte (5-50 carros/mês) gastam R$ 3-8K/mês em classificados (OLX, Webmotors) e dependem do vendedor de balcão para avaliar troca e negociar. Perdem estoque para revendas concorrentes que fazem ofertas mais rápidas. Precisam de ferramenta digital que atraia donos de carros premium direto pelo Google e converta em avaliação presencial.",
+        "dados_disponiveis_br": [
+          "FIPE / Parallelum API — tabela de referência de preços por marca/modelo/ano atualizada mensalmente",
+          "DENATRAN/SENATRAN — base de veículos registrados por município (dados agregados públicos)",
+          "Webmotors/OLX — preços de anúncio por modelo/região (scraping ou data providers como DataZAP)",
+          "IBGE — frota veicular por município, renda e perfil de consumo regional"
+        ],
+        "tempo_estimado_mvp": "2-3 semanas",
+        "faixa_de_preco": "R$ 20k-40k"
+      },
+      {
+        "segmento": "Seguros / Corretoras de seguro auto",
+        "projeto_tipo": "Calculadora de seguro auto com captura de lead e CRM integrado",
+        "dor_do_cliente": "Corretoras de seguro auto de médio porte (200-2000 apólices) dependem de indicação e Google Ads caro (R$ 15-30 por clique em 'seguro auto') para gerar novos clientes. Não têm presença digital própria. Uma ferramenta de cotação gratuita embeddable que captura o lead antes de ele chegar na Porto/Azul reduziria CAC de R$ 150-300 para R$ 30-50.",
+        "dados_disponiveis_br": [
+          "SUSEP/SES — dados de prêmio médio, sinistralidade e frequência por modelo, região e perfil do segurado",
+          "FIPE — valor do veículo (base para cálculo de prêmio)",
+          "DENATRAN — índice de roubo/furto por modelo e região (proxy de risco)",
+          "IBGE/PNAD — dados demográficos do motorista (idade, sexo, renda) por microrregião"
+        ],
+        "tempo_estimado_mvp": "3-4 semanas",
+        "faixa_de_preco": "R$ 25k-50k"
+      },
+      {
+        "segmento": "Financeiro / Fintechs de crédito com garantia veicular",
+        "projeto_tipo": "Motor de avaliação de garantia veicular para plataformas de crédito",
+        "dor_do_cliente": "Fintechs de crédito com garantia de veículo (CGV) precisam avaliar o valor de mercado do carro em tempo real antes de aprovar a operação. Hoje usam a FIPE pura — que não reflete condição, km, nem liquidez regional — resultando em LTV mal calibrado. Uma avaliação que desconte idade, km e demanda regional reduz inadimplência e melhora a relação crédito/garantia.",
+        "dados_disponiveis_br": [
+          "FIPE / Parallelum API — preço de referência por marca/modelo/ano",
+          "DENATRAN — dados de transferência de propriedade (proxy de liquidez por modelo/região)",
+          "BCB/SCR — inadimplência em operações de crédito veicular por faixa de valor",
+          "DataZAP/Webmotors — preços praticados (asking price) por modelo e região"
+        ],
+        "tempo_estimado_mvp": "2-3 semanas",
+        "faixa_de_preco": "R$ 30k-55k"
+      },
+      {
+        "segmento": "Imobiliário / Imobiliárias e plataformas de locação",
+        "projeto_tipo": "Ferramenta de avaliação de imóvel com captura de lead para imobiliárias",
+        "dor_do_cliente": "Imobiliárias de médio porte em capitais brasileiras competem com QuintoAndar e Loft por proprietários que querem vender ou alugar. O proprietário não sabe quanto pedir e acaba nos grandes portais. Uma ferramenta 'quanto vale meu imóvel' com dados reais (IPTU, vendas recentes, índice FipeZAP) captura o lead antes da concorrência — o mesmo funil que funciona para carros.",
+        "dados_disponiveis_br": [
+          "FIPE/ZAP (FipeZAP) — índice de preço de venda e locação por cidade/bairro",
+          "Prefeituras (IPTU) — valor venal por logradouro (GeoSampa em SP, BHMap em BH, etc.)",
+          "Cartórios / ITBI — valores de transações imobiliárias registradas por região",
+          "IBGE Censo 2022 — domicílios, renda, aluguel médio por setor censitário"
+        ],
+        "tempo_estimado_mvp": "3-4 semanas",
+        "faixa_de_preco": "R$ 25k-50k"
+      }
+    ]
+  },
+  {
+    "projeto": {
+      "nome": "CV10x",
+      "slug": "cv10x",
+      "descricao_curta": "Analisador de currículo com IA que pontua, sugere melhorias e reescreve seções",
+      "problema_que_resolve": "Profissionais de dados no Brasil não sabem se o currículo está competitivo. Mandam candidaturas e não recebem retorno, sem entender por quê. O CV10x analisa o currículo em 5 dimensões, mostra exatamente o que melhorar, e no plano Pro reescreve cada seção com alternativas prontas para copiar e colar.",
+      "funcionalidades_principais": [
+        "Upload de currículo (PDF/DOCX/TXT) com extração de texto e análise por IA Claude em 5 dimensões (Técnico, Impacto, Estrutura, ATS, Narrativa) com score 0-100",
+        "Quick win gratuito com ação imediata de maior impacto, email gate para relatório completo com 8-15 sugestões priorizadas por dimensão",
+        "Relatório Pro pago (via Hotmart) com reescrita personalizada de seções do currículo (opções A/B/C), sumário profissional, análise de keywords ATS, preparação para entrevista e plano de ação",
+        "Sequência de nurture emails automatizada (E1-E5) com cron jobs via GitHub Actions, fila Redis com dedup, e tracking de conversão por etapa",
+        "Job matching automático para usuários Pro: busca de vagas via SerpAPI, pré-filtro heurístico e ranking por LLM com categorias (destaque/encaixe/próximo passo)"
+      ],
+      "stack": [
+        "Next.js 15",
+        "React 18",
+        "TypeScript",
+        "Tailwind CSS",
+        "Anthropic Claude API",
+        "Zod",
+        "Upstash Redis",
+        "Resend",
+        "@vercel/og",
+        "@vercel/analytics",
+        "Framer Motion",
+        "Hotmart",
+        "Meta CAPI",
+        "Google Ads",
+        "GitHub Actions",
+        "Vercel"
+      ],
+      "tipo": "SaaS / Produto digital B2C com monetização via infoproduto",
+      "url_deploy": "https://cv10x.escoladados.com",
+      "url_repo": "https://github.com/jpvss/CV10x"
+    },
+    "capacidades_demonstradas": [
+      "Integração avançada com LLM (Claude) usando structured output com Zod schemas, prompt engineering iterativo com cache de sistema, retries e timeout handling em produção",
+      "Arquitetura de produto B2C completa com funil de conversão: free tier → email gate → nurture sequence → upsell Pro → pagamento (Hotmart webhook) → entrega automática",
+      "Sistema de automação de marketing end-to-end: cron jobs serverless (GitHub Actions), fila de nurture em Redis com dedup por hash, batch email via Resend, tracking server-side (Meta CAPI + Google Ads) e UTM attribution",
+      "Geração dinâmica de imagens OG (share cards) via @vercel/og com múltiplos formatos (landscape, portrait, story, square) para compartilhamento em redes sociais",
+      "Operação de produto digital em produção com rate limiting por IP, limites mensais por email, retry queues para falhas, idempotência, e observabilidade via Vercel runtime logs"
+    ],
+    "oportunidades": [
+      {
+        "segmento": "RH / Consultorias de outplacement e recolocação",
+        "projeto_tipo": "Plataforma white-label de análise e otimização de currículos para consultorias de carreira",
+        "dor_do_cliente": "Consultorias de outplacement e recolocação atendem dezenas de profissionais simultaneamente e revisam currículos manualmente. Um consultor gasta 2-4 horas por currículo e consegue revisar 3-5 por dia. Com demissões em massa no setor de tech, a demanda explodiu mas o modelo manual não escala. Precisam de uma ferramenta que faça a análise inicial automatizada e deixe o consultor focado no coaching.",
+        "dados_disponiveis_br": [
+          "RAIS/CAGED — dados de movimentação formal por CNAE, cargo e município (proxy de demanda por recolocação)",
+          "LinkedIn Economic Graph (via API parceira) — tendências de contratação por setor e região",
+          "Glassdoor / Catho / Gupy — vagas abertas e requisitos por cargo (scraping ou API)",
+          "IBGE/PNAD — taxa de desemprego por escolaridade, idade e região"
+        ],
+        "tempo_estimado_mvp": "2-3 semanas",
+        "faixa_de_preco": "R$ 25k-45k"
+      },
+      {
+        "segmento": "Educação / EdTechs e bootcamps de tecnologia",
+        "projeto_tipo": "Módulo de empregabilidade integrado a plataformas de ensino online",
+        "dor_do_cliente": "Bootcamps e cursos online de dados/tech prometem empregabilidade mas não têm ferramenta objetiva para medir se o aluno está pronto para o mercado. A taxa de colocação é a métrica que vende novas turmas, mas hoje é medida manualmente meses depois. Um analisador de currículo integrado ao LMS mostra progresso real e identifica gaps antes do aluno se candidatar.",
+        "dados_disponiveis_br": [
+          "INEP/MEC — dados do Censo da Educação Superior por curso e instituição",
+          "CAGED — contratações por ocupação CBO para validar quais skills estão sendo demandadas",
+          "Plataformas de emprego (Gupy, LinkedIn, Catho) — requisitos técnicos por vaga (via scraping)",
+          "Stack Overflow Developer Survey Brasil — skills mais usadas e salários por senioridade"
+        ],
+        "tempo_estimado_mvp": "3-4 semanas",
+        "faixa_de_preco": "R$ 30k-55k"
+      },
+      {
+        "segmento": "Recrutamento / HRTechs e plataformas ATS",
+        "projeto_tipo": "API de scoring e triagem automatizada de currículos para plataformas de recrutamento",
+        "dor_do_cliente": "Plataformas ATS brasileiras (Gupy, Kenoby, Solides) recebem centenas de currículos por vaga e usam keyword matching básico para triagem. Recrutadores ainda gastam 30-60 segundos por currículo para filtrar os 80% que não se encaixam. Uma API de scoring multidimensional com feedback explicável reduz tempo de triagem e melhora qualidade dos candidatos shortlistados.",
+        "dados_disponiveis_br": [
+          "CBO (Classificação Brasileira de Ocupações) — descrições oficiais de cargos e competências por ocupação",
+          "CAGED — salários e contratações por CBO, CNAE e município",
+          "Vagas publicadas em portais brasileiros (Gupy, Catho, InfoJobs) — requisitos reais por cargo",
+          "IBGE/PNAD — perfil da força de trabalho por escolaridade, idade e área de atuação"
+        ],
+        "tempo_estimado_mvp": "3-4 semanas",
+        "faixa_de_preco": "R$ 35k-65k"
+      },
+      {
+        "segmento": "Governo / Programas públicos de empregabilidade",
+        "projeto_tipo": "Ferramenta de diagnóstico e orientação profissional para agências de emprego (SINE/PAT)",
+        "dor_do_cliente": "O SINE e postos do trabalhador atendem milhões de desempregados por ano com orientação genérica. Atendentes não têm ferramenta para avaliar objetivamente o currículo do trabalhador e direcioná-lo para vagas compatíveis ou capacitações específicas. Resultado: encaminhamentos inadequados e taxa de colocação baixa (~15%). Governos estaduais estão sob pressão para mostrar resultados de políticas de emprego.",
+        "dados_disponiveis_br": [
+          "SINE/MTE — base de vagas e trabalhadores cadastrados (API do Portal Emprega Brasil)",
+          "CBO — competências exigidas por ocupação para match com perfil do trabalhador",
+          "CAGED — movimentação formal por município, CBO e CNAE (proxy de demanda real)",
+          "MEC/Pronatec/Senai/Senac — cursos de qualificação disponíveis por região e área"
+        ],
+        "tempo_estimado_mvp": "4-5 semanas",
+        "faixa_de_preco": "R$ 40k-80k"
+      }
+    ]
+  },
+  {
+    "projeto": {
+      "nome": "Kiiry CRM",
+      "slug": "kiiry-crm",
+      "descricao_curta": "CRM de prospecção B2B com scoring inteligente para vendas de energia solar por geração distribuída",
+      "problema_que_resolve": "Equipes de venda de energia solar gastam horas buscando manualmente leads comerciais e não conseguem priorizar quais empresas abordar primeiro. O Kiiry CRM automatiza a captação via Google Places, classifica leads por potencial energético e perfil financeiro, e organiza o funil de vendas em Kanban para 8+ vendedores simultaneamente.",
+      "funcionalidades_principais": [
+        "Importação automática de leads comerciais via Google Places API com deduplicação inteligente e enriquecimento de dados (rating, reviews, telefone, website)",
+        "Scoring multidimensional 0-100 em 5 eixos (potencial energético, porte, ICP fit, credibilidade, alcançabilidade) com estimativa automática de consumo kWh e conta mensal por tipo de negócio",
+        "Pipeline Kanban de 8 estágios com cards drag-ready, filtro por vendedor, avanço rápido de estágio e rastreamento de leads perdidos com motivo",
+        "Classificação automática de grupo tarifário (A vs B) com níveis de confiança e análise financeira de viabilidade por segmento de tensão",
+        "Gestão de equipe com territórios, leaderboard de atividades, taxa de conversão e detecção automática de 68+ redes/franquias com dados de matriz"
+      ],
+      "stack": [
+        "Next.js 16",
+        "React 19",
+        "TypeScript",
+        "Tailwind CSS v4",
+        "shadcn/ui",
+        "Supabase",
+        "Google Places API (New)",
+        "Recharts",
+        "Lucide React",
+        "Vercel"
+      ],
+      "tipo": "SaaS / CRM de vendas B2B",
+      "url_deploy": "https://kiiry-crm.vercel.app",
+      "url_repo": "https://github.com/jpvss/kiiry-crm"
+    },
+    "capacidades_demonstradas": [
+      "Modelagem de scoring domain-specific com múltiplas dimensões ponderadas e estimativas setoriais de consumo energético",
+      "Integração com APIs externas (Google Places) com transformação, deduplicação e enriquecimento de dados em pipeline automatizado",
+      "CRM completo com pipeline visual, gestão de equipe multi-território e rastreamento de atividades — pronto para operação real com 8+ usuários",
+      "Análise financeira regulatória brasileira (tarifas CEMIG, grupos tarifários A/B, horário ponta vs fora-ponta) aplicada a decisões de negócio",
+      "Detecção automática de padrões de dados (redes/franquias, tipo de abordagem, viabilidade mínima) com regras de negócio domain-specific"
+    ],
+    "oportunidades": [
+      {
+        "segmento": "Energia / Utilities",
+        "projeto_tipo": "CRM de prospecção com scoring para distribuidoras de energia solar ou empresas de eficiência energética",
+        "dor_do_cliente": "Empresas de GD solar no Brasil estão crescendo 40%+ ao ano mas ainda prospectam com planilhas e indicações. Com a regulação mais apertada (Marco Legal GD), precisam qualificar leads rapidamente para não perder margem em clientes de grupo tarifário A inviável.",
+        "dados_disponiveis_br": [
+          "Google Places API — dados de estabelecimentos comerciais (nome, endereço, avaliações, telefone, site)",
+          "ANEEL — SIGA (Sistema de Informações de Geração) com dados de todas as usinas GD registradas no Brasil",
+          "CEMIG / distribuidoras — tarifas por grupo tarifário (B1, B2, B3, A3, A4) disponíveis nos sites das distribuidoras",
+          "Receita Federal — CNPJ aberto via API do Brasil.io ou portal da RFB para validação de empresas"
+        ],
+        "tempo_estimado_mvp": "2-3 semanas",
+        "faixa_de_preco": "R$ 30k-60k"
+      },
+      {
+        "segmento": "Imobiliário / Construção",
+        "projeto_tipo": "CRM de prospecção de condomínios e construtoras para vendas de sistemas prediais (solar, automação, segurança)",
+        "dor_do_cliente": "Empresas que vendem soluções para condomínios (solar, portaria remota, automação) precisam mapear novos empreendimentos e síndicos, mas dependem de indicações. Não conseguem priorizar quais condomínios têm maior potencial de compra.",
+        "dados_disponiveis_br": [
+          "Google Places API — dados de condomínios comerciais e residenciais com avaliações",
+          "Prefeituras municipais — alvarás de construção e habite-se (portais de transparência)",
+          "SECOVI / SINDUSCON — dados de lançamentos imobiliários por região",
+          "VivaReal / ZAP Imóveis — listagens públicas com dados de condomínios e valores"
+        ],
+        "tempo_estimado_mvp": "3-4 semanas",
+        "faixa_de_preco": "R$ 25k-45k"
+      },
+      {
+        "segmento": "Saúde",
+        "projeto_tipo": "CRM de prospecção para empresas que vendem insumos, equipamentos ou serviços para clínicas e hospitais",
+        "dor_do_cliente": "Distribuidoras de insumos médicos e empresas de equipamentos hospitalares têm equipes de campo que visitam clínicas aleatoriamente. Não sabem quais clínicas são maiores, mais lucrativas ou têm contratos vencendo — perdem tempo com leads de baixo potencial.",
+        "dados_disponiveis_br": [
+          "Google Places API — clínicas, hospitais, laboratórios com porte estimado por reviews",
+          "CNES (Cadastro Nacional de Estabelecimentos de Saúde) — base completa com tipo, leitos, equipamentos, convênios",
+          "ANS — operadoras de planos de saúde e rede credenciada (dados abertos)",
+          "CRM/CRO estaduais — registros de profissionais de saúde por região (parcialmente públicos)"
+        ],
+        "tempo_estimado_mvp": "3-4 semanas",
+        "faixa_de_preco": "R$ 35k-60k"
+      },
+      {
+        "segmento": "Alimentação / Food Service",
+        "projeto_tipo": "CRM de prospecção para distribuidoras de alimentos, bebidas ou equipamentos de cozinha industrial",
+        "dor_do_cliente": "Distribuidoras de alimentos e bebidas para bares, restaurantes e padarias não conseguem mapear sistematicamente novos estabelecimentos que abrem na região. Perdem clientes para concorrentes que chegam primeiro. Não têm visão de quais estabelecimentos têm maior ticket médio.",
+        "dados_disponiveis_br": [
+          "Google Places API — restaurantes, bares, padarias, cafeterias com rating e volume de avaliações como proxy de movimento",
+          "Vigilância Sanitária municipal — alvarás sanitários emitidos (indicam novos estabelecimentos)",
+          "ABRASEL — dados setoriais de alimentação fora do lar por região",
+          "iFood / Rappi — cardápios e faixas de preço públicos como proxy de ticket médio"
+        ],
+        "tempo_estimado_mvp": "2-3 semanas",
+        "faixa_de_preco": "R$ 20k-40k"
+      }
+    ]
+  },
+  {
+    "projeto": {
+      "nome": "Incorporações Gestão",
+      "slug": "incorporacoes-gestao",
+      "descricao_curta": "Sistema de gestão financeira e operacional para incorporações imobiliárias por administração",
+      "problema_que_resolve": "Grupos de investidores em incorporações por administração (Lei 4.591/64) dependem de planilhas manuais para rastrear despesas, calcular rateios proporcionais à fração ideal de cada unidade e prestar contas mensais. Erros de centavos no rateio geram conflitos entre investidores, e a falta de transparência sobre o andamento da obra e pagamentos corrói a confiança do grupo.",
+      "funcionalidades_principais": [
+        "Motor de rateio financeiro com precisão Decimal(15,2), normalização por fração ideal, distribuição de resto ao maior investidor e validação de soma 100%",
+        "Gestão completa de projetos com unidades, investidores, status de investimento (ACTIVE/DEFAULTING/SUSPENDED) e tratamento de unidades permuta",
+        "Portal read-only para investidores com isolamento de dados (Investidor A nunca vê dados de Investidor B), plantas baixas interativas e acompanhamento de obra",
+        "Pipeline de processamento de arquivos DWG/DXF: conversão via QCAD, extração de dados com Python, renderização de plantas por andar e visualização com zoom/pan",
+        "Geração de relatório mensal em PDF com breakdown de despesas por categoria, resumo do rateio, valores devidos e pagos por investidor, e trilha de auditoria"
+      ],
+      "stack": [
+        "Next.js 16",
+        "React 19",
+        "TypeScript",
+        "Tailwind CSS v4",
+        "shadcn/ui",
+        "Prisma 6",
+        "PostgreSQL",
+        "NextAuth v5",
+        "Zod 4",
+        "Recharts",
+        "@react-pdf/renderer",
+        "Three.js",
+        "@react-three/fiber",
+        "@react-three/drei",
+        "Supabase Storage",
+        "Decimal.js",
+        "Python",
+        "Vercel"
+      ],
+      "tipo": "SaaS / Ferramenta de gestão financeira imobiliária",
+      "url_deploy": "https://incorporacao-do-digao.vercel.app",
+      "url_repo": null
+    },
+    "capacidades_demonstradas": [
+      "Modelagem financeira regulatória com precisão decimal para rateio proporcional conforme Lei 4.591/64, incluindo normalização de frações ideais, exclusão de permuta e distribuição de restos de arredondamento",
+      "Sistema multi-tenant com controle de acesso por role (ADMIN/INVESTOR) em três camadas — middleware, Server Actions e scoping de queries — garantindo isolamento total de dados financeiros entre investidores",
+      "Pipeline de processamento de documentos técnicos de engenharia: conversão DWG→DXF, extração automatizada de metadados arquitetônicos (zoneamento, áreas, pavimentos) e renderização de plantas baixas interativas",
+      "Visualização 3D de modelos arquitetônicos no browser com Three.js/React Three Fiber, incluindo carregamento de GLB e controles de câmera orbital",
+      "Geração de documentos financeiros auditáveis em PDF com breakdown por categoria, valores devidos/pagos por investidor e log de auditoria persistente para compliance"
+    ],
+    "oportunidades": [
+      {
+        "segmento": "Imobiliário / Incorporadoras por administração e SPEs",
+        "projeto_tipo": "Plataforma de gestão e prestação de contas para condomínios de obra e SPEs imobiliárias",
+        "dor_do_cliente": "Incorporadoras por administração e SPEs com 10-50 investidores prestam contas mensais com planilhas Excel e PDFs manuais. Erro no rateio de R$ 0,01 gera reclamação formal. Investidores não confiam nos números porque não têm acesso independente aos dados. A Lei 4.591/64 exige transparência, e assembleias viram campo de batalha quando os relatórios não batem.",
+        "dados_disponiveis_br": [
+          "CUB/Sinduscon — custo unitário básico de construção por estado e padrão (R1-N, R8-N, R16-N) para revisões orçamentárias",
+          "INCC/FGV — índice de custo da construção civil para reajustes contratuais",
+          "Cartórios de RI — registro de incorporação com memorial, convenção e frações ideais",
+          "Prefeituras — alvará de construção, habite-se, e parâmetros urbanísticos (coeficiente de aproveitamento, taxa de permeabilidade)"
+        ],
+        "tempo_estimado_mvp": "3-4 semanas",
+        "faixa_de_preco": "R$ 35k-60k"
+      },
+      {
+        "segmento": "Construção Civil / Construtoras e gestoras de obra",
+        "projeto_tipo": "Dashboard de controle de custos e avanço físico-financeiro de obras",
+        "dor_do_cliente": "Construtoras de médio porte com 3-10 obras simultâneas controlam custos em planilhas desconectadas do cronograma físico. Descobrem que estouraram o orçamento 2-3 meses depois do fato. Não conseguem comparar custo real vs. CUB nem gerar a curva S de acompanhamento que o investidor ou banco financiador exige. Cada mês de atraso custa R$ 50-200k em juros e administração.",
+        "dados_disponiveis_br": [
+          "SINAPI/Caixa — sistema de custos referenciais de obras com composições detalhadas por serviço",
+          "SICRO/DNIT — tabela de custos para obras de infraestrutura",
+          "CUB/Sinduscon — custo por m² de construção atualizado mensalmente por estado",
+          "SELIC/CDI/BCB — taxas de juros para cálculo de custo financeiro do atraso"
+        ],
+        "tempo_estimado_mvp": "3-4 semanas",
+        "faixa_de_preco": "R$ 30k-55k"
+      },
+      {
+        "segmento": "Administradoras de Condomínio / Gestão predial",
+        "projeto_tipo": "Sistema de rateio inteligente e prestação de contas para condomínios residenciais e comerciais",
+        "dor_do_cliente": "Administradoras de condomínios gerenciam rateio de despesas de 50-500 unidades com sistemas legados que não permitem regras customizadas de rateio (por fração ideal, por unidade, misto). Condôminos questionam cobranças todo mês. A LGPD exige que morador A não veja dados financeiros do morador B, mas muitos sistemas expõem listas completas de inadimplentes. Perda de contrato por insatisfação é o maior risco do setor.",
+        "dados_disponiveis_br": [
+          "Cartórios de RI — convenção condominial com regras de rateio e frações ideais registradas",
+          "Receita Federal — CNPJ do condomínio para emissão de boletos e obrigações acessórias",
+          "Prefeituras — IPTU individual por unidade para cálculo de áreas e frações",
+          "IGPM/FGV e IPCA/IBGE — índices de reajuste de contratos de manutenção e salários"
+        ],
+        "tempo_estimado_mvp": "2-3 semanas",
+        "faixa_de_preco": "R$ 20k-40k"
+      },
+      {
+        "segmento": "Jurídico / Escritórios de direito imobiliário",
+        "projeto_tipo": "Ferramenta de auditoria financeira para litígios condominiais e de incorporação",
+        "dor_do_cliente": "Escritórios de direito imobiliário recebem ações de investidores contra incorporadores alegando desvio de recursos ou rateio incorreto. Precisam auditar meses de prestações de contas, refazer cálculos de rateio pela fração ideal registrada e comparar com o que foi cobrado. Hoje fazem isso manualmente em planilhas, gastando 40-80 horas por caso. Uma ferramenta que recalcula e evidencia divergências economiza semanas e fortalece a peça processual.",
+        "dados_disponiveis_br": [
+          "Cartórios de RI — memorial de incorporação com frações ideais oficiais e convenção condominial",
+          "TJ estaduais — jurisprudência sobre rateio de incorporação e prestação de contas (via JusBrasil ou API do tribunal)",
+          "CUB/Sinduscon e INCC/FGV — referência para verificar se custos cobrados estão dentro do mercado",
+          "Receita Federal — CNPJ da SPE/condomínio para cruzar notas fiscais e identificar fornecedores relacionados"
+        ],
+        "tempo_estimado_mvp": "3-4 semanas",
+        "faixa_de_preco": "R$ 30k-55k"
+      }
+    ]
+  }
+]
