@@ -823,6 +823,75 @@
       font-weight: 500;
     }
 
+    /* ---- PATTERNS SECTION ---- */
+    .patterns-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    @media (width >= 640px) {
+      .patterns-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .pattern-card {
+      padding: var(--space-md) 0;
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    @media (width >= 640px) {
+      .pattern-card {
+        padding: var(--space-md);
+        border-bottom: 1px solid var(--gray-200);
+        border-right: 1px solid var(--gray-200);
+      }
+
+      .pattern-card:nth-child(even) {
+        border-right: none;
+      }
+
+      .pattern-card:last-child {
+        border-bottom: none;
+      }
+
+      .pattern-card:nth-last-child(2):nth-child(odd) {
+        border-bottom: none;
+      }
+
+      .pattern-card:last-child:nth-child(odd) {
+        border-right: none;
+      }
+    }
+
+    .pattern-number {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.3rem;
+    }
+
+    .pattern-card h3 {
+      font-size: var(--text-base);
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    .pattern-card p {
+      font-size: var(--text-sm);
+      color: var(--gray-600);
+      line-height: 1.6;
+    }
+
+    .pattern-proof {
+      font-size: var(--text-xs);
+      color: var(--gray-400);
+      margin-top: 0.4rem;
+      font-weight: 500;
+    }
+
     /* ---- FOOTER (editorial) ---- */
     .site-footer {
       border-top: 1px solid var(--gray-200);
@@ -940,6 +1009,7 @@
       <div class="sticky-nav-links">
         <a href="#projetos">Projetos</a>
         <a href="#processo">Processo</a>
+        <a href="#padroes">Padrões</a>
         <a href="#oportunidades">Oportunidades</a>
         <a href="#contato">Contato</a>
       </div>
@@ -955,6 +1025,7 @@
       <nav class="header-nav" aria-label="Navegação principal">
         <a href="#projetos">Projetos</a>
         <a href="#processo">Processo</a>
+        <a href="#padroes">Padrões</a>
         <a href="#oportunidades">Oportunidades</a>
         <a href="#contato">Contato</a>
       </nav>
@@ -2154,6 +2225,50 @@
       </div>
     </section>
 
+    <!-- ======== PADRÕES ======== -->
+    <section class="section project-group" id="padroes" aria-labelledby="padroes-heading">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-label">Padrões</p>
+          <h2 class="section-title" id="padroes-heading">5 problemas que já resolvemos mais de uma vez</h2>
+          <p class="section-subtitle">Independente do setor, os desafios de dados se repetem. Esses são os padrões que dominamos — com projetos em produção como prova.</p>
+        </div>
+
+        <div class="patterns-grid reveal">
+          <div class="pattern-card">
+            <p class="pattern-number">01</p>
+            <h3>Dados dispersos → painel único</h3>
+            <p>Agregamos 3–14 fontes públicas heterogêneas em um dashboard com filtros, mapa e scoring.</p>
+            <p class="pattern-proof">→ FloridaFlip · LicenciaMiner · CEAP Dashboard</p>
+          </div>
+          <div class="pattern-card">
+            <p class="pattern-number">02</p>
+            <h3>Scoring que prioriza decisão</h3>
+            <p>Modelos multidimensionais que ranqueiam oportunidades ou riscos com regras do domínio do cliente.</p>
+            <p class="pattern-proof">→ Presente nos 8 projetos do portfólio</p>
+          </div>
+          <div class="pattern-card">
+            <p class="pattern-number">03</p>
+            <h3>Relatório mensal automatizado</h3>
+            <p>Substituímos planilhas manuais por pipelines auditáveis com cálculo regulatório e PDF.</p>
+            <p class="pattern-proof">→ Kiiry Dashboard · Incorporações Gestão</p>
+          </div>
+          <div class="pattern-card">
+            <p class="pattern-number">04</p>
+            <h3>Ferramenta gratuita → lead qualificado</h3>
+            <p>Calculadora ou avaliação que entrega valor imediato e captura o lead no momento certo.</p>
+            <p class="pattern-proof">→ DeixaComigo · CV10x · LicitaLeads</p>
+          </div>
+          <div class="pattern-card">
+            <p class="pattern-number">05</p>
+            <h3>CRM com inteligência do setor</h3>
+            <p>Pipeline de vendas que conhece as regras regulatórias e financeiras do mercado do cliente.</p>
+            <p class="pattern-proof">→ Kiiry CRM · LicitaLeads</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ======== OPORTUNIDADES ======== -->
     <section class="section project-group" id="oportunidades" aria-labelledby="oportunidades-heading">
       <div class="container">
@@ -2437,6 +2552,7 @@
           <a href="#topo">Topo</a>
           <a href="#projetos">Projetos</a>
           <a href="#processo">Processo</a>
+          <a href="#padroes">Padrões</a>
           <a href="#oportunidades">Oportunidades</a>
         </nav>
       </div>
