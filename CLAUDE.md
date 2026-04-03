@@ -1,58 +1,64 @@
-# Portfolio — AI Ventures Website
+# AI Ventures — Portfolio + Knowledge Base
 
-## Project overview
-Single-page static HTML portfolio for **AI Ventures**, a software development agency targeting Brazilian enterprises. Positioning: "Do problema ao produto, acelerado por IA" — solves real business problems using AI + data as the method. Used by the commercial team to showcase projects and pitch clients.
+## Project Overview
+AI Ventures portfolio site (GitHub Pages) + consulting knowledge base (GenAI-native).
+3-person AI-native data infrastructure consulting agency targeting Brazilian mid-market.
+4 verticals: Mining, Investment Advisory, Insurance/Surety Bonds, Auctions.
 
 ## Architecture
-- Single HTML file with inline CSS + minimal vanilla JS (~15 lines for scroll reveal and sticky nav)
-- Data source: `portfolio-data/portfolio-data.json` (read-only reference, data is hardcoded into HTML)
-- Output: `docs/index.html`
+- `docs/` — GitHub Pages output (static HTML, pt-BR client-facing)
+- `kb/` — Consulting knowledge base (Markdown + YAML frontmatter, English internal)
+- `portfolio-data/portfolio-data.json` — Structured project data (source of truth for projects)
+- `kb/raw/` — Source documents for LLM compilation (never edited after ingestion)
+- `kb/verticals/` — 4 industry verticals with 9 standardized files each
+- `kb/patterns/` — Cross-vertical reusable solution patterns
+- `kb/projects/` — Per-project learnings and architecture decisions
+- `kb/agency/` — Agency operations, positioning, pricing
+- `kb/compiled/` — LLM-generated summaries and analyses (output only, regenerate don't edit)
 
-## Design direction
-- **Editorial / ink-on-paper** — white backgrounds, bold black typography, generous whitespace
-- Inspired by minimalist editorial sites (Escola de Dados style)
-- Teal (#0D9488) used sparingly as accent (labels, bullets, emphasis words) — never as backgrounds or badges
-- No dark hero sections, no gradients — type and whitespace do the heavy lifting
+## Compilation Flow
+```
+raw/ → verticals/ + patterns/ + projects/ → compiled/ → docs/
+```
 
-## Key conventions
+## KB Navigation
+Start at `kb/INDEX.md` for the master index. Each vertical has 9 files:
+README.md, market-context.md, regulatory-map.md, solution-patterns.md,
+engagement-templates.md, competitive-intel.md, case-studies.md, sales-playbook.md, tech-landscape.md
+
+## KB Maintenance Commands
+- `/project:add-research` — Add new research to raw/ and update relevant verticals
+- `/project:compile-vertical` — Recompile a vertical's files from raw sources
+- `/project:lint-kb` — Check KB consistency, broken links, stale metadata
+- `/project:generate-report` — Generate compiled output (summary, analysis, matrix)
+- `/project:add-engagement` — Record engagement notes, extract learnings into KB
+- `/project:update-index` — Regenerate all INDEX.md files
+- `/project:compile-portfolio` — Generate docs/ HTML pages from KB content
+
+## Key Conventions
 - Agency name: **AI Ventures**
-- All text in Portuguese (pt-BR)
-- HTML lang="pt-BR"
-- Mobile-first responsive CSS (max-width: 960px for editorial readability)
-- Palette: black (#0a0a0a) text + teal (#0D9488) accent + white backgrounds
-- Google Fonts: Inter (400-900) via `<link>` tag with system font fallback
-- Null JSON fields are omitted (never show "N/A")
-- External links use `target="_blank" rel="noopener noreferrer"`
-- Projects grouped by value delivered: Market Intelligence (3), Ops & Compliance (3), Growth & Leads (4)
-- Each group has a header with label (01/02/03), title, and subtitle explaining the value pattern
-- Project cards: full-width (1 per row), problem-focused description + key metric, collapsed `<details>` for full info
-- Capabilities bar: cross-cutting technical tags between header and projects
-- Opportunities: grouped by macro-segment with count indicators
-- Scroll reveal: elements fade in via IntersectionObserver, respects prefers-reduced-motion
-- Sticky nav: appears after scrolling past header with backdrop blur
+- Internal KB: English. Public docs/: Portuguese (pt-BR), lang="pt-BR"
+- YAML frontmatter required on every kb/ markdown file
+- File names: lowercase, hyphens, no spaces
+- Cross-references use relative paths from repo root
+- portfolio-data.json is source of truth for project metadata
+- Brazilian regulatory terms stay in Portuguese even in English docs (CFEM, LGPD, etc.)
+- Currency: always R$ not BRL
+
+## Portfolio Site Design
+- Editorial / ink-on-paper: white backgrounds, bold black typography, generous whitespace
+- Teal (#0D9488) accent, Inter font, max-width 960px
+- Mobile-first responsive (375px / 768px / 1280px breakpoints)
+- Projects grouped by value: Market Intelligence, Ops & Compliance, Growth & Leads
+
+## File Relationships
+- portfolio-data.json → docs/index.html (projects section)
+- kb/verticals/*/README.md → docs/verticals/*.html (vertical pages)
+- kb/projects/*/README.md → docs/projetos/*.html (project detail pages)
+- kb/raw/* → kb/verticals/* (source → compiled)
+
+## When Compacting
+Preserve: current vertical count (4), last compilation date, any in-progress KB edits, which raw sources have been processed.
 
 ## Placeholders (TODO)
-Search for `<!-- TODO:` in index.html to find remaining placeholders:
-- Contact email
-- WhatsApp number
-- OG image URL
-- Canonical URL / domain
-
-## File structure
-```
-.
-├── CLAUDE.md
-├── .gitignore
-├── portfolio-data/
-│   └── portfolio-data.json    # Source data (read-only reference)
-└── docs/
-    └── index.html             # The portfolio site (single file, served by GitHub Pages)
-```
-
-## Testing
-Open `docs/index.html` directly in a browser. Test at:
-- Mobile: 375px width (iPhone SE)
-- Tablet: 768px width
-- Desktop: 1280px width
-
-Check: all 10 project cards render, opportunities grouped by ~10 macro-segments, all links work, no horizontal overflow on mobile.
+Search for `<!-- TODO:` in docs/ HTML files for remaining placeholders.

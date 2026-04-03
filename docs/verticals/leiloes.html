@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mercado de Leiloes | AI Ventures</title>
+  <meta name="description" content="Infraestrutura de dados e IA para o mercado de leiloes. Agregacao de 500+ fontes, avaliacao automatizada, analise juridica com NLP e scoring de investimentos.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Mercado de Leiloes | AI Ventures">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%E2%9A%A1</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+  <!-- ======== STICKY NAV ======== -->
+  <nav class="sticky-nav" aria-label="Navegacao fixa">
+    <div class="container sticky-nav-inner">
+      <a href="../index.html" class="sticky-nav-brand">AI Ventures</a>
+      <div class="sticky-nav-links">
+        <a href="../index.html">Portfolio</a>
+        <a href="mineracao.html">Mineracao</a>
+        <a href="investimentos.html">Investimentos</a>
+        <a href="seguros.html">Seguros</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ======== BREADCRUMB ======== -->
+  <div class="container breadcrumb">
+    <a href="../index.html">AI Ventures</a> &rsaquo; <a href="../index.html#oportunidades">Setores</a> &rsaquo; <span>Mercado de Leiloes</span>
+  </div>
+
+  <!-- ======== HERO ======== -->
+  <header class="hero" id="topo">
+    <div class="container">
+      <p class="hero-label">Mercado de Leiloes</p>
+      <h1>Inteligencia de dados para o mercado de leiloes</h1>
+      <p class="hero-description">O mercado cresceu 86% em 2024, mas as ferramentas nao acompanharam. Transformamos mais de 1.000 fontes fragmentadas em inteligencia acionavel para plataformas, investidores e leiloeiros.</p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-value">R$200B</span>
+          <span class="hero-stat-label">Volume movimentado (2024)</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-value">86%</span>
+          <span class="hero-stat-label">Crescimento em 2024</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-value">275 mil</span>
+          <span class="hero-stat-label">Transacoes em 2024</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-value">~15%</span>
+          <span class="hero-stat-label">Taxa de venda (ABRAIM)</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======== CONTEXTO DE MERCADO ======== -->
+  <section class="section" id="mercado">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Contexto de Mercado</p>
+        <h2 class="section-title">Crescimento explosivo, infraestrutura precaria</h2>
+        <p class="section-subtitle">Mais de 1.000 sites de leiloeiros sem padronizacao, analise manual de editais custando R$2.000 por imovel e avaliacao cruzando fontes a mao. O mercado dobrou, mas os processos sao os mesmos.</p>
+      </div>
+
+      <div class="metrics-grid reveal">
+        <div class="metric-card">
+          <p class="metric-card-value">47 mil</p>
+          <p class="metric-card-label">Imoveis leiloados pela Caixa em 2024 (5x vs. 2022)</p>
+        </div>
+        <div class="metric-card">
+          <p class="metric-card-value">3.000%+</p>
+          <p class="metric-card-label">Crescimento de buscas por "leilao de imoveis"</p>
+        </div>
+        <div class="metric-card">
+          <p class="metric-card-value">R$361 mil</p>
+          <p class="metric-card-label">Valor medio de arrematacao</p>
+        </div>
+        <div class="metric-card">
+          <p class="metric-card-value">30-60%</p>
+          <p class="metric-card-label">Desconto tipico sobre valor de mercado</p>
+        </div>
+      </div>
+
+      <div class="reveal" style="margin-top: var(--space-lg)">
+        <h3 style="font-size: var(--text-lg); font-weight: 700; margin-bottom: var(--space-sm);">Tendencias estruturais</h3>
+        <ol class="trend-list">
+          <li><strong>Pressao institucional por sell-through:</strong> Bancos com grandes carteiras de imoveis (Caixa com 50.400 unidades) buscam melhorar a taxa de venda de 15%.</li>
+          <li><strong>Democratizacao do acesso:</strong> Crescimento de 3.000% nas buscas do Google sinaliza entrada massiva de investidores individuais.</li>
+          <li><strong>Profissionalizacao da base investidora:</strong> Demanda crescente por analytics de nivel institucional a precos acessiveis.</li>
+          <li><strong>Competicao AI-native:</strong> Surgimento de Leilao Ninja, BuscAI e Arremata.ai sinaliza maturidade do mercado para solucoes de tecnologia.</li>
+        </ol>
+      </div>
+
+      <div class="reveal" style="margin-top: var(--space-lg)">
+        <h3 style="font-size: var(--text-lg); font-weight: 700; margin-bottom: var(--space-sm);">Custos ocultos: a regra dos 40%</h3>
+        <p class="section-subtitle" style="margin-bottom: var(--space-sm);">Investidores precisam reservar 40%+ acima do valor do lance para custos frequentemente subestimados:</p>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Categoria</th>
+                <th>Percentual tipico</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>ITBI (imposto de transmissao)</td><td>2-3% do valor de arrematacao</td></tr>
+              <tr><td>Comissao do leiloeiro</td><td>5% (CNJ Resolucao 236)</td></tr>
+              <tr><td>Custas cartorarias</td><td>1-2%</td></tr>
+              <tr><td>Honorarios juridicos</td><td>3-5%</td></tr>
+              <tr><td>Dividas ocultas (IPTU, condominio)</td><td>Variavel</td></tr>
+              <tr><td>Reforma</td><td>Variavel</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== SOLUCOES ======== -->
+  <section class="section" id="solucoes">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Solucoes</p>
+        <h2 class="section-title">Projetos de implementacao</h2>
+        <p class="section-subtitle">Do scraping inteligente de 500+ fontes ate modelos de avaliacao com IA &mdash; cada projeto resolve um gargalo especifico do ecossistema de leiloes.</p>
+      </div>
+
+      <div class="solutions-grid">
+        <div class="solution-card reveal">
+          <p class="solution-tag">Dados</p>
+          <h3>Motor de Agregacao de Leiloes</h3>
+          <p>Base unificada a partir de 500+ fontes de leiloeiros, bancos e tribunais, com refresh diario, API de busca/filtro e frontend integrado. A fundacao para toda inteligencia de leiloes.</p>
+          <ul class="solution-highlights">
+            <li>Normalizacao de dados de 500+ fontes heterogeneas</li>
+            <li>Scraping inteligente com suporte a JS, CAPTCHAs e proxies rotativos</li>
+            <li>Geocodificacao de enderecos para visualizacao em mapa</li>
+            <li>10x mais imoveis analisados vs. busca manual</li>
+          </ul>
+        </div>
+
+        <div class="solution-card reveal">
+          <p class="solution-tag">Avaliacao</p>
+          <h3>Modelo de Avaliacao Automatizada (AVM)</h3>
+          <p>Modelo de ML que cruza dados de FipeZap, OLX, ZAP, VivaReal e QuintoAndar para estimar valor de mercado, percentual de desconto e score de confianca em segundos.</p>
+          <ul class="solution-highlights">
+            <li>Avaliacao automatica com dados de 20+ portais imobiliarios</li>
+            <li>Feature engineering: m2, quartos, localizacao, andar, estado</li>
+            <li>De 4 horas para 30 segundos por avaliacao</li>
+            <li>Melhoria de 25% na precisao de lances</li>
+          </ul>
+        </div>
+
+        <div class="solution-card reveal">
+          <p class="solution-tag">Juridico</p>
+          <h3>Scorer de Risco Juridico</h3>
+          <p>Pipeline NLP que extrai e analisa editais e matriculas automaticamente, identificando onus, penhoras, hipotecas e acoes pendentes com score de risco (0-100).</p>
+          <ul class="solution-highlights">
+            <li>OCR de editais com extracao de termos, prazos e condicoes</li>
+            <li>OCR de matriculas com cadeia dominial e onus</li>
+            <li>Score de risco (0-100) com issues sinalizados</li>
+            <li>De R$2.000 para ~R$50 por analise juridica</li>
+          </ul>
+        </div>
+
+        <div class="solution-card reveal">
+          <p class="solution-tag">Investimento</p>
+          <h3>Dashboard de Scoring de Investimento</h3>
+          <p>Score composto multi-fator (desconto x risco juridico x ocupacao x qualidade da localizacao x liquidez x custo de reforma) com visualizacao em mapa e alertas.</p>
+          <ul class="solution-highlights">
+            <li>Score composto combinando AVM + risco juridico + localizacao</li>
+            <li>Visualizacao em mapa com Mapbox</li>
+            <li>Alertas personalizados por perfil de investidor</li>
+            <li>Screening sistematico substituindo avaliacao ad hoc</li>
+          </ul>
+        </div>
+
+        <div class="solution-card reveal">
+          <p class="solution-tag">Velocidade</p>
+          <h3>Parser de Editais e Sistema de Alertas</h3>
+          <p>Extracao NLP de termos-chave, prazos e condicoes de pagamento de editais em PDF, com alertas via WhatsApp e email em ate 15 minutos apos publicacao.</p>
+          <ul class="solution-highlights">
+            <li>Extracao automatica de termos e condicoes de editais PDF</li>
+            <li>Alertas via WhatsApp Business API e email</li>
+            <li>Match por criterios do investidor (localizacao, preco, tipo)</li>
+            <li>Aumento de 35% na taxa de arrematacao com acesso antecipado</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== DIAGNOSTICO ======== -->
+  <section class="section" id="diagnostico">
+    <div class="container">
+      <div class="cta-block reveal">
+        <h3>Diagnostico de Maturidade de Dados</h3>
+        <p>Avaliamos sua prontidao para IA em 6 dimensoes e entregamos um roadmap concreto com estimativa de ROI por projeto, em 2 a 3 semanas.</p>
+        <ul class="cta-list">
+          <li>Score de prontidao para IA em 6 dimensoes</li>
+          <li>Mapeamento de fontes de dados e gaps de cobertura</li>
+          <li>Analise de processos atuais vs. benchmarks de mercado</li>
+          <li>Estimativa de economia por projeto (tempo, custo, oportunidades perdidas)</li>
+          <li>Roadmap de implementacao com cronograma e dependencias</li>
+        </ul>
+        <a href="#contato" class="btn btn-accent">Agendar conversa</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== OUTROS SETORES ======== -->
+  <section class="section" id="setores">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Outros Setores</p>
+        <h2 class="section-title">Atuacao multi-vertical</h2>
+      </div>
+      <div class="verticals-grid reveal">
+        <a href="mineracao.html" class="vertical-link">
+          <span class="vertical-link-name">Mineracao</span>
+          <span class="vertical-link-stat">R$248,2B &middot; US$64,5B em investimentos</span>
+        </a>
+        <a href="investimentos.html" class="vertical-link">
+          <span class="vertical-link-name">Escritorios de Investimento</span>
+          <span class="vertical-link-stat">R$7,9T em volume &middot; 1.384 escritorios</span>
+        </a>
+        <a href="seguros.html" class="vertical-link">
+          <span class="vertical-link-name">Seguros e Seguro Garantia</span>
+          <span class="vertical-link-stat">R$751,3B &middot; crescimento de 23,2%</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== FOOTER ======== -->
+  <footer class="site-footer" id="contato">
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <p class="footer-cta">Vamos conversar sobre sua plataforma</p>
+          <p class="footer-text">Entendemos os desafios de agregacao de dados, avaliacao automatizada e analise juridica no mercado de leiloes brasileiro.</p>
+        </div>
+        <div class="footer-contacts">
+          <a href="https://wa.me/5511999999999" class="btn-whatsapp">WhatsApp</a>
+          <a href="mailto:contato@aiventures.com.br" class="btn-email">Email</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">AI Ventures</p>
+        <nav class="footer-nav" aria-label="Rodape">
+          <a href="../index.html">Portfolio</a>
+          <a href="mineracao.html">Mineracao</a>
+          <a href="investimentos.html">Investimentos</a>
+          <a href="seguros.html">Seguros</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======== MINIMAL JS: scroll reveal + sticky nav ======== -->
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => revealObserver.observe(el));
+
+    const stickyNav = document.querySelector('.sticky-nav');
+    const header = document.querySelector('.hero');
+    const navObserver = new IntersectionObserver(([entry]) => {
+      stickyNav.classList.toggle('visible', !entry.isIntersecting);
+    }, { threshold: 0 });
+    navObserver.observe(header);
+  </script>
+
+</body>
+</html>
