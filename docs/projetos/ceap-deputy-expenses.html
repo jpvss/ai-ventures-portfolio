@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CEAP Dashboard | AI Ventures</title>
+  <meta name="description" content="Dashboard interativo que analisa R$ 686M em gastos parlamentares com deteccao estatistica de anomalias">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="CEAP Dashboard | AI Ventures">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%E2%9A%A1</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+  <!-- STICKY NAV -->
+  <nav class="sticky-nav" aria-label="Navegacao fixa">
+    <div class="container sticky-nav-inner">
+      <a href="../index.html" class="sticky-nav-brand">AI Ventures</a>
+      <div class="sticky-nav-links">
+        <a href="../index.html">Portfolio</a>
+        <a href="../index.html#projetos">Projetos</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div class="container breadcrumb">
+    <a href="../index.html">AI Ventures</a> &rsaquo; <a href="../index.html#projetos">Projetos</a> &rsaquo; <span>CEAP Dashboard</span>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero" id="topo">
+    <div class="container">
+      <span class="project-type-badge">Dashboard de dados</span>
+      <h1>CEAP Dashboard &mdash; Transparencia Parlamentar</h1>
+      <p class="hero-description">Cidadaos, jornalistas e orgaos de controle nao conseguem cruzar dados de despesas parlamentares (CEAP) com emendas orcamentarias para identificar padroes suspeitos. O dashboard aplica metodos estatisticos (Benford, HHI, mismatch de CNAE) sobre 660 mil+ transacoes e entrega sinais de risco prontos para investigacao.</p>
+      <div class="project-links" style="margin-top: var(--space-md)">
+        <a href="https://ceap.escoladados.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver projeto</a>
+        <a href="https://github.com/jpvsalomao/CEAPDashboard" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Codigo</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- FUNCIONALIDADES -->
+  <section class="section" id="funcionalidades">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Funcionalidades</p>
+        <h2 class="section-title">O que o CEAP Dashboard faz</h2>
+      </div>
+      <ul class="detail-list reveal">
+        <li>Dashboard com visao geral de R$ 686M em gastos de 847 deputados com KPIs, filtros e ranking</li>
+        <li>Perfil individual de deputado com metricas de Benford, HHI, valores redondos e red flags automaticos</li>
+        <li>Analise de concentracao de fornecedores (HHI) por categoria de despesa com drill-down</li>
+        <li>Spotlight investigativo com cruzamento CEAP x Emendas (caso Operacao Overclean com pivot table interativa)</li>
+        <li>Deteccao de mismatch CNAE: empresas recebendo por servicos fora da sua atividade economica registrada</li>
+        <li>Pipeline de dados com coleta via API Dados Abertos, enriquecimento de CNPJ via OpenCNPJ/BrasilAPI, e armazenamento DuckDB</li>
+        <li>Analise por categoria de despesa (veiculos, divulgacao, combustivel) com benchmarks estatisticos</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PIPELINE -->
+  <section class="section" id="pipeline">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Arquitetura</p>
+        <h2 class="section-title">Como funciona</h2>
+      </div>
+      <div class="pipeline reveal">
+        <div class="pipeline-stage">
+          <h3>Fontes</h3>
+          <ul>
+            <li>API Dados Abertos da Camara (CEAP)</li>
+            <li>Portal da Transparencia (Emendas)</li>
+            <li>OpenCNPJ / BrasilAPI (CNPJ, CNAE)</li>
+          </ul>
+        </div>
+        <div class="pipeline-stage">
+          <h3>Pipeline</h3>
+          <ul>
+            <li>Ingestao e normalizacao com Python/pandas</li>
+            <li>Enriquecimento de CNPJ e CNAE</li>
+            <li>Analise estatistica (Benford, HHI, scipy)</li>
+            <li>Armazenamento DuckDB + JSON estatico</li>
+          </ul>
+        </div>
+        <div class="pipeline-stage">
+          <h3>Produto</h3>
+          <ul>
+            <li>Dashboard React com visualizacoes D3.js</li>
+            <li>Perfis de deputados com red flags</li>
+            <li>Spotlight investigativo interativo</li>
+            <li>Deploy em Cloudflare Pages + Workers</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH STACK -->
+  <section class="section" id="stack">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Tecnologia</p>
+        <h2 class="section-title">Tech Stack</h2>
+      </div>
+      <div class="stack-grid reveal">
+        <div class="stack-group">
+          <span class="stack-group-label">Frontend</span>
+          <span class="tag">React 19</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">Vite</span>
+          <span class="tag">Tailwind CSS v4</span>
+          <span class="tag">D3.js</span>
+          <span class="tag">React Router v7</span>
+          <span class="tag">TanStack React Query</span>
+          <span class="tag">Zustand</span>
+        </div>
+        <div class="stack-group">
+          <span class="stack-group-label">Data</span>
+          <span class="tag">Python</span>
+          <span class="tag">pandas</span>
+          <span class="tag">scipy</span>
+          <span class="tag">DuckDB</span>
+          <span class="tag">Jupyter Notebooks</span>
+        </div>
+        <div class="stack-group">
+          <span class="stack-group-label">APIs</span>
+          <span class="tag">Supabase</span>
+        </div>
+        <div class="stack-group">
+          <span class="stack-group-label">Infra</span>
+          <span class="tag">Cloudflare Pages</span>
+          <span class="tag">Cloudflare Workers</span>
+          <span class="tag">Playwright (E2E)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPACIDADES -->
+  <section class="section" id="capacidades">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Capacidades</p>
+        <h2 class="section-title">O que isso demonstra</h2>
+      </div>
+      <ul class="detail-list reveal">
+        <li>Ingestao massiva de dados governamentais heterogeneos via APIs publicas com normalizacao, deduplicacao e enriquecimento (CNPJ, CNAE, nomes parlamentares)</li>
+        <li>Aplicacao de metodos estatisticos de deteccao de fraude em dados reais (Lei de Benford, Indice HHI, analise de valores redondos, mismatch de atividade economica)</li>
+        <li>Cruzamento de bases de dados com schemas incompativeis usando fuzzy matching de nomes e normalizacao de identificadores</li>
+        <li>Dashboard analitico com visualizacoes D3.js, feature flags para launch faseado, lazy loading e deploy em CDN global</li>
+        <li>Pipeline de dados reproduzivel: coleta API &rarr; DuckDB &rarr; analise Python &rarr; JSON estatico &rarr; frontend React &mdash; sem servidor backend</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- OPORTUNIDADES -->
+  <section class="section" id="oportunidades">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Oportunidades</p>
+        <h2 class="section-title">O que podemos construir para voce</h2>
+        <p class="section-subtitle">Projetos derivados que aplicam a mesma arquitetura para outros segmentos.</p>
+      </div>
+      <div class="metrics-grid reveal">
+        <div class="opp-card">
+          <p class="solution-tag">Governo / Tribunais de Contas</p>
+          <h4>Painel de alertas automaticos para auditoria de despesas e convenios</h4>
+          <p>Tribunais de Contas auditam manualmente milhares de prestacoes de contas por ano. Metodos estatisticos detectam em segundos padroes que auditores levam semanas para encontrar.</p>
+          <div class="opp-meta">
+            <span>R$ 50k-100k</span>
+            <span>4-6 semanas</span>
+          </div>
+        </div>
+        <div class="opp-card">
+          <p class="solution-tag">Jornalismo / Midia investigativa</p>
+          <h4>Ferramenta de investigacao de dados com alertas e visualizacoes prontas para publicacao</h4>
+          <p>Redacoes investigativas nao tem equipe tecnica para cruzar bases de dados publicas sistematicamente. Uma ferramenta que gera alertas de anomalias em gastos publicos automatiza a pauta.</p>
+          <div class="opp-meta">
+            <span>R$ 30k-60k</span>
+            <span>3-4 semanas</span>
+          </div>
+        </div>
+        <div class="opp-card">
+          <p class="solution-tag">Compliance / Empresas com contratos publicos</p>
+          <h4>Dashboard de due diligence de fornecedores e monitoramento de risco reputacional</h4>
+          <p>Empresas que fornecem para o governo precisam fazer due diligence de parceiros e concorrentes. Um dashboard que monitora e alerta sobre vinculos suspeitos reduz risco de compliance.</p>
+          <div class="opp-meta">
+            <span>R$ 35k-70k</span>
+            <span>3-5 semanas</span>
+          </div>
+        </div>
+        <div class="opp-card">
+          <p class="solution-tag">Educacao / Plataformas de ensino de dados</p>
+          <h4>Plataforma de cursos praticos de analise de dados com casos reais de transparencia publica</h4>
+          <p>Cursos de analise de dados usam datasets genericos que nao preparam o aluno para a realidade do mercado. Profissionais de dados precisam de casos com dados publicos reais e complexos.</p>
+          <div class="opp-meta">
+            <span>R$ 20k-40k</span>
+            <span>2-3 semanas</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" id="contato-section">
+    <div class="container">
+      <div class="cta-block reveal">
+        <h3>Quer algo parecido?</h3>
+        <p>Construimos CEAP Dashboard em semanas. Podemos adaptar a mesma arquitetura para o seu setor.</p>
+        <a href="../index.html#contato" class="btn btn-accent">Agendar conversa</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" id="contato">
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <p class="footer-cta">Vamos conversar sobre sua operacao</p>
+          <p class="footer-text">Construimos ferramentas de dados e IA sob medida para empresas brasileiras.</p>
+        </div>
+        <div class="footer-contacts">
+          <a href="https://wa.me/5511999999999" class="btn-whatsapp">WhatsApp</a>
+          <a href="mailto:contato@aiventures.com.br" class="btn-email">Email</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">AI Ventures</p>
+        <nav class="footer-nav" aria-label="Rodape">
+          <a href="../index.html">Portfolio</a>
+          <a href="../index.html#projetos">Projetos</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS: scroll reveal + sticky nav -->
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => revealObserver.observe(el));
+    const stickyNav = document.querySelector('.sticky-nav');
+    const header = document.querySelector('.hero');
+    const navObserver = new IntersectionObserver(([entry]) => {
+      stickyNav.classList.toggle('visible', !entry.isIntersecting);
+    }, { threshold: 0 });
+    if (header) navObserver.observe(header);
+  </script>
+
+</body>
+</html>

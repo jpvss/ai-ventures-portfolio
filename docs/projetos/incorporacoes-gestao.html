@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Incorporacoes Gestao | AI Ventures</title>
+  <meta name="description" content="Sistema de gestao financeira e operacional para incorporacoes imobiliarias por administracao">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Incorporacoes Gestao | AI Ventures">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%E2%9A%A1</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+  <!-- STICKY NAV -->
+  <nav class="sticky-nav" aria-label="Navegacao fixa">
+    <div class="container sticky-nav-inner">
+      <a href="../index.html" class="sticky-nav-brand">AI Ventures</a>
+      <div class="sticky-nav-links">
+        <a href="../index.html">Portfolio</a>
+        <a href="../index.html#projetos">Projetos</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div class="container breadcrumb">
+    <a href="../index.html">AI Ventures</a> &rsaquo; <a href="../index.html#projetos">Projetos</a> &rsaquo; <span>Incorporacoes Gestao</span>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero" id="topo">
+    <div class="container">
+      <span class="project-type-badge">SaaS / Gestao financeira</span>
+      <h1>Incorporacoes Gestao</h1>
+      <p class="hero-description">Grupos de investidores em incorporacoes por administracao (Lei 4.591/64) dependem de planilhas manuais para rastrear despesas, calcular rateios proporcionais a fracao ideal de cada unidade e prestar contas mensais. Erros de centavos no rateio geram conflitos entre investidores, e a falta de transparencia sobre o andamento da obra corroi a confianca do grupo.</p>
+      <div class="project-links" style="margin-top: var(--space-md)">
+        <a href="https://incorporacao-do-digao.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver projeto</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- FUNCIONALIDADES -->
+  <section class="section" id="funcionalidades">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Funcionalidades</p>
+        <h2 class="section-title">O que o Incorporacoes Gestao faz</h2>
+      </div>
+      <ul class="detail-list reveal">
+        <li>Motor de rateio financeiro com precisao Decimal(15,2), normalizacao por fracao ideal, distribuicao de resto ao maior investidor e validacao de soma 100%</li>
+        <li>Gestao completa de projetos com unidades, investidores, status de investimento (ACTIVE/DEFAULTING/SUSPENDED) e tratamento de unidades permuta</li>
+        <li>Portal read-only para investidores com isolamento de dados (Investidor A nunca ve dados de Investidor B), plantas baixas interativas e acompanhamento de obra</li>
+        <li>Pipeline de processamento de arquivos DWG/DXF: conversao via QCAD, extracao de dados com Python, renderizacao de plantas por andar e visualizacao com zoom/pan</li>
+        <li>Geracao de relatorio mensal em PDF com breakdown de despesas por categoria, resumo do rateio, valores devidos e pagos por investidor, e trilha de auditoria</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PIPELINE -->
+  <section class="section" id="pipeline">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Arquitetura</p>
+        <h2 class="section-title">Como funciona</h2>
+      </div>
+      <div class="pipeline reveal">
+        <div class="pipeline-stage">
+          <h3>Fontes</h3>
+          <ul>
+            <li>Dados financeiros do projeto (despesas, pagamentos)</li>
+            <li>Arquivos DWG/DXF (plantas baixas)</li>
+            <li>Modelos 3D GLB (visualizacao arquitetonica)</li>
+          </ul>
+        </div>
+        <div class="pipeline-stage">
+          <h3>Pipeline</h3>
+          <ul>
+            <li>Motor de rateio com Decimal.js (precisao 15,2)</li>
+            <li>Normalizacao de fracoes ideais + distribuicao de resto</li>
+            <li>Conversao DWG &rarr; DXF &rarr; renderizacao por andar</li>
+            <li>Multi-tenant com isolamento por role (ADMIN/INVESTOR)</li>
+          </ul>
+        </div>
+        <div class="pipeline-stage">
+          <h3>Produto</h3>
+          <ul>
+            <li>Portal admin com gestao de projetos e despesas</li>
+            <li>Portal investidor com plantas interativas e 3D</li>
+            <li>Relatorio PDF mensal com trilha de auditoria</li>
+            <li>Deploy Vercel + Supabase Storage</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH STACK -->
+  <section class="section" id="stack">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Tecnologia</p>
+        <h2 class="section-title">Tech Stack</h2>
+      </div>
+      <div class="stack-grid reveal">
+        <div class="stack-group">
+          <span class="stack-group-label">Frontend</span>
+          <span class="tag">Next.js 16</span>
+          <span class="tag">React 19</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">Tailwind CSS v4</span>
+          <span class="tag">shadcn/ui</span>
+          <span class="tag">Recharts</span>
+          <span class="tag">Three.js</span>
+          <span class="tag">@react-three/fiber</span>
+          <span class="tag">@react-three/drei</span>
+        </div>
+        <div class="stack-group">
+          <span class="stack-group-label">Data</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Prisma 6</span>
+          <span class="tag">Decimal.js</span>
+          <span class="tag">Zod 4</span>
+          <span class="tag">Python</span>
+        </div>
+        <div class="stack-group">
+          <span class="stack-group-label">APIs</span>
+          <span class="tag">NextAuth v5</span>
+          <span class="tag">@react-pdf/renderer</span>
+          <span class="tag">Supabase Storage</span>
+        </div>
+        <div class="stack-group">
+          <span class="stack-group-label">Infra</span>
+          <span class="tag">Vercel</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPACIDADES -->
+  <section class="section" id="capacidades">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Capacidades</p>
+        <h2 class="section-title">O que isso demonstra</h2>
+      </div>
+      <ul class="detail-list reveal">
+        <li>Modelagem financeira regulatoria com precisao decimal para rateio proporcional conforme Lei 4.591/64, incluindo normalizacao de fracoes ideais, exclusao de permuta e distribuicao de restos de arredondamento</li>
+        <li>Sistema multi-tenant com controle de acesso por role (ADMIN/INVESTOR) em tres camadas &mdash; middleware, Server Actions e scoping de queries &mdash; garantindo isolamento total de dados financeiros entre investidores</li>
+        <li>Pipeline de processamento de documentos tecnicos de engenharia: conversao DWG &rarr; DXF, extracao automatizada de metadados arquitetonicos (zoneamento, areas, pavimentos) e renderizacao de plantas baixas interativas</li>
+        <li>Visualizacao 3D de modelos arquitetonicos no browser com Three.js/React Three Fiber, incluindo carregamento de GLB e controles de camera orbital</li>
+        <li>Geracao de documentos financeiros auditaveis em PDF com breakdown por categoria, valores devidos/pagos por investidor e log de auditoria persistente para compliance</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- OPORTUNIDADES -->
+  <section class="section" id="oportunidades">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Oportunidades</p>
+        <h2 class="section-title">O que podemos construir para voce</h2>
+        <p class="section-subtitle">Projetos derivados que aplicam a mesma arquitetura para outros segmentos.</p>
+      </div>
+      <div class="metrics-grid reveal">
+        <div class="opp-card">
+          <p class="solution-tag">Imobiliario / Incorporadoras e SPEs</p>
+          <h4>Plataforma de gestao e prestacao de contas para condominios de obra e SPEs imobiliarias</h4>
+          <p>Incorporadoras por administracao e SPEs com 10-50 investidores prestam contas mensais com planilhas Excel. Erro no rateio de R$ 0,01 gera reclamacao formal. A Lei 4.591/64 exige transparencia.</p>
+          <div class="opp-meta">
+            <span>R$ 35k-60k</span>
+            <span>3-4 semanas</span>
+          </div>
+        </div>
+        <div class="opp-card">
+          <p class="solution-tag">Construcao Civil / Construtoras</p>
+          <h4>Dashboard de controle de custos e avanco fisico-financeiro de obras</h4>
+          <p>Construtoras de medio porte com 3-10 obras simultaneas controlam custos em planilhas desconectadas do cronograma fisico. Descobrem que estouraram o orcamento 2-3 meses depois do fato.</p>
+          <div class="opp-meta">
+            <span>R$ 30k-55k</span>
+            <span>3-4 semanas</span>
+          </div>
+        </div>
+        <div class="opp-card">
+          <p class="solution-tag">Administradoras de Condominio</p>
+          <h4>Sistema de rateio inteligente e prestacao de contas para condominios residenciais e comerciais</h4>
+          <p>Administradoras de condominios gerenciam rateio de 50-500 unidades com sistemas legados que nao permitem regras customizadas. Condominos questionam cobrancas todo mes.</p>
+          <div class="opp-meta">
+            <span>R$ 20k-40k</span>
+            <span>2-3 semanas</span>
+          </div>
+        </div>
+        <div class="opp-card">
+          <p class="solution-tag">Juridico / Direito imobiliario</p>
+          <h4>Ferramenta de auditoria financeira para litigios condominiais e de incorporacao</h4>
+          <p>Escritorios de direito imobiliario precisam auditar meses de prestacoes de contas e refazer calculos de rateio pela fracao ideal registrada. Gastam 40-80 horas por caso manualmente.</p>
+          <div class="opp-meta">
+            <span>R$ 30k-55k</span>
+            <span>3-4 semanas</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" id="contato-section">
+    <div class="container">
+      <div class="cta-block reveal">
+        <h3>Quer algo parecido?</h3>
+        <p>Construimos Incorporacoes Gestao em semanas. Podemos adaptar a mesma arquitetura para o seu setor.</p>
+        <a href="../index.html#contato" class="btn btn-accent">Agendar conversa</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" id="contato">
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <p class="footer-cta">Vamos conversar sobre sua operacao</p>
+          <p class="footer-text">Construimos ferramentas de dados e IA sob medida para empresas brasileiras.</p>
+        </div>
+        <div class="footer-contacts">
+          <a href="https://wa.me/5511999999999" class="btn-whatsapp">WhatsApp</a>
+          <a href="mailto:contato@aiventures.com.br" class="btn-email">Email</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">AI Ventures</p>
+        <nav class="footer-nav" aria-label="Rodape">
+          <a href="../index.html">Portfolio</a>
+          <a href="../index.html#projetos">Projetos</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS: scroll reveal + sticky nav -->
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => revealObserver.observe(el));
+    const stickyNav = document.querySelector('.sticky-nav');
+    const header = document.querySelector('.hero');
+    const navObserver = new IntersectionObserver(([entry]) => {
+      stickyNav.classList.toggle('visible', !entry.isIntersecting);
+    }, { threshold: 0 });
+    if (header) navObserver.observe(header);
+  </script>
+
+</body>
+</html>

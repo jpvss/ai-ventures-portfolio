@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LicenciaMiner | AI Ventures</title>
+  <meta name="description" content="Inteligencia de licenciamento ambiental minerario com dados de 14 fontes oficiais">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="LicenciaMiner | AI Ventures">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%E2%9A%A1</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+  <!-- ======== STICKY NAV ======== -->
+  <nav class="sticky-nav" aria-label="Navegacao fixa">
+    <div class="container sticky-nav-inner">
+      <a href="../index.html" class="sticky-nav-brand">AI Ventures</a>
+      <div class="sticky-nav-links">
+        <a href="../index.html">Portfolio</a>
+        <a href="../index.html#projetos">Projetos</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ======== BREADCRUMB ======== -->
+  <div class="container breadcrumb">
+    <a href="../index.html">AI Ventures</a> &rsaquo; <a href="../index.html#projetos">Projetos</a> &rsaquo; <span>LicenciaMiner</span>
+  </div>
+
+  <!-- ======== HERO ======== -->
+  <header class="hero" id="topo">
+    <div class="container">
+      <span class="project-type-badge">Dashboard de dados / Inteligencia regulatoria</span>
+      <h1>LicenciaMiner</h1>
+      <p class="hero-description">Consultorias ambientais e mineradoras gastam semanas pesquisando manualmente portais de IBAMA, ANM e SEMAD para avaliar viabilidade de licenciamento. O LicenciaMiner cruza automaticamente 14 fontes publicas &mdash; licencas, infracoes, royalties, concessoes, restricoes espaciais &mdash; e entrega dossies por empresa com taxa de aprovacao, risco e casos similares.</p>
+      <div class="project-links" style="margin-top: var(--space-md)">
+        <a href="https://github.com/jpvss/licenciaminer" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Codigo</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======== FUNCIONALIDADES ======== -->
+  <section class="section" id="funcionalidades">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Funcionalidades</p>
+        <h2 class="section-title">O que o LicenciaMiner faz</h2>
+      </div>
+      <ul class="detail-list reveal">
+        <li>Pipeline de coleta automatizada de 14 fontes: IBAMA SISLIC, ANM SIGMINE/SCM/CFEM/RAL, SEMAD-MG (scraping), COPAM, ANA Outorgas, Receita Federal (CNPJ), dados geoespaciais (UCs, TIs, biomas, cavernas)</li>
+        <li>Dashboard analitico com 7 abas: visao geral, exploracao de dados, consulta por CNPJ, analise de decisoes, concessoes, mapa geoespacial e prospeccao de oportunidades</li>
+        <li>Dossie de inteligencia por CNPJ: perfil da empresa, historico de decisoes, infracoes IBAMA, royalties CFEM, taxa de aprovacao comparada e casos similares</li>
+        <li>Mapa interativo com poligonos de concessoes ANM, camadas de UCs/TIs e deteccao de sobreposicoes espaciais</li>
+        <li>Geracao de relatorio PDF profissional com analise de risco, 8 secoes e rastreabilidade total a fonte original</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ======== PIPELINE ======== -->
+  <section class="section" id="pipeline">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Arquitetura</p>
+        <h2 class="section-title">Como funciona</h2>
+      </div>
+      <div class="pipeline reveal">
+        <div class="pipeline-stage">
+          <p class="pipeline-stage-label">Fontes</p>
+          <ul>
+            <li>IBAMA SISLIC (licencas ambientais)</li>
+            <li>ANM SIGMINE/SCM/CFEM/RAL</li>
+            <li>SEMAD-MG / COPAM (decisoes)</li>
+            <li>ANA, Receita Federal, shapefiles</li>
+          </ul>
+        </div>
+        <div class="pipeline-stage">
+          <p class="pipeline-stage-label">Pipeline</p>
+          <ul>
+            <li>14 coletores com retry e rate limiting</li>
+            <li>DuckDB + Parquet com views materializadas</li>
+            <li>Spatial joins (GeoPandas/Shapely)</li>
+            <li>Scoring de risco regulatorio por CNPJ</li>
+          </ul>
+        </div>
+        <div class="pipeline-stage">
+          <p class="pipeline-stage-label">Produto</p>
+          <ul>
+            <li>Dashboard Streamlit com 7 abas</li>
+            <li>Dossies de inteligencia por CNPJ</li>
+            <li>Mapa geoespacial interativo</li>
+            <li>Relatorios PDF com analise de risco</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== TECH STACK ======== -->
+  <section class="section" id="stack">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Tecnologia</p>
+        <h2 class="section-title">Tech Stack</h2>
+      </div>
+      <div class="stack-grid reveal">
+        <div class="stack-group">
+          <span class="stack-group-label">Frontend</span>
+          <span class="tag">Streamlit</span>
+          <span class="tag">Plotly</span>
+          <span class="tag">Folium</span>
+        </div>
+        <div class="stack-group">
+          <span class="stack-group-label">Data</span>
+          <span class="tag">Python 3.11</span>
+          <span class="tag">DuckDB</span>
+          <span class="tag">Apache Parquet</span>
+          <span class="tag">Pandas</span>
+          <span class="tag">GeoPandas</span>
+          <span class="tag">Shapely</span>
+          <span class="tag">fpdf2</span>
+          <span class="tag">PyMuPDF</span>
+        </div>
+        <div class="stack-group">
+          <span class="stack-group-label">APIs</span>
+          <span class="tag">httpx</span>
+          <span class="tag">Anthropic SDK</span>
+          <span class="tag">Tenacity</span>
+          <span class="tag">Click</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== CAPACIDADES ======== -->
+  <section class="section" id="capacidades">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Capacidades</p>
+        <h2 class="section-title">O que isso demonstra</h2>
+      </div>
+      <ul class="detail-list reveal">
+        <li>Ingestao e normalizacao de dados publicos heterogeneos de 14 fontes simultaneas (APIs REST, ArcGIS, Excel, scraping HTML, shapefiles, PDFs) com retry, rate limiting e coleta incremental</li>
+        <li>Analise geoespacial com spatial joins entre poligonos de concessoes minerarias e areas de restricao ambiental (UCs, TIs, biomas, cavernas) usando GeoPandas/Shapely</li>
+        <li>Modelagem de risco regulatorio domain-specific com cruzamento de dados ambientais, minerarios e cadastrais por CNPJ &mdash; incluindo taxa de aprovacao, reincidencia de infracoes e padroes de decisao</li>
+        <li>Arquitetura analitica DuckDB/Parquet com views materializadas sobre 12 datasets, queries cross-source por CNPJ e caching Streamlit para performance em container de 1GB</li>
+        <li>Extracao e processamento de documentos regulatorios: scraping de pareceres COPAM, download e OCR de PDFs de decisoes SEMAD, enriquecimento cadastral via Receita Federal</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ======== OPORTUNIDADES ======== -->
+  <section class="section" id="oportunidades">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Oportunidades</p>
+        <h2 class="section-title">O que podemos construir para voce</h2>
+        <p class="section-subtitle">Projetos derivados que aplicam a mesma arquitetura para outros segmentos.</p>
+      </div>
+      <div class="metrics-grid reveal">
+        <div class="opp-card">
+          <p class="solution-tag">Mineracao / Consultorias ambientais</p>
+          <h4>Plataforma de due diligence ambiental para projetos de mineracao</h4>
+          <p>Mineradoras gastam R$ 50-200k e 3-6 meses em estudos de viabilidade ambiental. Nao sabem de antemao se o orgao licenciador tem historico de deferir aquele tipo de atividade.</p>
+          <div class="opp-meta">
+            <span>R$ 40k-70k</span>
+            <span>3-4 semanas</span>
+          </div>
+        </div>
+        <div class="opp-card">
+          <p class="solution-tag">ESG / Consultorias e gestoras</p>
+          <h4>Plataforma de monitoramento de compliance ambiental para portfolios de investimento</h4>
+          <p>Gestoras com politicas ESG precisam monitorar passivos ambientais de empresas do portfolio. Um evento ambiental nao detectado pode destruir o valor do investimento.</p>
+          <div class="opp-meta">
+            <span>R$ 45k-80k</span>
+            <span>3-4 semanas</span>
+          </div>
+        </div>
+        <div class="opp-card">
+          <p class="solution-tag">Governo / Orgaos ambientais</p>
+          <h4>Dashboard de gestao e analytics para orgaos licenciadores ambientais</h4>
+          <p>Orgaos ambientais estaduais processam milhares de pedidos por ano sem visibilidade analitica. Nao sabem o tempo medio de analise por tipo ou qual regional tem mais backlog.</p>
+          <div class="opp-meta">
+            <span>R$ 50k-90k</span>
+            <span>4-5 semanas</span>
+          </div>
+        </div>
+        <div class="opp-card">
+          <p class="solution-tag">Juridico / Direito ambiental e minerario</p>
+          <h4>Ferramenta de pesquisa e analise de precedentes para litigios ambientais</h4>
+          <p>Escritorios de direito ambiental levantam historico de decisoes manualmente em portais desconectados. Um levantamento completo pode levar 2-3 semanas de trabalho.</p>
+          <div class="opp-meta">
+            <span>R$ 35k-60k</span>
+            <span>3-4 semanas</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== CTA ======== -->
+  <section class="section" id="contato-section">
+    <div class="container">
+      <div class="cta-block reveal">
+        <h3>Quer algo parecido?</h3>
+        <p>Construimos LicenciaMiner em semanas. Podemos adaptar a mesma arquitetura para o seu setor.</p>
+        <a href="../index.html#contato" class="btn btn-accent">Agendar conversa</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== FOOTER ======== -->
+  <footer class="site-footer" id="contato">
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <p class="footer-cta">Vamos conversar sobre sua operacao</p>
+          <p class="footer-text">Construimos ferramentas de dados e IA sob medida para empresas brasileiras.</p>
+        </div>
+        <div class="footer-contacts">
+          <a href="https://wa.me/5511999999999" class="btn-whatsapp">WhatsApp</a>
+          <a href="mailto:contato@aiventures.com.br" class="btn-email">Email</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">AI Ventures</p>
+        <nav class="footer-nav" aria-label="Rodape">
+          <a href="../index.html">Portfolio</a>
+          <a href="../index.html#projetos">Projetos</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======== MINIMAL JS: scroll reveal + sticky nav ======== -->
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => revealObserver.observe(el));
+    const stickyNav = document.querySelector('.sticky-nav');
+    const header = document.querySelector('.hero');
+    const navObserver = new IntersectionObserver(([entry]) => {
+      stickyNav.classList.toggle('visible', !entry.isIntersecting);
+    }, { threshold: 0 });
+    if (header) navObserver.observe(header);
+  </script>
+
+</body>
+</html>

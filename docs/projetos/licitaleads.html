@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LicitaLeads | AI Ventures</title>
+  <meta name="description" content="Inteligencia comercial para corretores de seguro garantia a partir de licitacoes publicas">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="LicitaLeads | AI Ventures">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%E2%9A%A1</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+  <!-- ======== STICKY NAV ======== -->
+  <nav class="sticky-nav" aria-label="Navegacao fixa">
+    <div class="container sticky-nav-inner">
+      <a href="../index.html" class="sticky-nav-brand">AI Ventures</a>
+      <div class="sticky-nav-links">
+        <a href="../index.html">Portfolio</a>
+        <a href="../index.html#projetos">Projetos</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ======== BREADCRUMB ======== -->
+  <div class="container breadcrumb">
+    <a href="../index.html">AI Ventures</a> &rsaquo; <a href="../index.html#projetos">Projetos</a> &rsaquo; <span>LicitaLeads</span>
+  </div>
+
+  <!-- ======== HERO ======== -->
+  <header class="hero" id="topo">
+    <div class="container">
+      <span class="project-type-badge">SaaS / Sales Intelligence</span>
+      <h1>LicitaLeads</h1>
+      <p class="hero-description">Corretores de seguro garantia perdem horas vasculhando o PNCP manualmente para encontrar contratos que precisam de garantia. O LicitaLeads ingere, enriquece e pontua automaticamente ~23K contratos publicos, entregando leads priorizados com dados de contato e estimativa de comissao.</p>
+      <div class="project-links" style="margin-top: var(--space-md)">
+        <a href="https://licitaleads.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver projeto</a>
+        <a href="https://github.com/jpvss/licitaleads" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Codigo</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======== FUNCIONALIDADES ======== -->
+  <section class="section" id="funcionalidades">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Funcionalidades</p>
+        <h2 class="section-title">O que o LicitaLeads faz</h2>
+      </div>
+      <ul class="detail-list reveal">
+        <li>Pipeline de ingestao de contratos da API PNCP com enriquecimento via BrasilAPI (CNPJ, telefone, email, QSA) e checagem de inidoneidade via CEIS/CNEP</li>
+        <li>Scoring composto 0-100 com 4 dimensoes (valor, recencia, contato, categoria) e classificacao em tiers A/B/C com estimativa de garantia</li>
+        <li>Dashboard com 11 filtros combinados (UF, tier, valor, periodo, CNAE, porte, fase, tipo contrato, categoria, contato, busca textual) e KPIs em tempo real</li>
+        <li>Acoes rapidas por lead: WhatsApp pre-preenchido, ligar, email, copiar resumo, links diretos ao PNCP e sistema de origem</li>
+        <li>Calculadora interativa de comissao com sliders de taxa de seguro e percentual do corretor, exportacao CSV com 31 colunas</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ======== PIPELINE ======== -->
+  <section class="section" id="pipeline">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Arquitetura</p>
+        <h2 class="section-title">Como funciona</h2>
+      </div>
+      <div class="pipeline reveal">
+        <div class="pipeline-stage">
+          <p class="pipeline-stage-label">Fontes</p>
+          <ul>
+            <li>API PNCP (contratos publicos)</li>
+            <li>BrasilAPI (dados de CNPJ)</li>
+            <li>Portal da Transparencia (CEIS/CNEP)</li>
+          </ul>
+        </div>
+        <div class="pipeline-stage">
+          <p class="pipeline-stage-label">Pipeline</p>
+          <ul>
+            <li>Ingestao idempotente com circuit breaker</li>
+            <li>Enriquecimento de CNPJ (contato, QSA, CNAE)</li>
+            <li>Scoring 0-100 com 4 dimensoes</li>
+            <li>Classificacao em tiers A/B/C</li>
+          </ul>
+        </div>
+        <div class="pipeline-stage">
+          <p class="pipeline-stage-label">Produto</p>
+          <ul>
+            <li>Dashboard com 11 filtros e KPIs</li>
+            <li>Acoes rapidas (WhatsApp, email, tel)</li>
+            <li>Calculadora de comissao</li>
+            <li>Exportacao CSV estruturada</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== TECH STACK ======== -->
+  <section class="section" id="stack">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Tecnologia</p>
+        <h2 class="section-title">Tech Stack</h2>
+      </div>
+      <div class="stack-grid reveal">
+        <div class="stack-group">
+          <span class="stack-group-label">Frontend</span>
+          <span class="tag">Next.js 16</span>
+          <span class="tag">React 19</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">Tailwind CSS v4</span>
+          <span class="tag">shadcn/ui</span>
+          <span class="tag">Lucide React</span>
+        </div>
+        <div class="stack-group">
+          <span class="stack-group-label">Data</span>
+          <span class="tag">Zod 4</span>
+          <span class="tag">tsx</span>
+        </div>
+        <div class="stack-group">
+          <span class="stack-group-label">APIs</span>
+          <span class="tag">PNCP</span>
+          <span class="tag">BrasilAPI</span>
+          <span class="tag">Resend</span>
+        </div>
+        <div class="stack-group">
+          <span class="stack-group-label">Infra</span>
+          <span class="tag">Vercel</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== CAPACIDADES ======== -->
+  <section class="section" id="capacidades">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Capacidades</p>
+        <h2 class="section-title">O que isso demonstra</h2>
+      </div>
+      <ul class="detail-list reveal">
+        <li>Ingestao e normalizacao de dados governamentais heterogeneos (PNCP, BrasilAPI, Portal da Transparencia) com pipeline idempotente e circuit breaker</li>
+        <li>Scoring domain-specific com modelagem de regras regulatorias do mercado de seguro garantia brasileiro (Lei 14.133, percentuais de garantia por categoria)</li>
+        <li>Enriquecimento automatizado de dados empresariais (CNPJ &rarr; razao social, telefone, email, QSA, CNAE, porte, capital social) com rate limiting e resume-safety</li>
+        <li>Construcao de produto B2B data-driven com zero infraestrutura (static JSON, sem banco de dados, Vercel free tier) para validacao rapida de mercado</li>
+        <li>UI de alta densidade informacional com filtros compostos, acoes contextuais e exportacao estruturada para workflow de vendas</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ======== OPORTUNIDADES ======== -->
+  <section class="section" id="oportunidades">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Oportunidades</p>
+        <h2 class="section-title">O que podemos construir para voce</h2>
+        <p class="section-subtitle">Projetos derivados que aplicam a mesma arquitetura para outros segmentos.</p>
+      </div>
+      <div class="metrics-grid reveal">
+        <div class="opp-card">
+          <p class="solution-tag">Seguros / Corretoras e seguradoras</p>
+          <h4>Plataforma de prospeccao automatizada para corretoras de seguros corporativos</h4>
+          <p>Corretoras de seguros corporativos dependem de relacionamento para gerar negocios. Nao tem visibilidade sobre contratos publicos que obrigatoriamente precisam de cobertura.</p>
+          <div class="opp-meta">
+            <span>R$ 25k-45k</span>
+            <span>2-3 semanas</span>
+          </div>
+        </div>
+        <div class="opp-card">
+          <p class="solution-tag">Governo / GovTech</p>
+          <h4>Dashboard de inteligencia em contratacoes publicas para orgaos de controle</h4>
+          <p>Tribunais de Contas nao conseguem monitorar em tempo real o volume de contratacoes. Precisam cruzar dados de licitacoes com cadastros de inidoneidade e mapear fornecedores recorrentes.</p>
+          <div class="opp-meta">
+            <span>R$ 40k-70k</span>
+            <span>3-4 semanas</span>
+          </div>
+        </div>
+        <div class="opp-card">
+          <p class="solution-tag">Construcao Civil / Construtoras</p>
+          <h4>Radar de oportunidades de licitacoes de obras publicas</h4>
+          <p>Construtoras de medio porte nao tem equipe para monitorar editais nos 5.570 municipios. Cada licitacao perdida pode representar R$ 1-50M em faturamento.</p>
+          <div class="opp-meta">
+            <span>R$ 20k-40k</span>
+            <span>2-3 semanas</span>
+          </div>
+        </div>
+        <div class="opp-card">
+          <p class="solution-tag">Financeiro / Bancos e factorings</p>
+          <h4>Plataforma de originacao de credito para fornecedores do governo</h4>
+          <p>Bancos e factorings querem antecipar recebiveis de contratos publicos mas nao sabem quais empresas acabaram de assinar contratos grandes. Um feed com scoring de credito reduz custo de originacao.</p>
+          <div class="opp-meta">
+            <span>R$ 35k-60k</span>
+            <span>3-4 semanas</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== CTA ======== -->
+  <section class="section" id="contato-section">
+    <div class="container">
+      <div class="cta-block reveal">
+        <h3>Quer algo parecido?</h3>
+        <p>Construimos LicitaLeads em semanas. Podemos adaptar a mesma arquitetura para o seu setor.</p>
+        <a href="../index.html#contato" class="btn btn-accent">Agendar conversa</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== FOOTER ======== -->
+  <footer class="site-footer" id="contato">
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <p class="footer-cta">Vamos conversar sobre sua operacao</p>
+          <p class="footer-text">Construimos ferramentas de dados e IA sob medida para empresas brasileiras.</p>
+        </div>
+        <div class="footer-contacts">
+          <a href="https://wa.me/5511999999999" class="btn-whatsapp">WhatsApp</a>
+          <a href="mailto:contato@aiventures.com.br" class="btn-email">Email</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">AI Ventures</p>
+        <nav class="footer-nav" aria-label="Rodape">
+          <a href="../index.html">Portfolio</a>
+          <a href="../index.html#projetos">Projetos</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======== MINIMAL JS: scroll reveal + sticky nav ======== -->
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => revealObserver.observe(el));
+    const stickyNav = document.querySelector('.sticky-nav');
+    const header = document.querySelector('.hero');
+    const navObserver = new IntersectionObserver(([entry]) => {
+      stickyNav.classList.toggle('visible', !entry.isIntersecting);
+    }, { threshold: 0 });
+    if (header) navObserver.observe(header);
+  </script>
+
+</body>
+</html>

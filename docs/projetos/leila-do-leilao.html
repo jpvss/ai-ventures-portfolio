@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Leila do Leilao | AI Ventures</title>
+  <meta name="description" content="Inteligencia em leiloes de imoveis Caixa com desconto real calculado via dados ITBI de BH">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Leila do Leilao | AI Ventures">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%E2%9A%A1</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+  <!-- ======== STICKY NAV ======== -->
+  <nav class="sticky-nav" aria-label="Navegacao fixa">
+    <div class="container sticky-nav-inner">
+      <a href="../index.html" class="sticky-nav-brand">AI Ventures</a>
+      <div class="sticky-nav-links">
+        <a href="../index.html">Portfolio</a>
+        <a href="../index.html#projetos">Projetos</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ======== BREADCRUMB ======== -->
+  <div class="container breadcrumb">
+    <a href="../index.html">AI Ventures</a> &rsaquo; <a href="../index.html#projetos">Projetos</a> &rsaquo; <span>Leila do Leilao</span>
+  </div>
+
+  <!-- ======== HERO ======== -->
+  <header class="hero" id="topo">
+    <div class="container">
+      <span class="project-type-badge">Dashboard de dados / Inteligencia imobiliaria</span>
+      <h1>Leila do Leilao</h1>
+      <p class="hero-description">Investidores em imoveis de leilao da Caixa Economica nao sabem se o desconto anunciado e real, porque a avaliacao da Caixa nao reflete o preco de mercado. O Leila cruza dados de transacoes ITBI reais (2008-2026) com o catalogo da Caixa, revelando o desconto verdadeiro e pontuando cada imovel com um Deal Score multidimensional.</p>
+      <div class="project-links" style="margin-top: var(--space-md)">
+        <a href="https://github.com/jpvss/Leila-do-leilao" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Codigo</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======== FUNCIONALIDADES ======== -->
+  <section class="section" id="funcionalidades">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Funcionalidades</p>
+        <h2 class="section-title">O que o Leila do Leilao faz</h2>
+      </div>
+      <ul class="detail-list reveal">
+        <li>Dashboard com KPIs, filtros interativos por modalidade/cidade/preco e ranking dos top 50 imoveis por Deal Score ou desconto</li>
+        <li>Tabela completa de imoveis MG com 14 colunas, 11 filtros combinados, score personalizado por perfil de investidor e exportacao CSV</li>
+        <li>Mapa interativo Leaflet com marcadores por Deal Score, painel de detalhes flutuante, sidebar listavel e filtros geograficos por regiao/cidade</li>
+        <li>Simulador financeiro completo: ROI, financiamento SAC, ITBI por municipio, custos de cartorio, fluxo de caixa e calculadora de lance maximo via busca binaria</li>
+        <li>Pagina de detalhe por imovel com Street View, lugares proximos (Google Places), tempos de deslocamento, tendencia do bairro (ITBI historico) e flags de risco (gravame, vilas/favelas URBEL)</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ======== PIPELINE ======== -->
+  <section class="section" id="pipeline">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Arquitetura</p>
+        <h2 class="section-title">Como funciona</h2>
+      </div>
+      <div class="pipeline reveal">
+        <div class="pipeline-stage">
+          <p class="pipeline-stage-label">Fontes</p>
+          <ul>
+            <li>Catalogo CSV Caixa Economica</li>
+            <li>ITBI municipal BH (2008-2026)</li>
+            <li>Scraping de paginas de detalhe</li>
+            <li>Google Maps API (geocodificacao)</li>
+          </ul>
+        </div>
+        <div class="pipeline-stage">
+          <p class="pipeline-stage-label">Pipeline</p>
+          <ul>
+            <li>Ingestao e enriquecimento Python</li>
+            <li>Cruzamento Caixa x ITBI real</li>
+            <li>Geocodificacao via geopy</li>
+            <li>Deal Score multidimensional</li>
+          </ul>
+        </div>
+        <div class="pipeline-stage">
+          <p class="pipeline-stage-label">Produto</p>
+          <ul>
+            <li>Mapa interativo com Deal Score</li>
+            <li>Simulador financeiro (ROI, SAC, ITBI)</li>
+            <li>Paginas de detalhe com Street View</li>
+            <li>Personalizacao por perfil de investidor</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== TECH STACK ======== -->
+  <section class="section" id="stack">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Tecnologia</p>
+        <h2 class="section-title">Tech Stack</h2>
+      </div>
+      <div class="stack-grid reveal">
+        <div class="stack-group">
+          <span class="stack-group-label">Frontend</span>
+          <span class="tag">Next.js 15</span>
+          <span class="tag">React 19</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">Tailwind CSS v4</span>
+          <span class="tag">Leaflet</span>
+          <span class="tag">React-Leaflet</span>
+        </div>
+        <div class="stack-group">
+          <span class="stack-group-label">Data</span>
+          <span class="tag">Python 3.10+</span>
+          <span class="tag">DuckDB</span>
+          <span class="tag">Pandas</span>
+          <span class="tag">Pydantic v2</span>
+        </div>
+        <div class="stack-group">
+          <span class="stack-group-label">APIs</span>
+          <span class="tag">Google Maps API</span>
+          <span class="tag">httpx</span>
+          <span class="tag">BeautifulSoup4</span>
+          <span class="tag">geopy</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== CAPACIDADES ======== -->
+  <section class="section" id="capacidades">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Capacidades</p>
+        <h2 class="section-title">O que isso demonstra</h2>
+      </div>
+      <ul class="detail-list reveal">
+        <li>Cruzamento de datasets publicos heterogeneos (CSV Caixa, ITBI municipal, scraping de paginas de detalhe) para gerar insight que nenhuma fonte individual oferece &mdash; o desconto real vs mercado</li>
+        <li>Modelagem financeira domain-specific com regras do mercado imobiliario brasileiro (ITBI por municipio, financiamento SAC, FGTS, custos de cartorio, comissao de leiloeiro)</li>
+        <li>Pipeline de dados Python modular com ingestao, enriquecimento, geocodificacao e scoring &mdash; cada modulo roda standalone, exporta JSON estatico para o frontend consumir</li>
+        <li>Visualizacao geoespacial interativa com dados classificados por scoring multidimensional (desconto, ocupacao, modalidade, financiamento, confianca dos dados)</li>
+        <li>Personalizacao por perfil de usuario (orcamento, objetivo, tolerancia a risco) com reweighting dinamico de scores &mdash; sem backend, tudo client-side via localStorage</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ======== OPORTUNIDADES ======== -->
+  <section class="section" id="oportunidades">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Oportunidades</p>
+        <h2 class="section-title">O que podemos construir para voce</h2>
+        <p class="section-subtitle">Projetos derivados que aplicam a mesma arquitetura para outros segmentos.</p>
+      </div>
+      <div class="metrics-grid reveal">
+        <div class="opp-card">
+          <p class="solution-tag">Imobiliario / Assessorias de leilao</p>
+          <h4>Plataforma SaaS de inteligencia para assessorias de leilao imobiliario</h4>
+          <p>Assessorias que atendem 50-200 investidores fazem triagem manual dos catalogos. Nao conseguem cruzar com preco real de mercado e entregam analise superficial ao cliente.</p>
+          <div class="opp-meta">
+            <span>R$ 25k-50k</span>
+            <span>2-3 semanas</span>
+          </div>
+        </div>
+        <div class="opp-card">
+          <p class="solution-tag">Financeiro / Fintechs de credito imobiliario</p>
+          <h4>Motor de avaliacao automatizada de garantias imobiliarias para originacao de credito</h4>
+          <p>Fintechs que financiam compra em leilao dependem de laudos presenciais que custam R$ 800-2.000 e demoram 5-10 dias. Uma pre-avaliacao automatica reduz custo e acelera a decisao.</p>
+          <div class="opp-meta">
+            <span>R$ 40k-70k</span>
+            <span>3-4 semanas</span>
+          </div>
+        </div>
+        <div class="opp-card">
+          <p class="solution-tag">Governo / Prefeituras e Sec. de Fazenda</p>
+          <h4>Dashboard de inteligencia tributaria baseado em transacoes ITBI</h4>
+          <p>Prefeituras arrecadam ITBI mas nao exploram os dados para inteligencia fiscal. Uma prefeitura de 500K+ habitantes pode recuperar R$ 5-20M/ano em ITBI subdeclarado.</p>
+          <div class="opp-meta">
+            <span>R$ 50k-90k</span>
+            <span>3-4 semanas</span>
+          </div>
+        </div>
+        <div class="opp-card">
+          <p class="solution-tag">Seguros / Seguradoras patrimoniais</p>
+          <h4>Ferramenta de precificacao de seguro residencial baseada em dados transacionais reais</h4>
+          <p>Seguradoras precificam seguro residencial usando tabela generica. Dados de transacoes ITBI reais por bairro permitem calibrar o valor com muito mais precisao.</p>
+          <div class="opp-meta">
+            <span>R$ 35k-60k</span>
+            <span>3-4 semanas</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== CTA ======== -->
+  <section class="section" id="contato-section">
+    <div class="container">
+      <div class="cta-block reveal">
+        <h3>Quer algo parecido?</h3>
+        <p>Construimos Leila do Leilao em semanas. Podemos adaptar a mesma arquitetura para o seu setor.</p>
+        <a href="../index.html#contato" class="btn btn-accent">Agendar conversa</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== FOOTER ======== -->
+  <footer class="site-footer" id="contato">
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <p class="footer-cta">Vamos conversar sobre sua operacao</p>
+          <p class="footer-text">Construimos ferramentas de dados e IA sob medida para empresas brasileiras.</p>
+        </div>
+        <div class="footer-contacts">
+          <a href="https://wa.me/5511999999999" class="btn-whatsapp">WhatsApp</a>
+          <a href="mailto:contato@aiventures.com.br" class="btn-email">Email</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">AI Ventures</p>
+        <nav class="footer-nav" aria-label="Rodape">
+          <a href="../index.html">Portfolio</a>
+          <a href="../index.html#projetos">Projetos</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======== MINIMAL JS: scroll reveal + sticky nav ======== -->
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => revealObserver.observe(el));
+    const stickyNav = document.querySelector('.sticky-nav');
+    const header = document.querySelector('.hero');
+    const navObserver = new IntersectionObserver(([entry]) => {
+      stickyNav.classList.toggle('visible', !entry.isIntersecting);
+    }, { threshold: 0 });
+    if (header) navObserver.observe(header);
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kiiry Dashboard | AI Ventures</title>
+  <meta name="description" content="Plataforma de gestao financeira e relatorios para investidores de usinas solares">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Kiiry Dashboard | AI Ventures">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%E2%9A%A1</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+  <!-- ======== STICKY NAV ======== -->
+  <nav class="sticky-nav" aria-label="Navegacao fixa">
+    <div class="container sticky-nav-inner">
+      <a href="../index.html" class="sticky-nav-brand">AI Ventures</a>
+      <div class="sticky-nav-links">
+        <a href="../index.html">Portfolio</a>
+        <a href="../index.html#projetos">Projetos</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ======== BREADCRUMB ======== -->
+  <div class="container breadcrumb">
+    <a href="../index.html">AI Ventures</a> &rsaquo; <a href="../index.html#projetos">Projetos</a> &rsaquo; <span>Kiiry Dashboard</span>
+  </div>
+
+  <!-- ======== HERO ======== -->
+  <header class="hero" id="topo">
+    <div class="container">
+      <span class="project-type-badge">Ferramenta interna / Reporting financeiro</span>
+      <h1>Kiiry Dashboard</h1>
+      <p class="hero-description">Donos de usinas solares distribuidas no Brasil precisam prestar contas mensais a investidores sobre energia compensada, receitas e pagamentos. Hoje esse processo e manual, com planilhas cruzando dados da CEMIG e da plataforma de billing, sujeito a erros que afetam pagamentos reais a locadores e investidores.</p>
+      <div class="project-links" style="margin-top: var(--space-md)">
+        <a href="https://web-production-175e67.up.railway.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver projeto</a>
+        <a href="https://github.com/jpvss/kiiry-dashboard" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Codigo</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======== FUNCIONALIDADES ======== -->
+  <section class="section" id="funcionalidades">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Funcionalidades</p>
+        <h2 class="section-title">O que o Kiiry Dashboard faz</h2>
+      </div>
+      <ul class="detail-list reveal">
+        <li>Relatorio mensal por usina com balanco de recebimento por UC (unidade consumidora), incluindo energia compensada, tarifas, receita locador e status de pagamento</li>
+        <li>Pipeline de calculo financeiro automatizado: ingestao de Excel (CEMIG + Cogni), calculo de tarifa compensavel dinamica (GD I/II), classificacao de inadimplencia e geracao de totais</li>
+        <li>Dashboard gerencial multi-usina com KPIs (receita total, inadimplencia %, energia injetada) e matriz MBR de todas as plantas por periodos</li>
+        <li>Geracao de PDF via WeasyPrint para relatorios de investidores e comissoes de vendedores com auditoria embutida</li>
+        <li>Trilha de auditoria completa: tooltips com formulas, JSON de auditoria por usina/mes, e painel de auditoria com diff entre valores Cogni e calculados</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ======== PIPELINE ======== -->
+  <section class="section" id="pipeline">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Arquitetura</p>
+        <h2 class="section-title">Como funciona</h2>
+      </div>
+      <div class="pipeline reveal">
+        <div class="pipeline-stage">
+          <p class="pipeline-stage-label">Fontes</p>
+          <ul>
+            <li>Excel CEMIG (compensacao de energia)</li>
+            <li>Cogni (faturas, boletos, UCs)</li>
+            <li>Configuracao TOML por usina</li>
+          </ul>
+        </div>
+        <div class="pipeline-stage">
+          <p class="pipeline-stage-label">Pipeline</p>
+          <ul>
+            <li>ETL Pandas multi-fonte</li>
+            <li>Calculo de tarifa compensavel GD I/II</li>
+            <li>Classificacao de inadimplencia</li>
+            <li>Validacao cruzada Pydantic v2</li>
+          </ul>
+        </div>
+        <div class="pipeline-stage">
+          <p class="pipeline-stage-label">Produto</p>
+          <ul>
+            <li>Dashboard gerencial multi-usina</li>
+            <li>Relatorios PDF para investidores</li>
+            <li>Trilha de auditoria completa</li>
+            <li>Matriz MBR plantas x periodos</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== TECH STACK ======== -->
+  <section class="section" id="stack">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Tecnologia</p>
+        <h2 class="section-title">Tech Stack</h2>
+      </div>
+      <div class="stack-grid reveal">
+        <div class="stack-group">
+          <span class="stack-group-label">Frontend</span>
+          <span class="tag">Jinja2</span>
+          <span class="tag">Tailwind CSS</span>
+        </div>
+        <div class="stack-group">
+          <span class="stack-group-label">Data</span>
+          <span class="tag">Python 3.13</span>
+          <span class="tag">Pandas</span>
+          <span class="tag">Pydantic v2</span>
+          <span class="tag">WeasyPrint</span>
+          <span class="tag">TOML</span>
+        </div>
+        <div class="stack-group">
+          <span class="stack-group-label">APIs</span>
+          <span class="tag">Flask</span>
+          <span class="tag">Babel</span>
+          <span class="tag">structlog</span>
+        </div>
+        <div class="stack-group">
+          <span class="stack-group-label">Infra</span>
+          <span class="tag">Gunicorn</span>
+          <span class="tag">Railway</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== CAPACIDADES ======== -->
+  <section class="section" id="capacidades">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Capacidades</p>
+        <h2 class="section-title">O que isso demonstra</h2>
+      </div>
+      <ul class="detail-list reveal">
+        <li>Modelagem financeira domain-specific com regras regulatorias do setor eletrico brasileiro (tarifas CEMIG, compensacao GD I/II, PIS/COFINS, ICMS, Fio B)</li>
+        <li>Pipeline de ETL robusto para dados heterogeneos de multiplas fontes (Excel CEMIG multi-aba, Cogni Faturas/Boletos/UCs) com normalizacao, aliasing e validacao cruzada</li>
+        <li>Geracao de documentos financeiros auditaveis com rastreabilidade completa de cada calculo (formulas, fontes, arredondamento) &mdash; compliance-ready</li>
+        <li>Arquitetura serverless-friendly com cache em memoria, zero banco de dados e deploy continuo via git push (Railway)</li>
+        <li>Gestao de status de pagamento multi-estado (PAGO, Inadimplente, Em Aberto, Nao Emitido, Inadimplente Anterior) com regras de negocio especificas do setor de energia solar</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ======== OPORTUNIDADES ======== -->
+  <section class="section" id="oportunidades">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Oportunidades</p>
+        <h2 class="section-title">O que podemos construir para voce</h2>
+        <p class="section-subtitle">Projetos derivados que aplicam a mesma arquitetura para outros segmentos.</p>
+      </div>
+      <div class="metrics-grid reveal">
+        <div class="opp-card">
+          <p class="solution-tag">Energia Solar / Integradores e gestoras GD</p>
+          <h4>Plataforma white-label de gestao e billing para usinas de geracao distribuida</h4>
+          <p>Gestoras de usinas solares GD com 5-50 plantas gerenciam billing de centenas de UCs com planilhas manuais, correndo risco de erro em pagamentos a locadores e investidores.</p>
+          <div class="opp-meta">
+            <span>R$ 50k-90k</span>
+            <span>4-5 semanas</span>
+          </div>
+        </div>
+        <div class="opp-card">
+          <p class="solution-tag">Contabilidade / Escritorios agro e energia</p>
+          <h4>Automacao de conciliacao financeira e geracao de notas de debito para locadores rurais</h4>
+          <p>Escritorios de contabilidade fazem conciliacao manual entre compensacao da distribuidora, billing e pagamento ao locador. Um erro de R$ 200 vira problema tributario.</p>
+          <div class="opp-meta">
+            <span>R$ 30k-50k</span>
+            <span>3-4 semanas</span>
+          </div>
+        </div>
+        <div class="opp-card">
+          <p class="solution-tag">Utilities / Comercializadoras de energia</p>
+          <h4>Dashboard de monitoramento de inadimplencia e receita para comercializadoras</h4>
+          <p>Comercializadoras de energia no mercado livre nao tem visibilidade consolidada de inadimplencia por cliente e regiao. Cobrancas atrasadas viram perda de caixa que compromete a operacao.</p>
+          <div class="opp-meta">
+            <span>R$ 40k-70k</span>
+            <span>3-4 semanas</span>
+          </div>
+        </div>
+        <div class="opp-card">
+          <p class="solution-tag">Fundos de Investimento / FIPs e gestoras</p>
+          <h4>Painel de performance operacional e financeira para portfolios de usinas solares</h4>
+          <p>Gestoras de fundos com R$ 50-500M em usinas solares recebem reports mensais em PDF sem consolidacao. Decisao de desinvestimento e tomada com 2-3 meses de atraso informacional.</p>
+          <div class="opp-meta">
+            <span>R$ 60k-120k</span>
+            <span>4-6 semanas</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== CTA ======== -->
+  <section class="section" id="contato-section">
+    <div class="container">
+      <div class="cta-block reveal">
+        <h3>Quer algo parecido?</h3>
+        <p>Construimos Kiiry Dashboard em semanas. Podemos adaptar a mesma arquitetura para o seu setor.</p>
+        <a href="../index.html#contato" class="btn btn-accent">Agendar conversa</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== FOOTER ======== -->
+  <footer class="site-footer" id="contato">
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <p class="footer-cta">Vamos conversar sobre sua operacao</p>
+          <p class="footer-text">Construimos ferramentas de dados e IA sob medida para empresas brasileiras.</p>
+        </div>
+        <div class="footer-contacts">
+          <a href="https://wa.me/5511999999999" class="btn-whatsapp">WhatsApp</a>
+          <a href="mailto:contato@aiventures.com.br" class="btn-email">Email</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">AI Ventures</p>
+        <nav class="footer-nav" aria-label="Rodape">
+          <a href="../index.html">Portfolio</a>
+          <a href="../index.html#projetos">Projetos</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======== MINIMAL JS: scroll reveal + sticky nav ======== -->
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => revealObserver.observe(el));
+    const stickyNav = document.querySelector('.sticky-nav');
+    const header = document.querySelector('.hero');
+    const navObserver = new IntersectionObserver(([entry]) => {
+      stickyNav.classList.toggle('visible', !entry.isIntersecting);
+    }, { threshold: 0 });
+    if (header) navObserver.observe(header);
+  </script>
+
+</body>
+</html>

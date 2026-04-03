@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CV10x | AI Ventures</title>
+  <meta name="description" content="Analisador de curriculo com IA que pontua, sugere melhorias e reescreve secoes">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="CV10x | AI Ventures">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%E2%9A%A1</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+  <!-- STICKY NAV -->
+  <nav class="sticky-nav" aria-label="Navegacao fixa">
+    <div class="container sticky-nav-inner">
+      <a href="../index.html" class="sticky-nav-brand">AI Ventures</a>
+      <div class="sticky-nav-links">
+        <a href="../index.html">Portfolio</a>
+        <a href="../index.html#projetos">Projetos</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div class="container breadcrumb">
+    <a href="../index.html">AI Ventures</a> &rsaquo; <a href="../index.html#projetos">Projetos</a> &rsaquo; <span>CV10x</span>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero" id="topo">
+    <div class="container">
+      <span class="project-type-badge">SaaS B2C</span>
+      <h1>CV10x</h1>
+      <p class="hero-description">Profissionais de dados no Brasil nao sabem se o curriculo esta competitivo. Mandam candidaturas e nao recebem retorno, sem entender por que. O CV10x analisa o curriculo em 5 dimensoes, mostra exatamente o que melhorar, e no plano Pro reescreve cada secao com alternativas prontas para copiar e colar.</p>
+      <div class="project-links" style="margin-top: var(--space-md)">
+        <a href="https://cv10x.escoladados.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver projeto</a>
+        <a href="https://github.com/jpvss/CV10x" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Codigo</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- FUNCIONALIDADES -->
+  <section class="section" id="funcionalidades">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Funcionalidades</p>
+        <h2 class="section-title">O que o CV10x faz</h2>
+      </div>
+      <ul class="detail-list reveal">
+        <li>Upload de curriculo (PDF/DOCX/TXT) com extracao de texto e analise por IA Claude em 5 dimensoes (Tecnico, Impacto, Estrutura, ATS, Narrativa) com score 0-100</li>
+        <li>Quick win gratuito com acao imediata de maior impacto, email gate para relatorio completo com 8-15 sugestoes priorizadas por dimensao</li>
+        <li>Relatorio Pro pago (via Hotmart) com reescrita personalizada de secoes do curriculo (opcoes A/B/C), sumario profissional, analise de keywords ATS, preparacao para entrevista e plano de acao</li>
+        <li>Sequencia de nurture emails automatizada (E1-E5) com cron jobs via GitHub Actions, fila Redis com dedup, e tracking de conversao por etapa</li>
+        <li>Job matching automatico para usuarios Pro: busca de vagas via SerpAPI, pre-filtro heuristico e ranking por LLM com categorias (destaque/encaixe/proximo passo)</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PIPELINE -->
+  <section class="section" id="pipeline">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Arquitetura</p>
+        <h2 class="section-title">Como funciona</h2>
+      </div>
+      <div class="pipeline reveal">
+        <div class="pipeline-stage">
+          <h3>Fontes</h3>
+          <ul>
+            <li>Upload do usuario (PDF/DOCX/TXT)</li>
+            <li>SerpAPI (vagas de emprego)</li>
+            <li>Hotmart (pagamentos webhook)</li>
+          </ul>
+        </div>
+        <div class="pipeline-stage">
+          <h3>Pipeline</h3>
+          <ul>
+            <li>Extracao de texto do curriculo</li>
+            <li>Analise por Claude com structured output (Zod)</li>
+            <li>Scoring em 5 dimensoes + sugestoes priorizadas</li>
+            <li>Fila de nurture em Redis com dedup</li>
+          </ul>
+        </div>
+        <div class="pipeline-stage">
+          <h3>Produto</h3>
+          <ul>
+            <li>Quick win gratuito + email gate</li>
+            <li>Relatorio Pro com reescrita personalizada</li>
+            <li>Job matching automatico por LLM</li>
+            <li>Nurture emails + tracking Meta CAPI</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH STACK -->
+  <section class="section" id="stack">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Tecnologia</p>
+        <h2 class="section-title">Tech Stack</h2>
+      </div>
+      <div class="stack-grid reveal">
+        <div class="stack-group">
+          <span class="stack-group-label">Frontend</span>
+          <span class="tag">Next.js 15</span>
+          <span class="tag">React 18</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">Tailwind CSS</span>
+          <span class="tag">Framer Motion</span>
+        </div>
+        <div class="stack-group">
+          <span class="stack-group-label">Data</span>
+          <span class="tag">Upstash Redis</span>
+          <span class="tag">Zod</span>
+        </div>
+        <div class="stack-group">
+          <span class="stack-group-label">APIs</span>
+          <span class="tag">Anthropic Claude API</span>
+          <span class="tag">Resend</span>
+          <span class="tag">Hotmart</span>
+          <span class="tag">Meta CAPI</span>
+          <span class="tag">Google Ads</span>
+          <span class="tag">@vercel/og</span>
+          <span class="tag">@vercel/analytics</span>
+        </div>
+        <div class="stack-group">
+          <span class="stack-group-label">Infra</span>
+          <span class="tag">Vercel</span>
+          <span class="tag">GitHub Actions</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPACIDADES -->
+  <section class="section" id="capacidades">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Capacidades</p>
+        <h2 class="section-title">O que isso demonstra</h2>
+      </div>
+      <ul class="detail-list reveal">
+        <li>Integracao avancada com LLM (Claude) usando structured output com Zod schemas, prompt engineering iterativo com cache de sistema, retries e timeout handling em producao</li>
+        <li>Arquitetura de produto B2C completa com funil de conversao: free tier &rarr; email gate &rarr; nurture sequence &rarr; upsell Pro &rarr; pagamento (Hotmart webhook) &rarr; entrega automatica</li>
+        <li>Sistema de automacao de marketing end-to-end: cron jobs serverless (GitHub Actions), fila de nurture em Redis com dedup por hash, batch email via Resend, tracking server-side (Meta CAPI + Google Ads) e UTM attribution</li>
+        <li>Geracao dinamica de imagens OG (share cards) via @vercel/og com multiplos formatos (landscape, portrait, story, square) para compartilhamento em redes sociais</li>
+        <li>Operacao de produto digital em producao com rate limiting por IP, limites mensais por email, retry queues para falhas, idempotencia, e observabilidade via Vercel runtime logs</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- OPORTUNIDADES -->
+  <section class="section" id="oportunidades">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Oportunidades</p>
+        <h2 class="section-title">O que podemos construir para voce</h2>
+        <p class="section-subtitle">Projetos derivados que aplicam a mesma arquitetura para outros segmentos.</p>
+      </div>
+      <div class="metrics-grid reveal">
+        <div class="opp-card">
+          <p class="solution-tag">RH / Outplacement</p>
+          <h4>Plataforma white-label de analise e otimizacao de curriculos para consultorias de carreira</h4>
+          <p>Consultorias de outplacement revisam curriculos manualmente, gastando 2-4 horas por curriculo. Com demissoes em massa no setor de tech, o modelo manual nao escala. Precisam de analise inicial automatizada.</p>
+          <div class="opp-meta">
+            <span>R$ 25k-45k</span>
+            <span>2-3 semanas</span>
+          </div>
+        </div>
+        <div class="opp-card">
+          <p class="solution-tag">Educacao / EdTechs e bootcamps</p>
+          <h4>Modulo de empregabilidade integrado a plataformas de ensino online</h4>
+          <p>Bootcamps e cursos online prometem empregabilidade mas nao tem ferramenta objetiva para medir se o aluno esta pronto para o mercado. Um analisador de curriculo integrado ao LMS mostra progresso real.</p>
+          <div class="opp-meta">
+            <span>R$ 30k-55k</span>
+            <span>3-4 semanas</span>
+          </div>
+        </div>
+        <div class="opp-card">
+          <p class="solution-tag">Recrutamento / HRTechs e ATS</p>
+          <h4>API de scoring e triagem automatizada de curriculos para plataformas de recrutamento</h4>
+          <p>Plataformas ATS brasileiras recebem centenas de curriculos por vaga e usam keyword matching basico. Uma API de scoring multidimensional com feedback explicavel reduz tempo de triagem.</p>
+          <div class="opp-meta">
+            <span>R$ 35k-65k</span>
+            <span>3-4 semanas</span>
+          </div>
+        </div>
+        <div class="opp-card">
+          <p class="solution-tag">Governo / Programas de empregabilidade</p>
+          <h4>Ferramenta de diagnostico e orientacao profissional para agencias de emprego (SINE/PAT)</h4>
+          <p>O SINE e postos do trabalhador atendem milhoes de desempregados por ano com orientacao generica. Falta ferramenta para avaliar objetivamente o curriculo e direcionar para vagas compativeis.</p>
+          <div class="opp-meta">
+            <span>R$ 40k-80k</span>
+            <span>4-5 semanas</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" id="contato-section">
+    <div class="container">
+      <div class="cta-block reveal">
+        <h3>Quer algo parecido?</h3>
+        <p>Construimos CV10x em semanas. Podemos adaptar a mesma arquitetura para o seu setor.</p>
+        <a href="../index.html#contato" class="btn btn-accent">Agendar conversa</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" id="contato">
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <p class="footer-cta">Vamos conversar sobre sua operacao</p>
+          <p class="footer-text">Construimos ferramentas de dados e IA sob medida para empresas brasileiras.</p>
+        </div>
+        <div class="footer-contacts">
+          <a href="https://wa.me/5511999999999" class="btn-whatsapp">WhatsApp</a>
+          <a href="mailto:contato@aiventures.com.br" class="btn-email">Email</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">AI Ventures</p>
+        <nav class="footer-nav" aria-label="Rodape">
+          <a href="../index.html">Portfolio</a>
+          <a href="../index.html#projetos">Projetos</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS: scroll reveal + sticky nav -->
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => revealObserver.observe(el));
+    const stickyNav = document.querySelector('.sticky-nav');
+    const header = document.querySelector('.hero');
+    const navObserver = new IntersectionObserver(([entry]) => {
+      stickyNav.classList.toggle('visible', !entry.isIntersecting);
+    }, { threshold: 0 });
+    if (header) navObserver.observe(header);
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FloridaFlip | AI Ventures</title>
+  <meta name="description" content="Inteligencia imobiliaria para investidores no mercado da Florida com 2.1M+ propriedades">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="FloridaFlip | AI Ventures">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%E2%9A%A1</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+  <!-- ======== STICKY NAV ======== -->
+  <nav class="sticky-nav" aria-label="Navegacao fixa">
+    <div class="container sticky-nav-inner">
+      <a href="../index.html" class="sticky-nav-brand">AI Ventures</a>
+      <div class="sticky-nav-links">
+        <a href="../index.html">Portfolio</a>
+        <a href="../index.html#projetos">Projetos</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ======== BREADCRUMB ======== -->
+  <div class="container breadcrumb">
+    <a href="../index.html">AI Ventures</a> &rsaquo; <a href="../index.html#projetos">Projetos</a> &rsaquo; <span>FloridaFlip</span>
+  </div>
+
+  <!-- ======== HERO ======== -->
+  <header class="hero" id="topo">
+    <div class="container">
+      <span class="project-type-badge">Dashboard de dados</span>
+      <h1>FloridaFlip</h1>
+      <p class="hero-description">Investidores imobiliarios perdem horas cruzando dados de dezenas de fontes publicas para encontrar boas oportunidades. O FloridaFlip agrega tudo &mdash; avaliacoes, vendas, alugueis, risco de enchente, seguros &mdash; em um painel unico com sinais automaticos de oportunidade.</p>
+      <div class="project-links" style="margin-top: var(--space-md)">
+        <a href="https://florida-flip.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver projeto</a>
+        <a href="https://github.com/jpvss/florida-flip" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Codigo</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======== FUNCIONALIDADES ======== -->
+  <section class="section" id="funcionalidades">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Funcionalidades</p>
+        <h2 class="section-title">O que o FloridaFlip faz</h2>
+      </div>
+      <ul class="detail-list reveal">
+        <li>Mapa interativo dos 67 condados com choropleth por metrica (preco, estoque, dias no mercado)</li>
+        <li>Busca em 2.1M propriedades via DuckDB/Parquet com filtros e sinais automaticos (high yield, below assessed, regra dos 70%)</li>
+        <li>Calculadora de flip/hold/BRRRR com custos de fechamento e seguro especificos da legislacao da Florida</li>
+        <li>Scoring multidimensional de submercados por ZIP code (9 dimensoes: vacancia, qualidade do inquilino, yield, risco)</li>
+        <li>Dashboard executivo com KPIs, tendencias, comparacao entre condados e geracao de relatorio PDF</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ======== PIPELINE ======== -->
+  <section class="section" id="pipeline">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Arquitetura</p>
+        <h2 class="section-title">Como funciona</h2>
+      </div>
+      <div class="pipeline reveal">
+        <div class="pipeline-stage">
+          <p class="pipeline-stage-label">Fontes</p>
+          <ul>
+            <li>FDOR (avaliacoes imobiliarias)</li>
+            <li>FEMA (risco de enchente)</li>
+            <li>Census ACS (dados demograficos)</li>
+            <li>Redfin (mercado imobiliario)</li>
+          </ul>
+        </div>
+        <div class="pipeline-stage">
+          <p class="pipeline-stage-label">Pipeline</p>
+          <ul>
+            <li>Ingestao e normalizacao Python</li>
+            <li>DuckDB + Parquet (2.1M registros)</li>
+            <li>Scoring multidimensional por ZIP</li>
+            <li>Modelagem financeira domain-specific</li>
+          </ul>
+        </div>
+        <div class="pipeline-stage">
+          <p class="pipeline-stage-label">Produto</p>
+          <ul>
+            <li>Mapa choropleth interativo</li>
+            <li>Calculadoras de investimento</li>
+            <li>Ranking de submercados</li>
+            <li>Relatorios PDF executivos</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== TECH STACK ======== -->
+  <section class="section" id="stack">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Tecnologia</p>
+        <h2 class="section-title">Tech Stack</h2>
+      </div>
+      <div class="stack-grid reveal">
+        <div class="stack-group">
+          <span class="stack-group-label">Frontend</span>
+          <span class="tag">Next.js 16</span>
+          <span class="tag">React 19</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">Tailwind CSS v4</span>
+          <span class="tag">shadcn/ui</span>
+          <span class="tag">Recharts</span>
+        </div>
+        <div class="stack-group">
+          <span class="stack-group-label">Data</span>
+          <span class="tag">DuckDB</span>
+          <span class="tag">Apache Parquet</span>
+          <span class="tag">Python</span>
+          <span class="tag">jsPDF</span>
+        </div>
+        <div class="stack-group">
+          <span class="stack-group-label">APIs</span>
+          <span class="tag">Google Maps API</span>
+        </div>
+        <div class="stack-group">
+          <span class="stack-group-label">Infra</span>
+          <span class="tag">Vercel</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== CAPACIDADES ======== -->
+  <section class="section" id="capacidades">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Capacidades</p>
+        <h2 class="section-title">O que isso demonstra</h2>
+      </div>
+      <ul class="detail-list reveal">
+        <li>Ingestao e normalizacao de dados publicos heterogeneos (FDOR, FEMA, Census ACS, Redfin) em pipeline Python reproduzivel</li>
+        <li>Consultas analiticas sobre milhoes de registros no browser e servidor usando DuckDB + Parquet sem banco de dados externo</li>
+        <li>Modelagem financeira domain-specific com regras regulatorias locais (seguro FL, custos de fechamento OIR, NFIP)</li>
+        <li>Visualizacao geoespacial interativa com poligonos, choropleth e drill-down por regiao</li>
+        <li>Scoring multidimensional com pesos configuraveis para ranqueamento e tomada de decisao</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ======== OPORTUNIDADES ======== -->
+  <section class="section" id="oportunidades">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Oportunidades</p>
+        <h2 class="section-title">O que podemos construir para voce</h2>
+        <p class="section-subtitle">Projetos derivados que aplicam a mesma arquitetura para outros segmentos.</p>
+      </div>
+      <div class="metrics-grid reveal">
+        <div class="opp-card">
+          <p class="solution-tag">Imobiliario / Incorporadoras</p>
+          <h4>Painel de inteligencia territorial para prospeccao de terrenos e lancamentos</h4>
+          <p>Incorporadoras de medio porte gastam semanas com consultores para mapear regioes viaveis para novos empreendimentos, cruzando manualmente dados de zoneamento, renda e concorrencia.</p>
+          <div class="opp-meta">
+            <span>R$ 40k-80k</span>
+            <span>3-4 semanas</span>
+          </div>
+        </div>
+        <div class="opp-card">
+          <p class="solution-tag">Financeiro / Fintechs de credito</p>
+          <h4>Dashboard de risco geografico para originacao de credito imobiliario e consignado</h4>
+          <p>Fintechs de credito precisam avaliar risco de inadimplencia e valor de garantia por regiao antes de aprovar operacoes. Um painel visual com scoring por municipio reduz tempo de aprovacao.</p>
+          <div class="opp-meta">
+            <span>R$ 35k-60k</span>
+            <span>3-4 semanas</span>
+          </div>
+        </div>
+        <div class="opp-card">
+          <p class="solution-tag">Agronegocio / Fundos de terras</p>
+          <h4>Plataforma de avaliacao e comparacao de propriedades rurais para investimento</h4>
+          <p>Fundos de investimento em terras avaliam propriedades com planilhas e visitas presenciais. Decisao de compra de R$ 5-50M e tomada com dados fragmentados.</p>
+          <div class="opp-meta">
+            <span>R$ 50k-90k</span>
+            <span>4-5 semanas</span>
+          </div>
+        </div>
+        <div class="opp-card">
+          <p class="solution-tag">Varejo / Redes em expansao</p>
+          <h4>Ferramenta de geoexpansao para abertura de novas unidades</h4>
+          <p>Redes de varejo e franquias decidem onde abrir a proxima loja com base em intuicao. Uma analise errada significa R$ 200-500k jogados fora em ponto comercial que nao performa.</p>
+          <div class="opp-meta">
+            <span>R$ 30k-60k</span>
+            <span>3-4 semanas</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== CTA ======== -->
+  <section class="section" id="contato-section">
+    <div class="container">
+      <div class="cta-block reveal">
+        <h3>Quer algo parecido?</h3>
+        <p>Construimos FloridaFlip em semanas. Podemos adaptar a mesma arquitetura para o seu setor.</p>
+        <a href="../index.html#contato" class="btn btn-accent">Agendar conversa</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== FOOTER ======== -->
+  <footer class="site-footer" id="contato">
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <p class="footer-cta">Vamos conversar sobre sua operacao</p>
+          <p class="footer-text">Construimos ferramentas de dados e IA sob medida para empresas brasileiras.</p>
+        </div>
+        <div class="footer-contacts">
+          <a href="https://wa.me/5511999999999" class="btn-whatsapp">WhatsApp</a>
+          <a href="mailto:contato@aiventures.com.br" class="btn-email">Email</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">AI Ventures</p>
+        <nav class="footer-nav" aria-label="Rodape">
+          <a href="../index.html">Portfolio</a>
+          <a href="../index.html#projetos">Projetos</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======== MINIMAL JS: scroll reveal + sticky nav ======== -->
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => revealObserver.observe(el));
+    const stickyNav = document.querySelector('.sticky-nav');
+    const header = document.querySelector('.hero');
+    const navObserver = new IntersectionObserver(([entry]) => {
+      stickyNav.classList.toggle('visible', !entry.isIntersecting);
+    }, { threshold: 0 });
+    if (header) navObserver.observe(header);
+  </script>
+
+</body>
+</html>

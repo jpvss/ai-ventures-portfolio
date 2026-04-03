@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DeixaComigo | AI Ventures</title>
+  <meta name="description" content="Ferramenta de avaliacao veicular que converte donos de carros em clientes de consignacao">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="DeixaComigo | AI Ventures">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%E2%9A%A1</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+  <!-- STICKY NAV -->
+  <nav class="sticky-nav" aria-label="Navegacao fixa">
+    <div class="container sticky-nav-inner">
+      <a href="../index.html" class="sticky-nav-brand">AI Ventures</a>
+      <div class="sticky-nav-links">
+        <a href="../index.html">Portfolio</a>
+        <a href="../index.html#projetos">Projetos</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div class="container breadcrumb">
+    <a href="../index.html">AI Ventures</a> &rsaquo; <a href="../index.html#projetos">Projetos</a> &rsaquo; <span>DeixaComigo</span>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero" id="topo">
+    <div class="container">
+      <span class="project-type-badge">Geracao de leads</span>
+      <h1>DeixaComigo</h1>
+      <p class="hero-description">Donos de carros usados premium (R$ 60-120K+) sao lowballados por lojistas que pagam 75-85% da FIPE. O DeixaComigo mostra a diferenca concreta entre vender para o lojista e consignar &mdash; com dados da FIPE em tempo real &mdash; e captura o lead do vendedor automaticamente para o corretor de consignacao.</p>
+      <div class="project-links" style="margin-top: var(--space-md)">
+        <a href="https://deixacomigo.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver projeto</a>
+        <a href="https://github.com/jpvss/DeixaComigo" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Codigo</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- FUNCIONALIDADES -->
+  <section class="section" id="funcionalidades">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Funcionalidades</p>
+        <h2 class="section-title">O que o DeixaComigo faz</h2>
+      </div>
+      <ul class="detail-list reveal">
+        <li>Motor de avaliacao veicular com integracao FIPE (Parallelum v2) e cache em Supabase, comparando estimativa de lojista vs. valor de mercado vs. liquido de consignacao com faixas de preco</li>
+        <li>Algoritmo de precificacao com 6 fatores calibrados (marca, idade, km, condicao, demanda regional, comissao) e classificacao de aptidao para consignacao (ideal/viavel/marginal)</li>
+        <li>Formulario mobile-first com selecao cascata marca &rarr; modelo &rarr; ano via API FIPE, input de km formatado e selecao de condicao com micro-copy explicativo</li>
+        <li>Captura de lead integrada ao resultado da avaliacao com persistencia em Supabase e notificacao por email (Resend) ao corretor contendo dados do veiculo e avaliacao completa</li>
+        <li>SEO tecnico completo: sitemap.xml dinamico, robots.txt, OpenGraph image gerado via JSX, Schema.org WebApplication, meta tags e canonical URLs</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PIPELINE -->
+  <section class="section" id="pipeline">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Arquitetura</p>
+        <h2 class="section-title">Como funciona</h2>
+      </div>
+      <div class="pipeline reveal">
+        <div class="pipeline-stage">
+          <h3>Fontes</h3>
+          <ul>
+            <li>API FIPE (Parallelum v2)</li>
+            <li>Input do usuario (marca, modelo, ano, km)</li>
+            <li>Parametros de mercado (spreads, comissoes)</li>
+          </ul>
+        </div>
+        <div class="pipeline-stage">
+          <h3>Pipeline</h3>
+          <ul>
+            <li>Consulta cascata marca &rarr; modelo &rarr; ano</li>
+            <li>Algoritmo de precificacao com 6 fatores</li>
+            <li>Classificacao de aptidao para consignacao</li>
+            <li>Cache inteligente em Supabase</li>
+          </ul>
+        </div>
+        <div class="pipeline-stage">
+          <h3>Produto</h3>
+          <ul>
+            <li>Comparativo lojista vs. consignacao</li>
+            <li>Captura de lead com notificacao Resend</li>
+            <li>SEO programatico para trafego organico</li>
+            <li>Deploy em Vercel (regiao GRU1)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH STACK -->
+  <section class="section" id="stack">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Tecnologia</p>
+        <h2 class="section-title">Tech Stack</h2>
+      </div>
+      <div class="stack-grid reveal">
+        <div class="stack-group">
+          <span class="stack-group-label">Frontend</span>
+          <span class="tag">Next.js 16</span>
+          <span class="tag">React 19</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">Tailwind CSS v4</span>
+          <span class="tag">shadcn/ui</span>
+          <span class="tag">Lucide React</span>
+          <span class="tag">Sonner</span>
+        </div>
+        <div class="stack-group">
+          <span class="stack-group-label">Data</span>
+          <span class="tag">Supabase</span>
+          <span class="tag">Zod 4</span>
+        </div>
+        <div class="stack-group">
+          <span class="stack-group-label">APIs</span>
+          <span class="tag">FIPE / Parallelum v2</span>
+          <span class="tag">Resend</span>
+          <span class="tag">Anthropic SDK</span>
+        </div>
+        <div class="stack-group">
+          <span class="stack-group-label">Infra</span>
+          <span class="tag">Vercel</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPACIDADES -->
+  <section class="section" id="capacidades">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Capacidades</p>
+        <h2 class="section-title">O que isso demonstra</h2>
+      </div>
+      <ul class="detail-list reveal">
+        <li>Modelagem de precificacao domain-specific com multiplos fatores calibrados por pesquisa de mercado (tabela FIPE, spreads de lojista, depreciacao por marca/idade/km) e guard rails contra overpromising</li>
+        <li>Integracao com APIs externas de dados publicos (FIPE/Parallelum) com camada de cache inteligente em banco de dados, fallback gracioso e validacao de dados</li>
+        <li>Funil de conversao completo &mdash; de ferramenta gratuita de valor a captura de lead qualificado com notificacao automatica &mdash; implementado como Server Actions com validacao Zod</li>
+        <li>Infraestrutura de produto real com Supabase (PostgreSQL + RLS policies + migrations), autenticacao, email transacional (Resend), e deploy em regiao GRU1 (Sao Paulo)</li>
+        <li>SEO tecnico programatico para geracao de trafego organico em escala: sitemap, robots, structured data, OpenGraph dinamico, e arquitetura preparada para centenas de paginas de modelo/ano</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- OPORTUNIDADES -->
+  <section class="section" id="oportunidades">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Oportunidades</p>
+        <h2 class="section-title">O que podemos construir para voce</h2>
+        <p class="section-subtitle">Projetos derivados que aplicam a mesma arquitetura para outros segmentos.</p>
+      </div>
+      <div class="metrics-grid reveal">
+        <div class="opp-card">
+          <p class="solution-tag">Automotivo / Concessionarias</p>
+          <h4>Ferramenta white-label de avaliacao e captacao de veiculos para concessionarias</h4>
+          <p>Concessionarias de medio porte gastam R$ 3-8K/mes em classificados e dependem do vendedor de balcao para avaliar troca. Precisam de ferramenta digital que atraia donos de carros premium direto pelo Google.</p>
+          <div class="opp-meta">
+            <span>R$ 20k-40k</span>
+            <span>2-3 semanas</span>
+          </div>
+        </div>
+        <div class="opp-card">
+          <p class="solution-tag">Seguros / Corretoras de seguro auto</p>
+          <h4>Calculadora de seguro auto com captura de lead e CRM integrado</h4>
+          <p>Corretoras de seguro auto de medio porte dependem de Google Ads caro (R$ 15-30 por clique). Uma ferramenta de cotacao gratuita embeddable captura o lead antes da concorrencia.</p>
+          <div class="opp-meta">
+            <span>R$ 25k-50k</span>
+            <span>3-4 semanas</span>
+          </div>
+        </div>
+        <div class="opp-card">
+          <p class="solution-tag">Financeiro / Fintechs de credito veicular</p>
+          <h4>Motor de avaliacao de garantia veicular para plataformas de credito</h4>
+          <p>Fintechs de credito com garantia de veiculo usam a FIPE pura, que nao reflete condicao, km nem liquidez regional. Uma avaliacao ajustada reduz inadimplencia e melhora a relacao credito/garantia.</p>
+          <div class="opp-meta">
+            <span>R$ 30k-55k</span>
+            <span>2-3 semanas</span>
+          </div>
+        </div>
+        <div class="opp-card">
+          <p class="solution-tag">Imobiliario / Imobiliarias</p>
+          <h4>Ferramenta de avaliacao de imovel com captura de lead para imobiliarias</h4>
+          <p>Imobiliarias de medio porte competem com QuintoAndar e Loft por proprietarios. Uma ferramenta "quanto vale meu imovel" com dados reais captura o lead antes da concorrencia &mdash; o mesmo funil que funciona para carros.</p>
+          <div class="opp-meta">
+            <span>R$ 25k-50k</span>
+            <span>3-4 semanas</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" id="contato-section">
+    <div class="container">
+      <div class="cta-block reveal">
+        <h3>Quer algo parecido?</h3>
+        <p>Construimos DeixaComigo em semanas. Podemos adaptar a mesma arquitetura para o seu setor.</p>
+        <a href="../index.html#contato" class="btn btn-accent">Agendar conversa</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" id="contato">
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <p class="footer-cta">Vamos conversar sobre sua operacao</p>
+          <p class="footer-text">Construimos ferramentas de dados e IA sob medida para empresas brasileiras.</p>
+        </div>
+        <div class="footer-contacts">
+          <a href="https://wa.me/5511999999999" class="btn-whatsapp">WhatsApp</a>
+          <a href="mailto:contato@aiventures.com.br" class="btn-email">Email</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">AI Ventures</p>
+        <nav class="footer-nav" aria-label="Rodape">
+          <a href="../index.html">Portfolio</a>
+          <a href="../index.html#projetos">Projetos</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS: scroll reveal + sticky nav -->
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => revealObserver.observe(el));
+    const stickyNav = document.querySelector('.sticky-nav');
+    const header = document.querySelector('.hero');
+    const navObserver = new IntersectionObserver(([entry]) => {
+      stickyNav.classList.toggle('visible', !entry.isIntersecting);
+    }, { threshold: 0 });
+    if (header) navObserver.observe(header);
+  </script>
+
+</body>
+</html>
