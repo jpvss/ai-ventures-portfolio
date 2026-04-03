@@ -20,7 +20,7 @@ verticals:
 
 # Compliance Automation
 
-Regulatory compliance is the most acute pain point across all four verticals and serves as the natural entry point for AI Ventures engagements. Every vertical has manual compliance workflows with severe penalties for failure, making automation the easiest "yes" from prospective clients.
+Regulatory compliance is the most acute pain point across all four verticals and serves as the natural entry point for JP Ventures engagements. Every vertical has manual compliance workflows with severe penalties for failure, making automation the easiest "yes" from prospective clients.
 
 ## Vertical Implementations
 

@@ -1,5 +1,5 @@
 ---
-title: "AI Ventures — Consulting Knowledge Base"
+title: "JP Ventures — Consulting Knowledge Base"
 type: index
 vertical: cross-vertical
 language: en
@@ -9,9 +9,9 @@ freshness: monthly
 tags: [index, navigation, master]
 ---
 
-# AI Ventures — Consulting Knowledge Base
+# JP Ventures — Consulting Knowledge Base
 
-> LLM-maintained knowledge system for AI Ventures consulting operations.
+> LLM-maintained knowledge system for JP Ventures consulting operations.
 > Last compiled: 2026-04-02 | Verticals: 4 | Projects: 10 | Patterns: 6
 
 ---

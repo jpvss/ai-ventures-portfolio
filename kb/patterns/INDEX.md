@@ -14,7 +14,7 @@ tags:
 
 # Cross-Vertical Pattern Library
 
-Reusable solution patterns that recur across multiple AI Ventures verticals (Mining, Investment Advisory, Insurance/Surety Bonds, Auctions). Each pattern file documents how the same architectural approach manifests differently per industry, enabling component reuse and accelerated delivery.
+Reusable solution patterns that recur across multiple JP Ventures verticals (Mining, Investment Advisory, Insurance/Surety Bonds, Auctions). Each pattern file documents how the same architectural approach manifests differently per industry, enabling component reuse and accelerated delivery.
 
 ## Pattern Catalog
 

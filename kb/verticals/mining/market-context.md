@@ -75,7 +75,7 @@ Mid-market miners suffer from a profound data maturity gap:
 
 ## Opportunity Sizing
 
-The addressable market for AI Ventures in mining combines:
+The addressable market for JP Ventures in mining combines:
 
 - **Compliance automation**: Every mid-market miner needs CFEM automation (R$150K--R$350K per engagement) and environmental compliance dashboards (R$200K--R$500K)
 - **Operational optimization**: Fleet analytics (R$300K--R$700K) and geological AI (R$400K--R$1M) for miners with open-pit operations

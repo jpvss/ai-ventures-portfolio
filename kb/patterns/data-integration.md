@@ -20,7 +20,7 @@ verticals:
 
 # Data Integration (Multi-Source Data Platform)
 
-Every vertical AI Ventures serves has 5-12 disconnected systems that do not communicate. Data integration is always the foundation project -- the first implementation after a diagnostic engagement -- because all subsequent AI capabilities (predictive models, document intelligence, alerting, client 360) depend on a unified data layer.
+Every vertical JP Ventures serves has 5-12 disconnected systems that do not communicate. Data integration is always the foundation project -- the first implementation after a diagnostic engagement -- because all subsequent AI capabilities (predictive models, document intelligence, alerting, client 360) depend on a unified data layer.
 
 ## Vertical Implementations
 

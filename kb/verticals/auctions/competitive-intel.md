@@ -45,7 +45,7 @@ tags: [auctions, competitors, pricing, positioning, leilao-ninja, buscai, arrema
 
 ### vs. AI-Powered Auction Tools (Leilao Ninja, BuscAI, etc.)
 
-These tools offer single-feature solutions (scoring, legal analysis, alerts). AI Ventures delivers the **full data infrastructure stack**:
+These tools offer single-feature solutions (scoring, legal analysis, alerts). JP Ventures delivers the **full data infrastructure stack**:
 - End-to-end pipeline from aggregation through scoring to post-auction workflow
 - Custom implementations tailored to each client's specific needs and scale
 - Enterprise-grade architecture that scales with the business
@@ -53,7 +53,7 @@ These tools offer single-feature solutions (scoring, legal analysis, alerts). AI
 
 ### vs. Aggregators (Leilao Imovel, Nucleo Leiloes)
 
-Aggregators consolidate data but lack AI-powered analysis. AI Ventures adds:
+Aggregators consolidate data but lack AI-powered analysis. JP Ventures adds:
 - Automated valuation models with confidence scoring
 - Legal risk assessment via NLP
 - Investment scoring and recommendation engines
@@ -61,7 +61,7 @@ Aggregators consolidate data but lack AI-powered analysis. AI Ventures adds:
 
 ### vs. In-House Teams
 
-Most auction platforms and investor groups lack the specialized AI/ML engineering talent to build these systems. AI Ventures provides:
+Most auction platforms and investor groups lack the specialized AI/ML engineering talent to build these systems. JP Ventures provides:
 - Proven patterns from cross-vertical implementations (document intelligence, scoring engines, compliance automation)
 - Faster time-to-market than building in-house
 - Ongoing maintenance and model retraining via retainer

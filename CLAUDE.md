@@ -1,7 +1,7 @@
-# AI Ventures — Portfolio + Knowledge Base
+# JP Ventures — Portfolio + Knowledge Base
 
 ## Project Overview
-AI Ventures portfolio site (GitHub Pages) + consulting knowledge base (GenAI-native).
+JP Ventures portfolio site (GitHub Pages) + consulting knowledge base (GenAI-native).
 3-person AI-native data infrastructure consulting agency targeting Brazilian mid-market.
 4 verticals: Mining, Investment Advisory, Insurance/Surety Bonds, Auctions.
 
@@ -36,7 +36,7 @@ engagement-templates.md, competitive-intel.md, case-studies.md, sales-playbook.m
 - `/project:compile-portfolio` — Generate docs/ HTML pages from KB content
 
 ## Key Conventions
-- Agency name: **AI Ventures**
+- Agency name: **JP Ventures**
 - Internal KB: English. Public docs/: Portuguese (pt-BR), lang="pt-BR"
 - YAML frontmatter required on every kb/ markdown file
 - File names: lowercase, hyphens, no spaces

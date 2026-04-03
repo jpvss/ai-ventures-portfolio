@@ -81,7 +81,7 @@ Additional data maturity challenges:
 
 ## Opportunity Sizing
 
-The mid-market sweet spot (R$1–15B AuC offices) represents the addressable market for AI Ventures:
+The mid-market sweet spot (R$1–15B AuC offices) represents the addressable market for JP Ventures:
 - Estimated 200–400 offices in this range
 - Diagnostic engagement: R$25K–R$80K per office
 - Full implementation portfolio: R$530K–R$1.25M across 5 projects

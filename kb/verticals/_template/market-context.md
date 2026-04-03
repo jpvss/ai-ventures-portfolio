@@ -41,7 +41,7 @@ tags: ["{vertical_slug}", market-size, players, trends]
 
 ## Opportunity Sizing
 
-<!-- Addressable market for AI Ventures in this vertical -->
+<!-- Addressable market for JP Ventures in this vertical -->
 
 ---
 *Compiled from: [list sources]*

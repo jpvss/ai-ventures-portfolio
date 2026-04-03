@@ -88,7 +88,7 @@ The auction vertical has one of the most severe data fragmentation problems of a
 
 ## Opportunity Sizing
 
-The addressable market for AI Ventures in the auction vertical includes:
+The addressable market for JP Ventures in the auction vertical includes:
 
 - **Auction platforms and aggregators** seeking to expand data coverage and add AI features
 - **Leiloeiros** looking to modernize their technology stack via white-label solutions

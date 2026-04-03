@@ -46,7 +46,7 @@ A CNseg/EY study from February 2026 reveals the state of AI adoption in Brazilia
 - Only **23% see meaningful impact** from their AI investments
 - The main barrier is **legacy system integration (69%)** — not AI technology itself
 
-This gap between AI adoption and impact represents AI Ventures' core opportunity: specialized integration of AI into underwriting, claims, and compliance workflows is where the ROI lives.
+This gap between AI adoption and impact represents JP Ventures' core opportunity: specialized integration of AI into underwriting, claims, and compliance workflows is where the ROI lives.
 
 ## Data Maturity Gap
 
@@ -71,7 +71,7 @@ Mid-market seguro garantia insurers typically suffer from:
 
 ## Opportunity Sizing
 
-The addressable market for AI Ventures in insurance/surety bonds includes:
+The addressable market for JP Ventures in insurance/surety bonds includes:
 - **44+ seguro garantia insurers** — primary targets for underwriting, claims, and compliance automation
 - **Hundreds of specialized corretoras** — targets for broker-insurer exchange platforms and operational efficiency
 - **Full 12-month engagement portfolio**: R$1.5M–R$3M per client
