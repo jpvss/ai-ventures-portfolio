@@ -452,6 +452,54 @@
     }
 
     /* ---- COLLAPSIBLE DETAILS ---- */
+    .project-details-toggle {
+      margin-top: 0;
+    }
+
+    .project-details-toggle summary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--gray-500);
+      cursor: pointer;
+      user-select: none;
+      list-style: none;
+      transition: color 0.15s;
+    }
+
+    .project-details-toggle summary::-webkit-details-marker { display: none; }
+
+    .project-details-toggle summary::before {
+      content: "+";
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.2rem;
+      height: 1.2rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      border: 1px solid var(--gray-300);
+      border-radius: 50%;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .project-details-toggle[open] summary::before {
+      content: "−";
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .project-details-toggle summary:hover {
+      color: var(--accent);
+    }
+
+    .project-details-content {
+      padding-top: var(--space-md);
+      display: grid;
+      gap: var(--space-md);
+    }
 
     .detail-block h4 {
       font-size: var(--text-xs);
@@ -943,6 +991,15 @@
     .footer-nav a:hover { color: var(--accent); }
 
     /* ---- RESPONSIVE ---- */
+    @media (width >= 640px) {
+      .project-details-content {
+        grid-template-columns: 1fr 1fr;
+      }
+      .problem-block {
+        grid-column: 1 / -1;
+      }
+    }
+
     @media (width >= 768px) {
       .footer-content {
         flex-direction: row;
@@ -1064,6 +1121,66 @@
                 </div>
               </div>
             </details>
+            <details class="project-details-toggle">
+              <summary>Detalhes do projeto</summary>
+              <div class="project-details-content">
+                <div class="problem-block">
+                  <strong>Problema resolvido</strong>
+                  Investidores imobiliários perdem horas cruzando dados de dezenas de fontes públicas para encontrar boas oportunidades. O FloridaFlip agrega tudo — avaliações, vendas, aluguéis, risco de enchente, seguros — em um painel único com sinais automáticos de oportunidade.
+                </div>
+                <div class="pipeline" style="grid-column: 1 / -1;">
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Fontes</span>
+                    <span class="pipeline-stage-title">Dados brutos</span>
+                    <ul class="pipeline-stage-items">
+                      <li>FDOR (avaliações fiscais)</li>
+                      <li>FEMA (zonas de risco)</li>
+                      <li>Census ACS (demografia)</li>
+                      <li>Redfin (mercado)</li>
+                    </ul>
+                  </div>
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Pipeline</span>
+                    <span class="pipeline-stage-title">Enriquecimento</span>
+                    <ul class="pipeline-stage-items">
+                      <li>Python + normalização</li>
+                      <li>DuckDB / Parquet</li>
+                      <li>Scoring 9 dimensões</li>
+                    </ul>
+                  </div>
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Produto</span>
+                    <span class="pipeline-stage-title">Dashboard</span>
+                    <ul class="pipeline-stage-items">
+                      <li>Mapa choropleth</li>
+                      <li>Busca em 2.1M props</li>
+                      <li>Calculadora financeira</li>
+                      <li>Relatório PDF</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="detail-block">
+                  <h4>Funcionalidades</h4>
+                  <ul class="detail-list features">
+                    <li>Mapa interativo dos 67 condados com choropleth por métrica (preço, estoque, dias no mercado)</li>
+                    <li>Busca em 2.1M propriedades via DuckDB/Parquet com filtros e sinais automáticos</li>
+                    <li>Calculadora de flip/hold/BRRRR com custos de fechamento e seguro da Flórida</li>
+                    <li>Scoring multidimensional de submercados por ZIP code (9 dimensões)</li>
+                    <li>Dashboard executivo com KPIs, tendências e geração de relatório PDF</li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <h4>O que isso resolve para você</h4>
+                  <ul class="detail-list capabilities">
+                    <li>Ingestão e normalização de dados públicos heterogêneos (FDOR, FEMA, Census ACS, Redfin)</li>
+                    <li>Consultas analíticas sobre milhões de registros no browser usando DuckDB + Parquet</li>
+                    <li>Modelagem financeira domain-specific com regras regulatórias locais</li>
+                    <li>Visualização geoespacial interativa com polígonos e drill-down</li>
+                    <li>Scoring multidimensional com pesos configuráveis para ranqueamento</li>
+                  </ul>
+                </div>
+              </div>
+            </details>
           </article>
 
           <!-- 2. Leila do Leilão -->
@@ -1108,6 +1225,65 @@
                   <span class="tag">httpx</span>
                   <span class="tag">BeautifulSoup4</span>
                   <span class="tag">geopy</span>
+                </div>
+              </div>
+            </details>
+            <details class="project-details-toggle">
+              <summary>Detalhes do projeto</summary>
+              <div class="project-details-content">
+                <div class="problem-block">
+                  <strong>Problema resolvido</strong>
+                  Investidores em imóveis de leilão da Caixa não sabem se o desconto anunciado é real. O Leila cruza dados ITBI reais (2008-2026) com o catálogo da Caixa, revelando o desconto verdadeiro e pontuando cada imóvel com um Deal Score multidimensional.
+                </div>
+                <div class="pipeline" style="grid-column: 1 / -1;">
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Fontes</span>
+                    <span class="pipeline-stage-title">Dados brutos</span>
+                    <ul class="pipeline-stage-items">
+                      <li>Catálogo CSV Caixa</li>
+                      <li>ITBI municipal (18 anos)</li>
+                      <li>Scraping de detalhes</li>
+                    </ul>
+                  </div>
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Pipeline</span>
+                    <span class="pipeline-stage-title">Cruzamento</span>
+                    <ul class="pipeline-stage-items">
+                      <li>Geocodificação</li>
+                      <li>Desconto real vs mercado</li>
+                      <li>Deal Score 5 eixos</li>
+                    </ul>
+                  </div>
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Produto</span>
+                    <span class="pipeline-stage-title">Inteligência</span>
+                    <ul class="pipeline-stage-items">
+                      <li>Mapa com score</li>
+                      <li>Simulador financeiro</li>
+                      <li>Street View + tendência</li>
+                      <li>Flags de risco</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="detail-block">
+                  <h4>Funcionalidades</h4>
+                  <ul class="detail-list features">
+                    <li>Dashboard com KPIs e ranking dos top 50 imóveis por Deal Score</li>
+                    <li>Tabela com 14 colunas, 11 filtros e score personalizado por perfil</li>
+                    <li>Mapa Leaflet com marcadores por score e filtros geográficos</li>
+                    <li>Simulador financeiro: ROI, SAC, ITBI, custos de cartório, lance máximo</li>
+                    <li>Detalhe com Street View, tendência do bairro e flags de risco</li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <h4>O que isso resolve para você</h4>
+                  <ul class="detail-list capabilities">
+                    <li>Cruzamento de datasets para insight inédito — desconto real vs mercado</li>
+                    <li>Modelagem financeira brasileira (ITBI, SAC, FGTS, custos de cartório)</li>
+                    <li>Pipeline modular: ingestão, enriquecimento, geocodificação, scoring</li>
+                    <li>Visualização geoespacial classificada por scoring multidimensional</li>
+                    <li>Personalização por perfil com reweighting dinâmico client-side</li>
+                  </ul>
                 </div>
               </div>
             </details>
@@ -1156,6 +1332,66 @@
                   <span class="tag">PyMuPDF</span>
                   <span class="tag">Click</span>
                   <span class="tag">Tenacity</span>
+                </div>
+              </div>
+            </details>
+            <details class="project-details-toggle">
+              <summary>Detalhes do projeto</summary>
+              <div class="project-details-content">
+                <div class="problem-block">
+                  <strong>Problema resolvido</strong>
+                  Consultorias ambientais e mineradoras gastam semanas pesquisando portais de IBAMA, ANM e SEMAD para avaliar viabilidade de licenciamento. O LicenciaMiner cruza 14 fontes públicas e entrega dossiês por empresa com taxa de aprovação, risco e casos similares.
+                </div>
+                <div class="pipeline" style="grid-column: 1 / -1;">
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">14 Fontes</span>
+                    <span class="pipeline-stage-title">Coleta</span>
+                    <ul class="pipeline-stage-items">
+                      <li>IBAMA SISLIC</li>
+                      <li>ANM SIGMINE/SCM/CFEM</li>
+                      <li>SEMAD-MG (scraping)</li>
+                      <li>COPAM, ANA, Receita</li>
+                    </ul>
+                  </div>
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Pipeline</span>
+                    <span class="pipeline-stage-title">Análise espacial</span>
+                    <ul class="pipeline-stage-items">
+                      <li>GeoPandas / Shapely</li>
+                      <li>Sobreposição UCs/TIs</li>
+                      <li>Risco por CNPJ</li>
+                    </ul>
+                  </div>
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Produto</span>
+                    <span class="pipeline-stage-title">Dossiê</span>
+                    <ul class="pipeline-stage-items">
+                      <li>Dashboard 7 abas</li>
+                      <li>Mapa com polígonos</li>
+                      <li>Taxa de aprovação</li>
+                      <li>Relatório PDF</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="detail-block">
+                  <h4>Funcionalidades</h4>
+                  <ul class="detail-list features">
+                    <li>Pipeline de 14 fontes: IBAMA, ANM, SEMAD-MG, COPAM, ANA, Receita Federal</li>
+                    <li>Dashboard com 7 abas: visão geral, CNPJ, decisões, concessões, mapa, prospecção</li>
+                    <li>Dossiê por CNPJ: histórico, infrações, royalties CFEM, taxa de aprovação</li>
+                    <li>Mapa com polígonos de concessões ANM e detecção de sobreposições</li>
+                    <li>Relatório PDF com análise de risco e rastreabilidade total</li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <h4>O que isso resolve para você</h4>
+                  <ul class="detail-list capabilities">
+                    <li>Ingestão de 14 fontes (APIs, ArcGIS, Excel, scraping, shapefiles, PDFs)</li>
+                    <li>Análise geoespacial com spatial joins e detecção de restrições</li>
+                    <li>Risco regulatório com cruzamento ambiental, minerário e cadastral</li>
+                    <li>Arquitetura DuckDB/Parquet com views materializadas</li>
+                    <li>Processamento de documentos regulatórios (scraping, OCR)</li>
+                  </ul>
                 </div>
               </div>
             </details>
@@ -1228,6 +1464,64 @@
                 </div>
               </div>
             </details>
+            <details class="project-details-toggle">
+              <summary>Detalhes do projeto</summary>
+              <div class="project-details-content">
+                <div class="problem-block">
+                  <strong>Problema resolvido</strong>
+                  Donos de usinas solares distribuídas precisam prestar contas mensais a investidores sobre energia compensada, receitas e pagamentos. Hoje esse processo é manual, com planilhas cruzando dados da CEMIG e billing, sujeito a erros que afetam pagamentos reais.
+                </div>
+                <div class="pipeline" style="grid-column: 1 / -1;">
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Fontes</span>
+                    <span class="pipeline-stage-title">Dados operacionais</span>
+                    <ul class="pipeline-stage-items">
+                      <li>Excel CEMIG (multi-aba)</li>
+                      <li>Cogni Faturas/Boletos</li>
+                      <li>Cadastro de UCs</li>
+                    </ul>
+                  </div>
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Pipeline</span>
+                    <span class="pipeline-stage-title">Cálculo financeiro</span>
+                    <ul class="pipeline-stage-items">
+                      <li>Tarifa compensável GD I/II</li>
+                      <li>PIS/COFINS, ICMS</li>
+                      <li>Classificação inadimplência</li>
+                    </ul>
+                  </div>
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Produto</span>
+                    <span class="pipeline-stage-title">Relatórios</span>
+                    <ul class="pipeline-stage-items">
+                      <li>Dashboard multi-usina</li>
+                      <li>PDF por investidor</li>
+                      <li>Trilha de auditoria</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="detail-block">
+                  <h4>Funcionalidades</h4>
+                  <ul class="detail-list features">
+                    <li>Relatório mensal por usina com balanço de recebimento por UC</li>
+                    <li>Pipeline de cálculo financeiro automatizado com tarifa compensável dinâmica</li>
+                    <li>Dashboard gerencial multi-usina com KPIs e matriz MBR</li>
+                    <li>Geração de PDF via WeasyPrint com auditoria embutida</li>
+                    <li>Trilha de auditoria: tooltips com fórmulas e painel de diff</li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <h4>O que isso resolve para você</h4>
+                  <ul class="detail-list capabilities">
+                    <li>Modelagem financeira do setor elétrico brasileiro (CEMIG, GD I/II, PIS/COFINS)</li>
+                    <li>Pipeline ETL robusto para dados heterogêneos multi-fonte</li>
+                    <li>Documentos financeiros auditáveis com rastreabilidade completa</li>
+                    <li>Arquitetura serverless com cache em memória e zero banco</li>
+                    <li>Gestão de pagamento multi-estado com regras do setor solar</li>
+                  </ul>
+                </div>
+              </div>
+            </details>
           </article>
 
           <!-- 5. CEAP Dashboard -->
@@ -1275,6 +1569,65 @@
                   <span class="tag">Cloudflare Pages</span>
                   <span class="tag">Cloudflare Workers</span>
                   <span class="tag">Playwright E2E</span>
+                </div>
+              </div>
+            </details>
+            <details class="project-details-toggle">
+              <summary>Detalhes do projeto</summary>
+              <div class="project-details-content">
+                <div class="problem-block">
+                  <strong>Problema resolvido</strong>
+                  Cidadãos, jornalistas e órgãos de controle não conseguem cruzar dados de despesas parlamentares com emendas orçamentárias para identificar padrões suspeitos. O dashboard aplica métodos estatísticos sobre 660 mil+ transações e entrega sinais de risco.
+                </div>
+                <div class="pipeline" style="grid-column: 1 / -1;">
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Fontes</span>
+                    <span class="pipeline-stage-title">APIs públicas</span>
+                    <ul class="pipeline-stage-items">
+                      <li>API Dados Abertos (CEAP)</li>
+                      <li>Portal da Transparência</li>
+                      <li>OpenCNPJ / BrasilAPI</li>
+                    </ul>
+                  </div>
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Pipeline</span>
+                    <span class="pipeline-stage-title">Detecção estatística</span>
+                    <ul class="pipeline-stage-items">
+                      <li>Lei de Benford</li>
+                      <li>Índice HHI</li>
+                      <li>Mismatch CNAE</li>
+                      <li>Fuzzy matching</li>
+                    </ul>
+                  </div>
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Produto</span>
+                    <span class="pipeline-stage-title">Investigação</span>
+                    <ul class="pipeline-stage-items">
+                      <li>Perfil por deputado</li>
+                      <li>Red flags automáticos</li>
+                      <li>Cruzamento CEAP × Emendas</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="detail-block">
+                  <h4>Funcionalidades</h4>
+                  <ul class="detail-list features">
+                    <li>Visão geral de R$ 686M em gastos com KPIs, filtros e ranking</li>
+                    <li>Perfil de deputado com Benford, HHI, valores redondos e red flags</li>
+                    <li>Análise de concentração de fornecedores por categoria</li>
+                    <li>Spotlight investigativo: cruzamento CEAP × Emendas</li>
+                    <li>Detecção de mismatch CNAE por atividade econômica</li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <h4>O que isso resolve para você</h4>
+                  <ul class="detail-list capabilities">
+                    <li>Detecção de fraude estatística (Benford, HHI, valores redondos)</li>
+                    <li>Cruzamento de bases com schemas incompatíveis via fuzzy matching</li>
+                    <li>Dashboard D3.js com feature flags e lazy loading</li>
+                    <li>Ingestão massiva de dados governamentais via APIs</li>
+                    <li>Pipeline: coleta → DuckDB → Python → JSON → React</li>
+                  </ul>
                 </div>
               </div>
             </details>
@@ -1327,6 +1680,64 @@
                   <span class="stack-group-label">Infra</span>
                   <span class="tag">Supabase Storage</span>
                   <span class="tag">Vercel</span>
+                </div>
+              </div>
+            </details>
+            <details class="project-details-toggle">
+              <summary>Detalhes do projeto</summary>
+              <div class="project-details-content">
+                <div class="problem-block">
+                  <strong>Problema resolvido</strong>
+                  Investidores em incorporações por administração (Lei 4.591/64) dependem de planilhas manuais para rastrear despesas e calcular rateios. Erros de centavos geram conflitos, e a falta de transparência corrói a confiança do grupo.
+                </div>
+                <div class="pipeline" style="grid-column: 1 / -1;">
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Fontes</span>
+                    <span class="pipeline-stage-title">Dados da obra</span>
+                    <ul class="pipeline-stage-items">
+                      <li>Notas fiscais / despesas</li>
+                      <li>Frações ideais (RI)</li>
+                      <li>Arquivos DWG/DXF</li>
+                    </ul>
+                  </div>
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Pipeline</span>
+                    <span class="pipeline-stage-title">Motor de rateio</span>
+                    <ul class="pipeline-stage-items">
+                      <li>Decimal(15,2) preciso</li>
+                      <li>Normalização frações</li>
+                      <li>Multi-tenant 3 camadas</li>
+                    </ul>
+                  </div>
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Produto</span>
+                    <span class="pipeline-stage-title">Gestão + Portal</span>
+                    <ul class="pipeline-stage-items">
+                      <li>Portal read-only investidor</li>
+                      <li>Plantas baixas 3D</li>
+                      <li>PDF auditável mensal</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="detail-block">
+                  <h4>Funcionalidades</h4>
+                  <ul class="detail-list features">
+                    <li>Motor de rateio Decimal(15,2) com normalização e distribuição de resto</li>
+                    <li>Gestão de projetos com investidores, status e permuta</li>
+                    <li>Portal read-only com isolamento total e plantas baixas</li>
+                    <li>Pipeline DWG/DXF: conversão, extração e renderização por andar</li>
+                    <li>Relatório mensal PDF com breakdown e trilha de auditoria</li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <h4>O que isso resolve para você</h4>
+                  <ul class="detail-list capabilities">
+                    <li>Modelagem financeira com precisão decimal (Lei 4.591/64)</li>
+                    <li>Multi-tenant com controle em 3 camadas (middleware, actions, queries)</li>
+                    <li>Pipeline de engenharia: DWG→DXF, metadados, renderização</li>
+                    <li>Visualização 3D com Three.js/React Three Fiber</li>
+                    <li>Documentos financeiros auditáveis com compliance</li>
+                  </ul>
                 </div>
               </div>
             </details>
@@ -1401,6 +1812,64 @@
                 </div>
               </div>
             </details>
+            <details class="project-details-toggle">
+              <summary>Detalhes do projeto</summary>
+              <div class="project-details-content">
+                <div class="problem-block">
+                  <strong>Problema resolvido</strong>
+                  Corretores de seguro garantia perdem horas vasculhando o PNCP manualmente para encontrar contratos que precisam de garantia. O LicitaLeads ingere, enriquece e pontua automaticamente ~23K contratos públicos, entregando leads priorizados com dados de contato e estimativa de comissão.
+                </div>
+                <div class="pipeline" style="grid-column: 1 / -1;">
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Fontes</span>
+                    <span class="pipeline-stage-title">Dados gov</span>
+                    <ul class="pipeline-stage-items">
+                      <li>API PNCP (contratos)</li>
+                      <li>BrasilAPI (CNPJ)</li>
+                      <li>CEIS/CNEP (inidoneidade)</li>
+                    </ul>
+                  </div>
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Pipeline</span>
+                    <span class="pipeline-stage-title">Enriquecimento</span>
+                    <ul class="pipeline-stage-items">
+                      <li>Telefone, email, QSA</li>
+                      <li>Scoring 4 dimensões</li>
+                      <li>Tiers A/B/C</li>
+                    </ul>
+                  </div>
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Produto</span>
+                    <span class="pipeline-stage-title">Sales intelligence</span>
+                    <ul class="pipeline-stage-items">
+                      <li>Dashboard + 11 filtros</li>
+                      <li>WhatsApp / email direto</li>
+                      <li>Calculadora de comissão</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="detail-block">
+                  <h4>Funcionalidades</h4>
+                  <ul class="detail-list features">
+                    <li>Pipeline de ingestão PNCP com enriquecimento via BrasilAPI e checagem CEIS/CNEP</li>
+                    <li>Scoring composto 0-100 com 4 dimensões e classificação em tiers A/B/C</li>
+                    <li>Dashboard com 11 filtros combinados e KPIs em tempo real</li>
+                    <li>Ações rápidas: WhatsApp pré-preenchido, ligar, email, copiar resumo</li>
+                    <li>Calculadora interativa de comissão com exportação CSV</li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <h4>O que isso resolve para você</h4>
+                  <ul class="detail-list capabilities">
+                    <li>Ingestão de dados governamentais com pipeline idempotente e circuit breaker</li>
+                    <li>Scoring domain-specific com regras regulatórias (Lei 14.133)</li>
+                    <li>Enriquecimento automatizado com rate limiting e resume-safety</li>
+                    <li>Produto B2B data-driven com zero infraestrutura (Vercel free tier)</li>
+                    <li>UI de alta densidade informacional com filtros compostos</li>
+                  </ul>
+                </div>
+              </div>
+            </details>
           </article>
 
           <!-- 8. DeixaComigo -->
@@ -1447,6 +1916,64 @@
                 <div class="stack-group">
                   <span class="stack-group-label">Infra</span>
                   <span class="tag">Vercel</span>
+                </div>
+              </div>
+            </details>
+            <details class="project-details-toggle">
+              <summary>Detalhes do projeto</summary>
+              <div class="project-details-content">
+                <div class="problem-block">
+                  <strong>Problema resolvido</strong>
+                  Donos de carros usados premium são lowballados por lojistas que pagam 75-85% da FIPE. O DeixaComigo mostra a diferença concreta entre vender para o lojista e consignar — e captura o lead automaticamente.
+                </div>
+                <div class="pipeline" style="grid-column: 1 / -1;">
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Fontes</span>
+                    <span class="pipeline-stage-title">Dados FIPE</span>
+                    <ul class="pipeline-stage-items">
+                      <li>API FIPE / Parallelum</li>
+                      <li>Cache Supabase</li>
+                      <li>Input do usuário</li>
+                    </ul>
+                  </div>
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Pipeline</span>
+                    <span class="pipeline-stage-title">Precificação</span>
+                    <ul class="pipeline-stage-items">
+                      <li>6 fatores calibrados</li>
+                      <li>Lojista vs consignação</li>
+                      <li>Classificação de aptidão</li>
+                    </ul>
+                  </div>
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Produto</span>
+                    <span class="pipeline-stage-title">Funil de lead</span>
+                    <ul class="pipeline-stage-items">
+                      <li>Avaliação instantânea</li>
+                      <li>Captura + email ao corretor</li>
+                      <li>SEO programático</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="detail-block">
+                  <h4>Funcionalidades</h4>
+                  <ul class="detail-list features">
+                    <li>Motor de avaliação com integração FIPE e cache Supabase</li>
+                    <li>Precificação com 6 fatores e classificação de aptidão</li>
+                    <li>Formulário cascata marca → modelo → ano via API FIPE</li>
+                    <li>Captura de lead com notificação email ao corretor</li>
+                    <li>SEO completo: sitemap, OG dinâmico, Schema.org</li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <h4>O que isso resolve para você</h4>
+                  <ul class="detail-list capabilities">
+                    <li>Precificação domain-specific com fatores de mercado calibrados</li>
+                    <li>APIs de dados públicos com cache inteligente e fallback</li>
+                    <li>Funil completo: ferramenta gratuita → lead → notificação</li>
+                    <li>Infraestrutura de produto com Supabase e email transacional</li>
+                    <li>SEO programático para tráfego orgânico em escala</li>
+                  </ul>
                 </div>
               </div>
             </details>
@@ -1502,6 +2029,64 @@
                 </div>
               </div>
             </details>
+            <details class="project-details-toggle">
+              <summary>Detalhes do projeto</summary>
+              <div class="project-details-content">
+                <div class="problem-block">
+                  <strong>Problema resolvido</strong>
+                  Profissionais não sabem se o currículo está competitivo. O CV10x analisa em 5 dimensões, mostra o que melhorar, e no plano Pro reescreve cada seção com alternativas prontas.
+                </div>
+                <div class="pipeline" style="grid-column: 1 / -1;">
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Input</span>
+                    <span class="pipeline-stage-title">Currículo</span>
+                    <ul class="pipeline-stage-items">
+                      <li>Upload PDF/DOCX/TXT</li>
+                      <li>Extração de texto</li>
+                    </ul>
+                  </div>
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Pipeline</span>
+                    <span class="pipeline-stage-title">Análise IA</span>
+                    <ul class="pipeline-stage-items">
+                      <li>Claude structured output</li>
+                      <li>Score 5 dimensões</li>
+                      <li>Reescrita seção a seção</li>
+                    </ul>
+                  </div>
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Produto</span>
+                    <span class="pipeline-stage-title">Funil B2C</span>
+                    <ul class="pipeline-stage-items">
+                      <li>Quick win gratuito</li>
+                      <li>Nurture email (5 etapas)</li>
+                      <li>Pro via Hotmart</li>
+                      <li>Job matching LLM</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="detail-block">
+                  <h4>Funcionalidades</h4>
+                  <ul class="detail-list features">
+                    <li>Upload e análise por IA Claude em 5 dimensões com score 0-100</li>
+                    <li>Quick win gratuito + email gate para relatório completo</li>
+                    <li>Relatório Pro com reescrita personalizada e análise ATS</li>
+                    <li>Nurture emails automatizados com cron, Redis e tracking</li>
+                    <li>Job matching: busca de vagas, pré-filtro e ranking por LLM</li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <h4>O que isso resolve para você</h4>
+                  <ul class="detail-list capabilities">
+                    <li>LLM com structured output, prompt engineering e cache</li>
+                    <li>Funil B2C: free → email gate → nurture → Pro → Hotmart</li>
+                    <li>Marketing automation end-to-end com Meta CAPI</li>
+                    <li>Imagens OG dinâmicas para redes sociais</li>
+                    <li>Produto em produção com rate limiting e observabilidade</li>
+                  </ul>
+                </div>
+              </div>
+            </details>
           </article>
 
           <!-- 10. Kiiry CRM -->
@@ -1545,6 +2130,64 @@
                 <div class="stack-group">
                   <span class="stack-group-label">Infra</span>
                   <span class="tag">Vercel</span>
+                </div>
+              </div>
+            </details>
+            <details class="project-details-toggle">
+              <summary>Detalhes do projeto</summary>
+              <div class="project-details-content">
+                <div class="problem-block">
+                  <strong>Problema resolvido</strong>
+                  Equipes de venda de energia solar gastam horas buscando leads e não conseguem priorizar. O Kiiry CRM automatiza a captação via Google Places, classifica por potencial energético e organiza o funil em Kanban.
+                </div>
+                <div class="pipeline" style="grid-column: 1 / -1;">
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Fontes</span>
+                    <span class="pipeline-stage-title">Captação</span>
+                    <ul class="pipeline-stage-items">
+                      <li>Google Places API</li>
+                      <li>Deduplicação</li>
+                      <li>Enriquecimento</li>
+                    </ul>
+                  </div>
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Pipeline</span>
+                    <span class="pipeline-stage-title">Scoring</span>
+                    <ul class="pipeline-stage-items">
+                      <li>5 eixos ponderados</li>
+                      <li>Estimativa kWh</li>
+                      <li>Grupo tarifário A vs B</li>
+                    </ul>
+                  </div>
+                  <div class="pipeline-stage">
+                    <span class="pipeline-stage-label">Produto</span>
+                    <span class="pipeline-stage-title">CRM</span>
+                    <ul class="pipeline-stage-items">
+                      <li>Kanban 8 estágios</li>
+                      <li>Territórios + leaderboard</li>
+                      <li>Detecção de redes</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="detail-block">
+                  <h4>Funcionalidades</h4>
+                  <ul class="detail-list features">
+                    <li>Importação de leads via Google Places com deduplicação</li>
+                    <li>Scoring 0-100 em 5 eixos com estimativa de consumo kWh</li>
+                    <li>Pipeline Kanban de 8 estágios com drag-and-drop</li>
+                    <li>Classificação automática de grupo tarifário (A vs B)</li>
+                    <li>Gestão de equipe com territórios e leaderboard</li>
+                  </ul>
+                </div>
+                <div class="detail-block">
+                  <h4>O que isso resolve para você</h4>
+                  <ul class="detail-list capabilities">
+                    <li>Scoring domain-specific com estimativas energéticas setoriais</li>
+                    <li>Integração API com transformação e enriquecimento automatizado</li>
+                    <li>CRM completo com pipeline visual multi-território</li>
+                    <li>Análise financeira regulatória brasileira (tarifas, grupos)</li>
+                    <li>Detecção de padrões (redes/franquias, viabilidade mínima)</li>
+                  </ul>
                 </div>
               </div>
             </details>
