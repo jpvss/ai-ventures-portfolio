@@ -12,7 +12,7 @@ tags: [index, navigation, master]
 # JP Ventures — Consulting Knowledge Base
 
 > LLM-maintained knowledge system for JP Ventures consulting operations.
-> Last compiled: 2026-04-02 | Verticals: 4 | Projects: 10 | Patterns: 6
+> Last compiled: 2026-04-02 | Verticals: 11 | Projects: 10 | Patterns: 6
 
 ---
 
@@ -34,7 +34,9 @@ tags: [index, navigation, master]
 
 ---
 
-## Verticals (4)
+## Verticals (11)
+
+### Core Verticals (4)
 
 | Vertical | Files | Last Updated | TAM | Diagnostic Price | 12-Mo Portfolio |
 |----------|-------|-------------|-----|-----------------|-----------------|
@@ -43,18 +45,30 @@ tags: [index, navigation, master]
 | [Insurance/Surety](verticals/insurance-surety/README.md) | 9 | 2026-04-02 | R$751B+ premiums | R$25–75K | R$1.5–3M |
 | [Auctions](verticals/auctions/README.md) | 9 | 2026-04-02 | R$200B+ moved | R$35–75K | R$800K–1.35M |
 
+### Expansion Verticals (7)
+
+| Vertical | Files | Last Updated | TAM | Active Projects |
+|----------|-------|-------------|-----|----------------|
+| [Real Estate](verticals/real-estate/README.md) | 9 | 2026-04-02 | R$500B+ PIB Construção | florida-flip, leila-do-leilao, incorporacoes-gestao |
+| [GovTech](verticals/govtech/README.md) | 9 | 2026-04-02 | R$800B+ procurement | licitaleads, ceap-deputy-expenses, licenciaminer |
+| [Energy & Infrastructure](verticals/energy-infrastructure/README.md) | 9 | 2026-04-02 | R$100B+ GD invested | kiiry-dashboard, kiiry-crm |
+| [Automotive](verticals/automotive/README.md) | 9 | 2026-04-02 | R$500B+ used cars | deixacomigo |
+| [Education & HR](verticals/education-hr/README.md) | 9 | 2026-04-02 | R$14B+ HR+EdTech | cv10x |
+| [Financial Services](verticals/financial-services/README.md) | 9 | 2026-04-02 | R$600B+ fintech credit | florida-flip, licitaleads (cross-vertical) |
+| [Construction](verticals/construction/README.md) | 9 | 2026-04-02 | R$500B+ PIB Construção | incorporacoes-gestao (cross-vertical) |
+
 ---
 
 ## Cross-Vertical Patterns (6)
 
 | Pattern | Applies To | File |
 |---------|-----------|------|
-| Compliance Automation | All 4 verticals | [patterns/compliance-automation.md](patterns/compliance-automation.md) |
-| Data Integration | All 4 verticals | [patterns/data-integration.md](patterns/data-integration.md) |
-| Document Intelligence | Mining, Insurance, Auctions | [patterns/document-intelligence.md](patterns/document-intelligence.md) |
-| Predictive Models | All 4 verticals | [patterns/predictive-models.md](patterns/predictive-models.md) |
-| Alert/Notification | All 4 verticals | [patterns/alert-notification.md](patterns/alert-notification.md) |
-| Client 360 | Investment, Insurance, Mining | [patterns/client-360.md](patterns/client-360.md) |
+| Compliance Automation | All verticals | [patterns/compliance-automation.md](patterns/compliance-automation.md) |
+| Data Integration | All verticals | [patterns/data-integration.md](patterns/data-integration.md) |
+| Document Intelligence | Mining, Insurance, Auctions, Real Estate, GovTech, Financial | [patterns/document-intelligence.md](patterns/document-intelligence.md) |
+| Predictive Models | All verticals | [patterns/predictive-models.md](patterns/predictive-models.md) |
+| Alert/Notification | All verticals | [patterns/alert-notification.md](patterns/alert-notification.md) |
+| Client 360 | Investment, Insurance, Mining, Financial, Energy | [patterns/client-360.md](patterns/client-360.md) |
 
 ---
 
@@ -103,7 +117,7 @@ tags: [index, navigation, master]
 
 ## KB Statistics
 
-- **Total vertical files:** 36 (4 verticals × 9 files)
+- **Total vertical files:** 99 (11 verticals × 9 files)
 - **Cross-vertical patterns:** 6
 - **Project directories:** 10
 - **Agency docs:** 5
